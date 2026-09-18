@@ -21,7 +21,7 @@ export const workshopPhotos: WorkshopPhoto[] = [
   { src: "/images/workshop/workshop-15.jpg", alt: "Ручка с деревянной рукоятью" },
   { src: "/images/workshop/workshop-16.jpg", alt: "Пара петель, крупный план" },
   { src: "/images/workshop/workshop-17.jpg", alt: "Накладки на замочную скважину" },
-  { src: "/images/workshop/workshop-18.jpg", alt: "Петля с декоративным наконечником" },
+  { src: "/images/workshop/workshop-18.jpg", alt: "Пара накладок на замочную скважину" },
   { src: "/images/workshop/workshop-19.jpg", alt: "Декоративная накладка с патиной" },
   { src: "/images/workshop/workshop-20.jpg", alt: "Задвижка с декоративным навершием" },
   { src: "/images/workshop/workshop-21.jpg", alt: "Готовое изделие на верстаке" },

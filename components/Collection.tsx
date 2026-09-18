@@ -24,7 +24,7 @@ const items = [
   },
   {
     title: "Накладки и декоративные элементы",
-    image: "/images/catalog/plates/nakladka-akant.jpg",
+    image: "/images/workshop/workshop-18.jpg",
     href: "/projects?category=Накладки+и+декоративные+элементы",
   },
   {

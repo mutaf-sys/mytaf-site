@@ -12,7 +12,7 @@ const categoryCover: Record<Category, string> = {
   "Шпингалеты": "/images/catalog/bolts/zadvizhka-reznaya-v-sbore.jpg",
   "Петли": "/images/catalog/hinges/petlya-sharovidnye-nakonechniki.jpg",
   "Оконная фурнитура": "/images/catalog/window-fittings/espanoletka-kovanaya.jpg",
-  "Накладки и декоративные элементы": "/images/catalog/plates/nakladka-akant.jpg",
+  "Накладки и декоративные элементы": "/images/workshop/workshop-18.jpg",
   "Другие изделия": "/images/catalog/banner-collection.jpg",
 };
 
