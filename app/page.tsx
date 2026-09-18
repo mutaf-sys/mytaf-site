@@ -10,13 +10,15 @@ import ScrollToContacts from "@/components/ScrollToContacts";
 import Testimonials from "@/components/Testimonials";
 import Workshop from "@/components/Workshop";
 
+export const metadata = { alternates: { canonical: "/" } };
+
 export default function Home() {
   return (
     <>
       <ScrollToContacts />
       <Header />
 
-      <main className="overflow-hidden bg-[var(--background)]">
+      <main id="main" className="overflow-hidden bg-background">
         <Hero />
 
         <Reveal>

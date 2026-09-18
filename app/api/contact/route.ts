@@ -62,7 +62,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Форма временно недоступна. Пожалуйста, свяжитесь по телефону или Telegram.",
+          "Форма временно недоступна. Пожалуйста, свяжитесь по телефону +7 (999) 064-64-17 или почте info@empirebrass.ru.",
       },
       { status: 500 },
     );
@@ -106,7 +106,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Не удалось отправить заявку. Пожалуйста, свяжитесь по телефону или Telegram.",
+          "Не удалось отправить заявку. Пожалуйста, свяжитесь по телефону +7 (999) 064-64-17 или почте info@empirebrass.ru.",
       },
       { status: 500 },
     );

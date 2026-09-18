@@ -24,20 +24,42 @@ export default function Lightbox({
 }: LightboxProps) {
   const [visible, setVisible] = useState(false);
   const touchStartX = useRef<number | null>(null);
+  const closeRef = useRef<HTMLButtonElement | null>(null);
+  const previousFocus = useRef<HTMLElement | null>(null);
   const hasMultiple = images.length > 1;
 
   useEffect(() => {
-    const id = requestAnimationFrame(() => setVisible(true));
+    previousFocus.current = document.activeElement as HTMLElement | null;
+    const id = requestAnimationFrame(() => {
+      setVisible(true);
+      closeRef.current?.focus();
+    });
     document.body.style.overflow = "hidden";
 
     return () => {
       cancelAnimationFrame(id);
       document.body.style.overflow = "";
+      previousFocus.current?.focus();
     };
   }, []);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Tab") {
+        const focusable = document.querySelectorAll<HTMLElement>(
+          '[data-lightbox] button',
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
       if (event.key === "Escape") onClose();
       if (hasMultiple && event.key === "ArrowRight") {
         onIndexChange((index + 1) % images.length);
@@ -72,7 +94,9 @@ export default function Lightbox({
     <div
       role="dialog"
       aria-modal="true"
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 transition-opacity duration-300 ${
+      aria-label={`Просмотр фото ${index + 1} из ${images.length}`}
+      data-lightbox
+      className={`dark-surface fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 transition-opacity duration-300 ${
         visible ? "opacity-100" : "opacity-0"
       }`}
       onClick={onClose}
@@ -80,6 +104,7 @@ export default function Lightbox({
       onTouchEnd={handleTouchEnd}
     >
       <button
+        ref={closeRef}
         type="button"
         aria-label="Закрыть"
         onClick={onClose}
@@ -134,7 +159,7 @@ export default function Lightbox({
       </div>
 
       {hasMultiple && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[0.2em] text-white/60">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[0.2em] text-white/80" aria-live="polite">
           {index + 1} / {images.length}
         </div>
       )}

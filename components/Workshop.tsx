@@ -10,14 +10,14 @@ export default function Workshop() {
   const preview = workshopPhotos.slice(0, PREVIEW_COUNT);
 
   return (
-    <section id="workshop" className="bg-[var(--surface)] px-6 py-32 lg:px-12">
+    <section id="workshop" className="bg-surface px-6 py-32 lg:px-12">
       <div className="mx-auto max-w-[1720px]">
         <Reveal>
           <p className="eyebrow">Мастерская</p>
-          <h2 className="mt-5 max-w-3xl font-heading text-5xl leading-[1.05] text-[var(--foreground)] sm:text-6xl">
+          <h2 className="mt-5 max-w-3xl font-heading text-5xl leading-[1.05] text-foreground sm:text-6xl">
             Мастерская и ручная работа
           </h2>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
             Каждое изделие проходит через руки мастера — от точения деталей
             до финальной полировки. Так выглядит процесс изнутри.
           </p>

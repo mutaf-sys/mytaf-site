@@ -1,8 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { ChangeEvent, FormEvent, useState } from "react";
+
+import {
+  ConsentCheckbox,
+  FormError,
+  FormSuccess,
+  inputClass,
+  labelClass,
+  submitClass,
+} from "@/components/ui/form";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -87,21 +95,16 @@ export default function ReviewForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-[28px] border border-[#c9a96e]/40 bg-white/5 p-8 sm:p-10">
-        <p className="font-heading text-2xl text-white sm:text-3xl">
-          Спасибо за отзыв!
-        </p>
-
-        <p className="mt-4 text-white/65">
-          Мы получили ваше сообщение. Спасибо, что нашли время его написать.
-        </p>
-      </div>
+      <FormSuccess title="Спасибо за отзыв!">
+        <p>Мы получили ваше сообщение. Спасибо, что нашли время его написать.</p>
+      </FormSuccess>
     );
   }
 
   return (
     <form
       onSubmit={handleSubmit}
+      aria-busy={status === "loading"}
       className="rounded-[28px] border border-white/15 bg-white/5 p-6 sm:p-10"
     >
       {/* Honeypot-поле, скрыто от людей, но видно ботам */}
@@ -117,7 +120,7 @@ export default function ReviewForm() {
       <div>
         <label
           htmlFor="name"
-          className="text-xs uppercase tracking-[0.2em] text-[#c9a96e]"
+          className={labelClass}
         >
           Имя клиента
         </label>
@@ -126,15 +129,16 @@ export default function ReviewForm() {
           name="name"
           type="text"
           required
+          autoComplete="name"
           placeholder="Как подписать отзыв"
-          className="mt-3 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-white/35 outline-none transition focus:border-[#c9a96e]"
+          className={inputClass}
         />
       </div>
 
       <div className="mt-5">
         <label
           htmlFor="role"
-          className="text-xs uppercase tracking-[0.2em] text-[#c9a96e]"
+          className={labelClass}
         >
           Объект или проект (необязательно)
         </label>
@@ -143,14 +147,14 @@ export default function ReviewForm() {
           name="role"
           type="text"
           placeholder="Например: реставрация квартиры, СПб"
-          className="mt-3 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-white/35 outline-none transition focus:border-[#c9a96e]"
+          className={inputClass}
         />
       </div>
 
       <div className="mt-5">
         <label
           htmlFor="review"
-          className="text-xs uppercase tracking-[0.2em] text-[#c9a96e]"
+          className={labelClass}
         >
           Ваш отзыв
         </label>
@@ -160,14 +164,14 @@ export default function ReviewForm() {
           required
           rows={6}
           placeholder="Что заказывали, как прошла работа, что понравилось"
-          className="mt-3 w-full resize-none rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-white/35 outline-none transition focus:border-[#c9a96e]"
+          className={`${inputClass} resize-none`}
         />
       </div>
 
       <div className="mt-5">
         <label
           htmlFor="photo"
-          className="text-xs uppercase tracking-[0.2em] text-[#c9a96e]"
+          className={labelClass}
         >
           Фото изделия (необязательно)
         </label>
@@ -185,49 +189,32 @@ export default function ReviewForm() {
             </div>
           )}
 
-          <label
-            htmlFor="photo"
-            className="flex-1 cursor-pointer truncate rounded-2xl border border-dashed border-white/25 px-4 py-3 text-sm text-white/55 transition hover:border-[#c9a96e] hover:text-white"
-          >
-            {fileName ?? "Выбрать файл…"}
-          </label>
-
           <input
             id="photo"
             name="photo"
             type="file"
             accept="image/*"
             onChange={handlePhotoChange}
-            className="hidden"
+            className="peer sr-only"
           />
+
+          <label
+            htmlFor="photo"
+            className="flex-1 cursor-pointer truncate rounded-2xl border border-dashed border-white/25 px-4 py-3 text-sm text-white/70 transition hover:border-brass-soft hover:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brass-soft"
+          >
+            {fileName ?? "Выбрать файл…"}
+          </label>
         </div>
       </div>
 
-      {(status === "error" || errorMessage) && (
-        <p className="mt-4 text-sm text-[#e0a45a]">{errorMessage}</p>
-      )}
+      <FormError message={status === "error" || errorMessage ? errorMessage : ""} />
 
-      <label className="mt-6 flex items-start gap-3 text-xs leading-5 text-white/50">
-        <input
-          type="checkbox"
-          name="consent"
-          required
-          className="mt-0.5 h-4 w-4 shrink-0 accent-[#a67c38]"
-        />
-        Я согласен на обработку персональных данных в соответствии с{" "}
-        <Link
-          href="/privacy"
-          target="_blank"
-          className="underline decoration-white/30 hover:text-white"
-        >
-          политикой обработки персональных данных
-        </Link>
-      </label>
+      <ConsentCheckbox />
 
       <button
         type="submit"
         disabled={status === "loading"}
-        className="mt-5 flex w-full items-center justify-center rounded-full bg-[#a67c38] px-8 py-4 text-sm text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#c29a54] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className={submitClass}
       >
         {status === "loading" ? "Отправляем…" : "Отправить отзыв"}
       </button>

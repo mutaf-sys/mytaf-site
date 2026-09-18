@@ -9,6 +9,7 @@
   --brass-dark: #7e5e28;
   --brass-soft: #c9a96e;
   --border: #d9cfbf;
+  --warn: #e0a45a;
 }
 
 @theme inline {
@@ -20,6 +21,7 @@
   --color-brass-dark: var(--brass-dark);
   --color-brass-soft: var(--brass-soft);
   --color-border: var(--border);
+  --color-warn: var(--warn);
 }
 
 /* Тонкая обводка + uppercase-лейбл вместо "пилюль" — минималистичные кнопки */
@@ -37,7 +39,8 @@
 }
 
 .btn-line:hover {
-  background: var(--brass);
+  background: var(--brass-dark);
+  border-color: var(--brass-dark);
   color: #fff;
 }
 
@@ -56,7 +59,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--brass);
+  color: var(--brass-dark);
 }
 
 /* Мягкий параллакс/зум по наведению — используется в карточках и галерее */
@@ -85,6 +88,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -142,4 +146,31 @@ h4 {
 
 html {
   scroll-behavior: smooth;
+}
+/* Видимый фокус для клавиатуры (WCAG 2.4.7); на тёмных блоках — светлее */
+:focus-visible {
+  outline: 2px solid var(--brass-dark);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.dark-surface :focus-visible {
+  outline-color: var(--brass-soft);
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 200;
+  padding: 0.75rem 1.25rem;
+  background: var(--foreground);
+  color: #fff;
+  font-size: 0.875rem;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }

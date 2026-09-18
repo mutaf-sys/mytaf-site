@@ -1,10 +1,19 @@
 "use client";
 
-import Link from "next/link";
 import { FormEvent, useState } from "react";
+
+import {
+  ConsentCheckbox,
+  FormError,
+  FormSuccess,
+  inputClass,
+  labelClass,
+  submitClass,
+} from "@/components/ui/form";
 
 const categories = [
   "Дверные ручки",
+  "Шпингалеты",
   "Петли",
   "Оконная фурнитура",
   "Мебельная фурнитура",
@@ -61,12 +70,8 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-[28px] border border-[#c9a96e]/40 bg-white/5 p-8 sm:p-10">
-        <p className="font-heading text-2xl text-white sm:text-3xl">
-          Заявка отправлена
-        </p>
-
-        <p className="mt-4 text-white/65">
+      <FormSuccess title="Заявка отправлена">
+        <p>
           Спасибо! Мы получили ваше сообщение и свяжемся с вами в ближайшее
           время.
         </p>
@@ -74,17 +79,18 @@ export default function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 inline-flex rounded-full border border-white/25 px-6 py-3 text-sm text-white transition duration-300 hover:border-[#c9a96e] hover:bg-white/5"
+          className="btn-line btn-line-invert mt-6"
         >
           Отправить ещё одну заявку
         </button>
-      </div>
+      </FormSuccess>
     );
   }
 
   return (
     <form
       onSubmit={handleSubmit}
+      aria-busy={status === "loading"}
       className="rounded-[28px] border border-white/15 bg-white/5 p-6 sm:p-10"
     >
       {/* Honeypot-поле, скрыто от людей, но видно ботам */}
@@ -99,10 +105,7 @@ export default function ContactForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label
-            htmlFor="name"
-            className="text-xs uppercase tracking-[0.2em] text-[#c9a96e]"
-          >
+          <label htmlFor="name" className={labelClass}>
             Имя
           </label>
           <input
@@ -110,16 +113,14 @@ export default function ContactForm() {
             name="name"
             type="text"
             required
+            autoComplete="name"
             placeholder="Как к вам обращаться"
-            className="mt-3 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-white/35 outline-none transition focus:border-[#c9a96e]"
+            className={inputClass}
           />
         </div>
 
         <div>
-          <label
-            htmlFor="contact"
-            className="text-xs uppercase tracking-[0.2em] text-[#c9a96e]"
-          >
+          <label htmlFor="contact" className={labelClass}>
             Телефон или email
           </label>
           <input
@@ -128,23 +129,20 @@ export default function ContactForm() {
             type="text"
             required
             placeholder="Для связи с вами"
-            className="mt-3 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-white/35 outline-none transition focus:border-[#c9a96e]"
+            className={inputClass}
           />
         </div>
       </div>
 
       <div className="mt-5">
-        <label
-          htmlFor="category"
-          className="text-xs uppercase tracking-[0.2em] text-[#c9a96e]"
-        >
+        <label htmlFor="category" className={labelClass}>
           Тип изделия
         </label>
         <select
           id="category"
           name="category"
           defaultValue={categories[0]}
-          className="mt-3 w-full rounded-2xl border border-white/15 bg-[#26221d] px-4 py-3 text-white outline-none transition focus:border-[#c9a96e]"
+          className={`${inputClass} bg-foreground`}
         >
           {categories.map((category) => (
             <option key={category} value={category}>
@@ -155,10 +153,7 @@ export default function ContactForm() {
       </div>
 
       <div className="mt-5">
-        <label
-          htmlFor="message"
-          className="text-xs uppercase tracking-[0.2em] text-[#c9a96e]"
-        >
+        <label htmlFor="message" className={labelClass}>
           Опишите задачу
         </label>
         <textarea
@@ -167,35 +162,18 @@ export default function ContactForm() {
           required
           rows={4}
           placeholder="Размеры, материал, есть ли образец или чертёж"
-          className="mt-3 w-full resize-none rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-white/35 outline-none transition focus:border-[#c9a96e]"
+          className={`${inputClass} resize-none`}
         />
       </div>
 
-      {status === "error" && (
-        <p className="mt-4 text-sm text-[#e0a45a]">{errorMessage}</p>
-      )}
+      <FormError message={status === "error" ? errorMessage : ""} />
 
-      <label className="mt-6 flex items-start gap-3 text-xs leading-5 text-white/50">
-        <input
-          type="checkbox"
-          name="consent"
-          required
-          className="mt-0.5 h-4 w-4 shrink-0 accent-[#a67c38]"
-        />
-        Я согласен на обработку персональных данных в соответствии с{" "}
-        <Link
-          href="/privacy"
-          target="_blank"
-          className="underline decoration-white/30 hover:text-white"
-        >
-          политикой обработки персональных данных
-        </Link>
-      </label>
+      <ConsentCheckbox />
 
       <button
         type="submit"
         disabled={status === "loading"}
-        className="mt-5 flex w-full items-center justify-center rounded-full bg-[#a67c38] px-8 py-4 text-sm text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#c29a54] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className={submitClass}
       >
         {status === "loading" ? "Отправляем…" : "Отправить заявку"}
       </button>

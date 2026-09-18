@@ -38,7 +38,7 @@ export default function LightboxImage({ src, alt }: LightboxImageProps) {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Открыть фото полностью"
-        className="group relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-[#d9cfbf] transition duration-300 hover:border-[#a67c38]"
+        className="group relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-border transition duration-300 hover:border-brass"
       >
         <Image
           src={src}
@@ -54,6 +54,7 @@ export default function LightboxImage({ src, alt }: LightboxImageProps) {
           <div
             role="dialog"
             aria-modal="true"
+            aria-label={alt}
             onClick={() => setOpen(false)}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-6 backdrop-blur-sm"
           >

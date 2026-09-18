@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 import Lightbox from "./Lightbox";
@@ -14,25 +15,27 @@ export default function WorkshopGallery({ photos }: WorkshopGalleryProps) {
 
   return (
     <>
-      <div className="columns-2 gap-4 sm:columns-3 sm:gap-5 lg:columns-4">
+      <ul className="columns-2 gap-4 sm:columns-3 sm:gap-5 lg:columns-4">
         {photos.map((photo, i) => (
-          <button
-            key={photo.src}
-            type="button"
-            onClick={() => setOpenIndex(i)}
-            aria-label={`Открыть фото: ${photo.alt}`}
-            className="group mb-4 block w-full break-inside-avoid overflow-hidden rounded-[20px] bg-[var(--surface)] sm:mb-5"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              loading="lazy"
-              className="block w-full media-zoom"
-            />
-          </button>
+          <li key={photo.src} className="mb-4 break-inside-avoid sm:mb-5">
+            <button
+              type="button"
+              onClick={() => setOpenIndex(i)}
+              aria-label={`Открыть фото: ${photo.alt}`}
+              className="group block w-full overflow-hidden rounded-[20px] bg-surface"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+                className="block h-auto w-full media-zoom"
+              />
+            </button>
+          </li>
         ))}
-      </div>
+      </ul>
 
       {openIndex !== null && (
         <Lightbox

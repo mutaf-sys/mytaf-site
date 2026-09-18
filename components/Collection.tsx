@@ -38,11 +38,11 @@ export default function Collection() {
       <div className="max-w-4xl">
         <p className="eyebrow">Категории</p>
 
-        <h2 className="mt-4 font-heading text-4xl leading-tight text-[var(--foreground)] sm:text-5xl lg:text-6xl">
+        <h2 className="mt-4 font-heading text-4xl leading-tight text-foreground sm:text-5xl lg:text-6xl">
           Категории фурнитуры
         </h2>
 
-        <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--muted)] sm:text-lg">
+        <p className="mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg">
           Историческая латунная фурнитура, созданная вручную по оригинальным
           образцам, архивным материалам и индивидуальным эскизам.
         </p>
@@ -54,7 +54,7 @@ export default function Collection() {
             key={item.title}
             href={item.href}
             aria-label={item.title}
-            className="group relative block overflow-hidden rounded-[28px] border border-[var(--border)] bg-[#eee8dd] shadow-sm transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-[var(--brass-soft)] hover:shadow-[0_28px_65px_rgba(38,34,29,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brass)] focus-visible:ring-offset-4"
+            className="group relative block overflow-hidden rounded-[28px] border border-border bg-[#eee8dd] shadow-sm transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-brass-soft hover:shadow-[0_28px_65px_rgba(38,34,29,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass focus-visible:ring-offset-4"
           >
             <div className="relative h-[320px] overflow-hidden sm:h-[380px]">
               <Image
@@ -75,7 +75,7 @@ export default function Collection() {
 
                   <span
                     aria-hidden="true"
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/50 text-xl text-white transition-all duration-300 group-hover:translate-x-1 group-hover:border-[var(--brass-soft)] group-hover:bg-[var(--brass)]"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/50 text-xl text-white transition-all duration-300 group-hover:translate-x-1 group-hover:border-brass-soft group-hover:bg-brass"
                   >
                     →
                   </span>

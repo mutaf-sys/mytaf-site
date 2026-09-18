@@ -16,9 +16,9 @@ export const metadata: Metadata = {
 
 export default function LeaveReviewPage() {
   return (
-    <main className="flex min-h-screen items-center bg-[#26221d] px-6 py-24 text-white">
+    <main id="main" className="dark-surface flex min-h-screen items-center bg-foreground px-6 py-24 text-white">
       <div className="mx-auto w-full max-w-xl">
-        <p className="text-xs uppercase tracking-[0.32em] text-[#c9a96e] sm:text-sm">
+        <p className="text-xs uppercase tracking-[0.32em] text-brass-soft sm:text-sm">
           Мастерская Empirebrass
         </p>
 

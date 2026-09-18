@@ -7,11 +7,11 @@ export default function Contacts() {
     <>
       <section
         id="contacts"
-        className="border-t border-[#d9cfbf] bg-[#26221d] px-6 py-20 text-white lg:px-12 lg:py-28"
+        className="dark-surface border-t border-border bg-foreground px-6 py-20 text-white lg:px-12 lg:py-28"
       >
         <div className="mx-auto max-w-[1440px]">
           <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.32em] text-[#c9a96e] sm:text-sm">
+            <p className="text-xs uppercase tracking-[0.32em] text-brass-soft sm:text-sm">
               Связаться с мастерской
             </p>
 
@@ -32,9 +32,9 @@ export default function Contacts() {
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
               <a
                 href="tel:+79990646417"
-                className="group rounded-[28px] border border-white/15 p-7 transition duration-300 hover:border-[#c9a96e] hover:bg-white/5"
+                className="group rounded-[28px] border border-white/15 p-7 transition duration-300 hover:border-brass-soft hover:bg-white/5"
               >
-                <p className="text-xs uppercase tracking-[0.24em] text-[#c9a96e]">
+                <p className="text-xs uppercase tracking-[0.24em] text-brass-soft">
                   Телефон
                 </p>
 
@@ -42,16 +42,16 @@ export default function Contacts() {
                   +7 (999) 064-64-17
                 </p>
 
-                <p className="mt-3 text-sm text-white/55">
+                <p className="mt-3 text-sm text-white/70">
                   Позвонить в мастерскую
                 </p>
               </a>
 
               <a
                 href="mailto:info@empirebrass.ru"
-                className="group rounded-[28px] border border-white/15 p-7 transition duration-300 hover:border-[#c9a96e] hover:bg-white/5"
+                className="group rounded-[28px] border border-white/15 p-7 transition duration-300 hover:border-brass-soft hover:bg-white/5"
               >
-                <p className="text-xs uppercase tracking-[0.24em] text-[#c9a96e]">
+                <p className="text-xs uppercase tracking-[0.24em] text-brass-soft">
                   Электронная почта
                 </p>
 
@@ -59,7 +59,7 @@ export default function Contacts() {
                   info@empirebrass.ru
                 </p>
 
-                <p className="mt-3 text-sm text-white/55">
+                <p className="mt-3 text-sm text-white/70">
                   Для чертежей, технических заданий и сотрудничества
                 </p>
               </a>
@@ -68,7 +68,7 @@ export default function Contacts() {
 
           <div className="mt-16 grid gap-8 border-t border-white/15 pt-10 sm:grid-cols-3">
             <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-[#c9a96e]">
+              <p className="text-xs uppercase tracking-[0.22em] text-brass-soft">
                 Мастерская
               </p>
 
@@ -78,7 +78,7 @@ export default function Contacts() {
             </div>
 
             <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-[#c9a96e]">
+              <p className="text-xs uppercase tracking-[0.22em] text-brass-soft">
                 Город
               </p>
 
@@ -88,7 +88,7 @@ export default function Contacts() {
             </div>
 
             <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-[#c9a96e]">
+              <p className="text-xs uppercase tracking-[0.22em] text-brass-soft">
                 Направление
               </p>
 
@@ -100,8 +100,8 @@ export default function Contacts() {
         </div>
       </section>
 
-      <footer className="bg-[#1d1a17] px-6 py-8 text-white lg:px-12">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-5 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between">
+      <footer className="dark-surface bg-[#1d1a17] px-6 py-8 text-white lg:px-12">
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-5 text-sm text-white/70 sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Empirebrass</p>
 
           <div className="flex flex-wrap items-center gap-6">

@@ -51,27 +51,27 @@ export default function Estimate() {
     >
       <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <div>
-          <p className="text-xs uppercase tracking-[0.32em] text-[#a67c38] sm:text-sm">
+          <p className="text-xs uppercase tracking-[0.32em] text-brass-dark sm:text-sm">
             Расчёт стоимости
           </p>
 
-          <h2 className="mt-5 font-heading text-4xl leading-[1.05] text-[#26221d] sm:text-5xl lg:text-6xl">
+          <h2 className="mt-5 font-heading text-4xl leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
             Узнайте ориентировочную стоимость
           </h2>
 
-          <p className="mt-6 max-w-md text-base leading-7 text-[#746c61]">
+          <p className="mt-6 max-w-md text-base leading-7 text-muted">
             Итоговая цена зависит от сложности формы, размеров и состояния
             образца. Ниже — примерный диапазон, точную стоимость мы
             подтвердим после обсуждения проекта.
           </p>
         </div>
 
-        <div className="rounded-[32px] border border-[#d9cfbf] bg-[#fffdf9] p-6 shadow-sm sm:p-10">
+        <div className="rounded-[32px] border border-border bg-surface p-6 shadow-sm sm:p-10">
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
               <label
                 htmlFor="estimate-category"
-                className="text-xs uppercase tracking-[0.2em] text-[#a67c38]"
+                className="text-xs uppercase tracking-[0.2em] text-brass-dark"
               >
                 Тип изделия
               </label>
@@ -79,7 +79,7 @@ export default function Estimate() {
                 id="estimate-category"
                 value={category}
                 onChange={(event) => setCategory(event.target.value)}
-                className="mt-3 w-full rounded-2xl border border-[#d9cfbf] bg-white px-4 py-3 text-[#26221d] outline-none transition focus:border-[#a67c38]"
+                className="mt-3 w-full rounded-2xl border border-border bg-white px-4 py-3 text-foreground outline-none transition focus:border-brass"
               >
                 {categories.map((item) => (
                   <option key={item} value={item}>
@@ -92,7 +92,7 @@ export default function Estimate() {
             <div>
               <label
                 htmlFor="estimate-finish"
-                className="text-xs uppercase tracking-[0.2em] text-[#a67c38]"
+                className="text-xs uppercase tracking-[0.2em] text-brass-dark"
               >
                 Отделка
               </label>
@@ -100,7 +100,7 @@ export default function Estimate() {
                 id="estimate-finish"
                 value={finish}
                 onChange={(event) => setFinish(event.target.value)}
-                className="mt-3 w-full rounded-2xl border border-[#d9cfbf] bg-white px-4 py-3 text-[#26221d] outline-none transition focus:border-[#a67c38]"
+                className="mt-3 w-full rounded-2xl border border-border bg-white px-4 py-3 text-foreground outline-none transition focus:border-brass"
               >
                 {finishes.map((item) => (
                   <option key={item} value={item}>
@@ -113,7 +113,7 @@ export default function Estimate() {
             <div>
               <label
                 htmlFor="estimate-quantity"
-                className="text-xs uppercase tracking-[0.2em] text-[#a67c38]"
+                className="text-xs uppercase tracking-[0.2em] text-brass-dark"
               >
                 Количество, шт.
               </label>
@@ -125,29 +125,29 @@ export default function Estimate() {
                 onChange={(event) =>
                   setQuantity(Number(event.target.value))
                 }
-                className="mt-3 w-full rounded-2xl border border-[#d9cfbf] bg-white px-4 py-3 text-[#26221d] outline-none transition focus:border-[#a67c38]"
+                className="mt-3 w-full rounded-2xl border border-border bg-white px-4 py-3 text-foreground outline-none transition focus:border-brass"
               />
             </div>
 
             <div className="flex flex-col justify-end">
-              <p className="text-xs uppercase tracking-[0.2em] text-[#a67c38]">
+              <p className="text-xs uppercase tracking-[0.2em] text-brass-dark">
                 Ориентировочно
               </p>
-              <p className="mt-3 font-heading text-2xl text-[#26221d] sm:text-3xl">
+              <p className="mt-3 font-heading text-2xl text-foreground sm:text-3xl">
                 {formatRub(estimate.from)} – {formatRub(estimate.to)} ₽
               </p>
             </div>
           </div>
 
-          <div className="mt-8 flex flex-col gap-4 border-t border-[#d9cfbf] pt-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-[#746c61]">
+          <div className="mt-8 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm text-muted">
               Это предварительная оценка. Финальная цена — после изучения
               образца, чертежа или фотографии.
             </p>
 
             <Link
               href="#contacts"
-              className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#a67c38] px-7 py-3.5 text-sm text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#7e5e28]"
+              className="inline-flex shrink-0 items-center justify-center rounded-full bg-brass-dark px-7 py-3.5 text-sm text-white transition duration-300 hover:-translate-y-0.5 hover:bg-foreground"
             >
               Обсудить точную стоимость
             </Link>
