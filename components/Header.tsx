@@ -159,10 +159,10 @@ export default function Header() {
 
           <div className="mt-7 border-t border-[#d9cfbf] pt-6">
             <a
-              href="tel:+79046156147"
+              href="tel:+79990646417"
               className="block font-heading text-xl text-[#26221d]"
             >
-              +7 (904) 615-61-47
+              +7 (999) 064-64-17
             </a>
 
             <a

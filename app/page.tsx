@@ -6,12 +6,14 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Restoration from "@/components/Restoration";
 import Reveal from "@/components/Reveal";
+import ScrollToContacts from "@/components/ScrollToContacts";
 import Testimonials from "@/components/Testimonials";
 import Workshop from "@/components/Workshop";
 
 export default function Home() {
   return (
     <>
+      <ScrollToContacts />
       <Header />
 
       <main className="overflow-hidden bg-[var(--background)]">

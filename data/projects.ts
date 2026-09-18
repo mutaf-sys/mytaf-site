@@ -25,27 +25,17 @@ export const categories: Category[] = [
   "Шпингалеты",
   "Петли",
   "Оконная фурнитура",
-  "Накладки и декоративные элементы",
 ];
 
 export const projects: Project[] = [
   // Дверные ручки
   {
     slug: "ruchka-balyasina-para",
-    title: "Дверная ручка на розетке «балясина»",
+    title: "Оконная ручка",
     category: "Дверные ручки",
     studioImages: ["/images/catalog/door-handles/ruchka-balyasina-para.jpg"],
     description:
       "Парная дверная ручка на овальной розетке. Точёный стержень классической балясинной формы, полированная латунь.",
-  },
-  {
-    slug: "ruchka-rychazhnaya",
-    title: "Ручка рычажная на розетке",
-    category: "Дверные ручки",
-    studioImages: ["/images/catalog/door-handles/ruchka-rychazhnaya.jpg"],
-    description:
-      "Рычажная ручка на овальной розетке в отделке состаренного никеля.",
-    material: "состаренный никель",
   },
   {
     slug: "ruchka-skoba-na-plastine",
@@ -78,7 +68,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ruchka-knopka-riflenaya",
-    title: "Дверная ручка-кнопка рифлёная",
+    title: "Оконная лодочка",
     category: "Дверные ручки",
     studioImages: ["/images/catalog/door-handles/ruchka-knopka-riflenaya.jpg"],
     description:
@@ -88,7 +78,7 @@ export const projects: Project[] = [
   // Петли
   {
     slug: "petlya-sharovidnye-nakonechniki",
-    title: "Петля с шаровидными наконечниками",
+    title: "Петля универсальная оконная 100мм",
     category: "Петли",
     studioImages: ["/images/catalog/hinges/petlya-sharovidnye-nakonechniki.jpg"],
     description:
@@ -96,7 +86,7 @@ export const projects: Project[] = [
   },
   {
     slug: "petlya-konicheskie-nakonechniki",
-    title: "Петля с коническими наконечниками",
+    title: "Петля разъёмная оконная 150мм",
     category: "Петли",
     studioImages: ["/images/catalog/hinges/petlya-konicheskie-nakonechniki.jpg"],
     description:
@@ -104,7 +94,7 @@ export const projects: Project[] = [
   },
   {
     slug: "petlya-usilennaya-stal",
-    title: "Петля усиленная",
+    title: "Петля флажковая, дверная 180мм",
     category: "Петли",
     studioImages: ["/images/catalog/hinges/petlya-usilennaya-stal.jpg"],
     description:
@@ -113,7 +103,7 @@ export const projects: Project[] = [
   },
   {
     slug: "petlya-pryamougolnaya",
-    title: "Петля прямоугольная",
+    title: "Петля разъёмная, дверная 300мм",
     category: "Петли",
     studioImages: ["/images/catalog/hinges/petlya-pryamougolnaya.jpg"],
     description:
@@ -138,17 +128,25 @@ export const projects: Project[] = [
   },
   {
     slug: "petlya-akorn-para-arhiv",
-    title: "Петля парная с наконечниками «жёлудь»",
+    title: "Петля универсальная дверная 180мм",
     category: "Петли",
     studioImages: ["/images/catalog/hinges/petlya-akorn-para-arhiv.jpg"],
     description:
       "Парная петля с наконечниками в форме желудя. Фото из архива выполненных работ.",
   },
+  {
+    slug: "petlya-razemnaya-uglovaya-100",
+    title: "Петля разъёмная, угловая, цельнолатунная 100мм",
+    category: "Петли",
+    studioImages: ["/images/catalog/hinges/petlya-razemnaya-uglovaya-100.jpg"],
+    description:
+      "Угловая разъёмная петля, цельнолатунная, длина 100мм.",
+  },
 
   // Шпингалеты
   {
     slug: "zadvizhka-kovanyj-zavitok",
-    title: "Задвижка с кованым завитком",
+    title: "Комплект петли и шпингалета на окно",
     category: "Шпингалеты",
     studioImages: ["/images/catalog/bolts/zadvizhka-kovanyj-zavitok.jpg"],
     description:
@@ -214,7 +212,7 @@ export const projects: Project[] = [
   },
   {
     slug: "zadvizhka-arhiv",
-    title: "Задвижка на планке",
+    title: "Задвижка с квадратным штоком",
     category: "Шпингалеты",
     studioImages: ["/images/catalog/bolts/zadvizhka-arhiv.jpg"],
     description:
@@ -232,7 +230,7 @@ export const projects: Project[] = [
   },
   {
     slug: "zadvizhka-vertikalnaya-balyasina",
-    title: "Задвижка вертикальная с рычагом-балясиной",
+    title: "Шпингалет раздвижной 1500мм с ответными планками",
     category: "Оконная фурнитура",
     studioImages: [
       "/images/catalog/window-fittings/zadvizhka-vertikalnaya-balyasina.jpg",
@@ -241,7 +239,7 @@ export const projects: Project[] = [
   },
   {
     slug: "sterzhen-solntse",
-    title: "Стержень с резной муфтой «солнце»",
+    title: "Шпингалет литой раздвижной 1500мм с ответными планками",
     category: "Оконная фурнитура",
     studioImages: ["/images/catalog/window-fittings/sterzhen-solntse.jpg"],
     description:
@@ -259,7 +257,7 @@ export const projects: Project[] = [
   },
   {
     slug: "espanoletka-kovanaya",
-    title: "Эспаньолетка с кованой ручкой",
+    title: "Шпингалет прижимной 1500мм с ответными планками",
     category: "Оконная фурнитура",
     studioImages: ["/images/catalog/window-fittings/espanoletka-kovanaya.jpg"],
     description:
@@ -272,16 +270,6 @@ export const projects: Project[] = [
     studioImages: ["/images/catalog/window-fittings/nabor-espanoletok.jpg"],
     description:
       "Комплект из четырёх рычажных узлов эспаньолетки с приёмными планками, состаренная бронза.",
-  },
-
-  // Накладки и декоративные элементы
-  {
-    slug: "nakladka-akant",
-    title: "Накладка-розетка с акантовым узором",
-    category: "Накладки и декоративные элементы",
-    studioImages: ["/images/catalog/plates/nakladka-akant.jpg"],
-    description:
-      "Декоративная накладка с рельефным акантовым орнаментом на деревянном стержне-рукояти.",
   },
 ];
 

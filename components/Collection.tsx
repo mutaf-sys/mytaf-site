@@ -23,11 +23,6 @@ const items = [
     href: "/projects?category=Оконная+фурнитура",
   },
   {
-    title: "Накладки и декоративные элементы",
-    image: "/images/workshop/workshop-18.jpg",
-    href: "/projects?category=Накладки+и+декоративные+элементы",
-  },
-  {
     title: "Изготовление на заказ",
     image: "/images/catalog/banner-collection.jpg",
     href: "/#estimate",

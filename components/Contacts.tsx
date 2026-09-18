@@ -31,7 +31,7 @@ export default function Contacts() {
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
               <a
-                href="tel:+79046156147"
+                href="tel:+79990646417"
                 className="group rounded-[28px] border border-white/15 p-7 transition duration-300 hover:border-[#c9a96e] hover:bg-white/5"
               >
                 <p className="text-xs uppercase tracking-[0.24em] text-[#c9a96e]">
@@ -39,7 +39,7 @@ export default function Contacts() {
                 </p>
 
                 <p className="mt-4 font-heading text-2xl sm:text-3xl">
-                  +7 (904) 615-61-47
+                  +7 (999) 064-64-17
                 </p>
 
                 <p className="mt-3 text-sm text-white/55">
