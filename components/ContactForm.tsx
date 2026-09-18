@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 const categories = [
@@ -174,18 +175,30 @@ export default function ContactForm() {
         <p className="mt-4 text-sm text-[#e0a45a]">{errorMessage}</p>
       )}
 
+      <label className="mt-6 flex items-start gap-3 text-xs leading-5 text-white/50">
+        <input
+          type="checkbox"
+          name="consent"
+          required
+          className="mt-0.5 h-4 w-4 shrink-0 accent-[#a67c38]"
+        />
+        Я согласен на обработку персональных данных в соответствии с{" "}
+        <Link
+          href="/privacy"
+          target="_blank"
+          className="underline decoration-white/30 hover:text-white"
+        >
+          политикой обработки персональных данных
+        </Link>
+      </label>
+
       <button
         type="submit"
         disabled={status === "loading"}
-        className="mt-7 flex w-full items-center justify-center rounded-full bg-[#a67c38] px-8 py-4 text-sm text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#c29a54] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className="mt-5 flex w-full items-center justify-center rounded-full bg-[#a67c38] px-8 py-4 text-sm text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#c29a54] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
         {status === "loading" ? "Отправляем…" : "Отправить заявку"}
       </button>
-
-      <p className="mt-4 text-xs leading-5 text-white/40">
-        Отправляя форму, вы соглашаетесь на обработку указанных данных для
-        связи с вами по вашей заявке.
-      </p>
     </form>
   );
 }

@@ -104,12 +104,21 @@ export default function Contacts() {
         <div className="mx-auto flex max-w-[1440px] flex-col gap-5 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Empirebrass</p>
 
-          <Link
-            href="/"
-            className="transition duration-300 hover:text-white"
-          >
-            Мастерская исторической латунной фурнитуры
-          </Link>
+          <div className="flex flex-wrap items-center gap-6">
+            <Link
+              href="/"
+              className="transition duration-300 hover:text-white"
+            >
+              Мастерская исторической латунной фурнитуры
+            </Link>
+
+            <Link
+              href="/privacy"
+              className="transition duration-300 hover:text-white"
+            >
+              Политика обработки персональных данных
+            </Link>
+          </div>
         </div>
       </footer>
     </>
