@@ -1,56 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const projects = [
-  {
-    slug: "project-1",
-    title: "Историческая оконная ручка",
-    subtitle: "Латунь · Ручная работа",
-    image: "/images/project-1.jpg",
-  },
-  {
-    slug: "project-2",
-    title: "Дверная ручка с патиной",
-    subtitle: "Латунь · Исторический образец",
-    image: "/images/project-2.jpg",
-  },
-  {
-    slug: "project-3",
-    title: "Латунная дверная петля",
-    subtitle: "Ручное изготовление",
-    image: "/images/project-3.jpg",
-  },
-  {
-    slug: "project-4",
-    title: "Оконная фурнитура",
-    subtitle: "Индивидуальное изготовление",
-    image: "/images/project-4.jpg",
-  },
-  {
-    slug: "project-5",
-    title: "Ручка для исторической двери",
-    subtitle: "Реконструкция по образцу",
-    image: "/images/project-5.jpg",
-  },
-  {
-    slug: "project-6",
-    title: "Мебельная латунная ручка",
-    subtitle: "Ручная обработка",
-    image: "/images/project-6.jpg",
-  },
-  {
-    slug: "project-7",
-    title: "Комплект дверной фурнитуры",
-    subtitle: "Латунь · Патинирование",
-    image: "/images/project-7.jpg",
-  },
-  {
-    slug: "project-8",
-    title: "Индивидуальный проект",
-    subtitle: "Изготовление по чертежу",
-    image: "/images/project-8.jpg",
-  },
-];
+import { projects } from "@/data/projects";
 
 export default function ProjectsPage() {
   return (
@@ -75,7 +26,6 @@ export default function ProjectsPage() {
 
               <h1 className="mt-6 max-w-4xl font-heading text-5xl leading-[1.04] text-[#26221d] sm:text-6xl lg:text-7xl">
                 Коллекция
-                
 
                 выполненных работ
               </h1>
@@ -90,7 +40,9 @@ export default function ProjectsPage() {
 
               <div className="mt-8 flex flex-wrap gap-8 border-t border-[#d9cfbf] pt-7">
                 <div>
-                  <p className="font-heading text-3xl text-[#a67c38]">8</p>
+                  <p className="font-heading text-3xl text-[#a67c38]">
+                    {projects.length}
+                  </p>
                   <p className="mt-1 text-sm text-[#746c61]">
                     избранных работ
                   </p>
@@ -194,7 +146,6 @@ export default function ProjectsPage() {
 
                 <h2 className="mt-6 max-w-4xl font-heading text-4xl leading-tight sm:text-5xl lg:text-6xl">
                   Создадим фурнитуру
-                  
 
                   специально для вашего проекта
                 </h2>

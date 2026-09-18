@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import ContactForm from "@/components/ContactForm";
+
 export default function Contacts() {
   return (
     <>
@@ -8,25 +10,24 @@ export default function Contacts() {
         className="border-t border-[#d9cfbf] bg-[#26221d] px-6 py-20 text-white lg:px-12 lg:py-28"
       >
         <div className="mx-auto max-w-[1440px]">
-          <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
-            <div>
-              <p className="text-xs uppercase tracking-[0.32em] text-[#c9a96e] sm:text-sm">
-                Связаться с мастерской
-              </p>
+          <div className="max-w-3xl">
+            <p className="text-xs uppercase tracking-[0.32em] text-[#c9a96e] sm:text-sm">
+              Связаться с мастерской
+            </p>
 
-              <h2 className="mt-6 max-w-4xl font-heading text-4xl leading-tight sm:text-5xl lg:text-6xl">
-                Обсудим ваш проект
-                
+            <h2 className="mt-6 max-w-4xl font-heading text-4xl leading-tight sm:text-5xl lg:text-6xl">
+              Обсудим ваш проект и будущую фурнитуру
+            </h2>
 
-                и будущую фурнитуру
-              </h2>
+            <p className="mt-8 max-w-2xl text-base leading-8 text-white/65 sm:text-lg">
+              Пришлите фотографию исторического образца, чертёж, эскиз или
+              описание задачи. Мы обсудим размеры, материал, обработку и
+              подготовим проект будущего изделия.
+            </p>
+          </div>
 
-              <p className="mt-8 max-w-2xl text-base leading-8 text-white/65 sm:text-lg">
-                Пришлите фотографию исторического образца, чертёж, эскиз или
-                описание задачи. Мы обсудим размеры, материал, обработку и
-                подготовим проект будущего изделия.
-              </p>
-            </div>
+          <div className="mt-14 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+            <ContactForm />
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
               <a
@@ -47,34 +48,15 @@ export default function Contacts() {
               </a>
 
               <a
-                href="https://t.me/"
-                target="_blank"
-                rel="noreferrer"
+                href="mailto:info@empirebrass.ru"
                 className="group rounded-[28px] border border-white/15 p-7 transition duration-300 hover:border-[#c9a96e] hover:bg-white/5"
-              >
-                <p className="text-xs uppercase tracking-[0.24em] text-[#c9a96e]">
-                  Telegram
-                </p>
-
-                <p className="mt-4 font-heading text-2xl sm:text-3xl">
-                  Написать в Telegram
-                </p>
-
-                <p className="mt-3 text-sm text-white/55">
-                  Отправить фотографии и описание проекта
-                </p>
-              </a>
-
-              <a
-                href="mailto:Info@empirebrass.ru"
-                className="group rounded-[28px] border border-white/15 p-7 transition duration-300 hover:border-[#c9a96e] hover:bg-white/5 sm:col-span-2 lg:col-span-1"
               >
                 <p className="text-xs uppercase tracking-[0.24em] text-[#c9a96e]">
                   Электронная почта
                 </p>
 
                 <p className="mt-4 font-heading text-2xl sm:text-3xl">
-                  info@example.ru
+                  info@empirebrass.ru
                 </p>
 
                 <p className="mt-3 text-sm text-white/55">

@@ -3,9 +3,11 @@ import Image from "next/image";
 import About from "@/components/About";
 import Collection from "@/components/Collection";
 import Contacts from "@/components/Contacts";
+import Estimate from "@/components/Estimate";
 import Header from "@/components/Header";
 import Projects from "@/components/ProjectsComponent";
 import Reveal from "@/components/Reveal";
+import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
@@ -121,6 +123,14 @@ export default function Home() {
 
 <Reveal delay={300}>
   <Projects />
+</Reveal>
+
+<Reveal delay={150}>
+  <Testimonials />
+</Reveal>
+
+<Reveal delay={150}>
+  <Estimate />
 </Reveal>
 
 <Reveal delay={450}>

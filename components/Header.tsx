@@ -8,7 +8,8 @@ const navigation = [
   { title: "Коллекция", href: "/#collection" },
   { title: "Избранные работы", href: "/#projects" },
   { title: "О мастерской", href: "/#about" },
-  ];
+  { title: "Стоимость", href: "/#estimate" },
+];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -165,10 +166,10 @@ export default function Header() {
             </a>
 
             <a
-              href="mailto:Info@empirebrass.ru"
+              href="mailto:info@empirebrass.ru"
               className="mt-3 block text-sm text-[#746c61]"
             >
-              Info@empirebrass.ru
+              info@empirebrass.ru
             </a>
 
             <p className="mt-5 text-xs uppercase tracking-[0.2em] text-[#a67c38]">

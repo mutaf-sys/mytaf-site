@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Мастерская Мутаф — сайт
 
-## Getting Started
+Next.js (App Router) + Tailwind CSS v4.
 
-First, run the development server:
+## Запуск локально
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Открыть http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Настройка формы заявки (отправка на email)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Форма в разделе "Связаться с мастерской" отправляет письмо через SMTP
+(библиотека `nodemailer`). Чтобы это заработало:
 
-## Learn More
+1. Скопируйте `.env.local.example` в `.env.local`:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   cp .env.local.example .env.local
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Заполните в `.env.local` данные вашей почты (SMTP-хост, порт,
+   логин, пароль) и адрес, куда присылать заявки — `CONTACT_TO_EMAIL`.
+   Подробности и примеры для Яндекс/Mail.ru/Gmail — в комментариях
+   внутри `.env.local.example`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Перезапустите `npm run dev`.
 
-## Deploy on Vercel
+Без `.env.local` форма покажет посетителю сообщение "форма временно
+недоступна" и предложит написать по телефону/Telegram — сайт не
+сломается, просто письма отправляться не будут, пока переменные не
+заполнены.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+При деплое (Vercel, Netlify и т.п.) те же переменные нужно добавить
+в настройках проекта на хостинге — переменные окружения, а не файл.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Приём отзывов по приватной ссылке
+
+На сайте есть скрытая страница `/otzyv` — форма, где клиент может
+оставить отзыв. Страница:
+
+- нигде не показана и не заведена ссылками на самом сайте (в меню,
+  футере и т.д. её нет);
+- помечена как `robots: noindex` — поисковики её не проиндексируют;
+- доступна только по прямой ссылке вида `https://ваш-домен.ru/otzyv`.
+
+Это защита от случайных посетителей и поисковиков, а не от
+целенаправленного перебора ссылок — сама по себе ссылка не запаролена.
+Если нужна более строгая защита (например, чтобы ссылку нельзя было
+переслать третьим лицам), скажите — можно добавить одноразовые токены
+для каждого клиента.
+
+Как это работает:
+
+1. После сдачи заказа вы вручную отправляете клиенту ссылку
+   `https://ваш-домен.ru/otzyv` (например, в мессенджере).
+2. Клиент заполняет имя, объект/проект, текст отзыва и по желанию
+   прикладывает фото готового изделия (необязательно, до 8 МБ).
+3. Отзыв и фото (если приложено) приходят вам на почту вложением —
+   через ту же настройку SMTP, что и форма заявки (см. раздел выше).
+4. Если отзыв стоит опубликовать — откройте `components/Testimonials.tsx`
+   и добавьте новый объект в массив: текст отзыва, имя, объект/проект.
+   Если есть фото — сохраните файл из письма в
+   `public/images/reviews/` и укажите путь в поле `image`, например
+   `image: "/images/reviews/ivanov.jpg"`. На сайте фото показывается
+   маленькой аккуратной миниатюрой и раскрывается на весь экран только
+   по клику — так карточки отзывов остаются компактными.
+
+## Что отредактировать под себя
+
+
+- **Отзывы клиентов** — `components/Testimonials.tsx`. Сейчас там
+  плейсхолдеры ("Название музея / объекта", "Имя клиента") — замените
+  на реальные тексты, когда они появятся.
+- **Расчёт стоимости** — `components/Estimate.tsx`, объект
+  `basePrices` в начале файла. Сейчас это ориентировочные placeholder-
+  цены — поправьте на свои реальные диапазоны.
+- **Проекты портфолио** — `data/projects.ts`. Единый источник данных:
+  используется и на главной, и на `/projects`, и на страницах
+  отдельных проектов. Добавляйте новые работы сюда — они появятся
+  везде автоматически.
+- **Фото** — `public/images/`. Оригиналы (до цветокоррекции и
+  кадрирования) сохранены в `public/images/orig_backup/` — эту папку
+  можно удалить перед деплоем, она не используется сайтом.
+- **Контакты** (телефон, Telegram, email) — `components/Header.tsx` и
+  `components/Contacts.tsx`.
+
+## Деплой
+
+Проще всего — Vercel (создатели Next.js) или Netlify, как и раньше.
+Не забудьте добавить переменные окружения из `.env.local` в настройках
+проекта на хостинге.

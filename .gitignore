@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# исходники изображений до сжатия (локальный бэкап, не нужен в проде)
+/public/images/orig_backup
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
