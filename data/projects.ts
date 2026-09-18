@@ -62,19 +62,6 @@ export const projects: Project[] = [
       "Скоба-ручка с рукоятью из светлого дуба и латунными торцевыми муфтами.",
   },
   {
-    slug: "ruchka-skoba-dub-latun-arhiv",
-    title: "Ручка-скоба, дуб и латунь",
-    category: "Дверные ручки",
-    studioImages: [
-      "/images/catalog/door-handles/ruchka-skoba-dub-latun-arhiv-1.jpg",
-      "/images/catalog/door-handles/ruchka-skoba-dub-latun-arhiv-2.jpg",
-      "/images/catalog/door-handles/ruchka-skoba-dub-latun-arhiv-3.jpg",
-      "/images/catalog/door-handles/ruchka-skoba-dub-latun-arhiv-4.jpg",
-    ],
-    description:
-      "Ручка на прямоугольной пластине с рукоятью из дуба. Фото из архива выполненных работ мастерской.",
-  },
-  {
     slug: "ruchka-knopka-riflenaya",
     title: "Оконная лодочка",
     category: "Дверные ручки",
