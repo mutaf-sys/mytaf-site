@@ -1,104 +1,304 @@
+export type Category =
+  | "Дверные ручки"
+  | "Шпингалеты"
+  | "Петли"
+  | "Оконная фурнитура"
+  | "Накладки и декоративные элементы"
+  | "Другие изделия";
+
 export type Project = {
   slug: string;
   title: string;
-  subtitle: string;
-  category: string;
-  image: string;
-  images: string[];
+  category: Category;
+  /** Студийные фото на чистом фоне — основные изображения карточки. */
+  studioImages: string[];
+  /** Живые фото того же или очень похожего изделия из архива мастерской. */
+  interiorImages?: string[];
   description: string;
-  material: string;
-  finish: string;
+  material?: string;
+  /** Образец, подходящий для реставрации исторических объектов. */
+  historic?: boolean;
+  featured?: boolean;
 };
 
-// Порядок в массиве определяет порядок показа: первые 4 попадают
-// в блок "Избранные работы" на главной (см. ProjectsComponent.tsx).
+export const categories: Category[] = [
+  "Дверные ручки",
+  "Шпингалеты",
+  "Петли",
+  "Оконная фурнитура",
+  "Накладки и декоративные элементы",
+];
+
 export const projects: Project[] = [
+  // Дверные ручки
   {
-    slug: "project-1",
-    title: "Партия оконных ручек",
-    subtitle: "Латунь · Серийное изготовление",
-    category: "Оконная фурнитура",
-    image: "/images/project-1.jpg",
-    images: ["/images/project-1.jpg"],
-    description:
-      "Партия исторических оконных ручек, изготовленных вручную из латуни для одного объекта. Форма и пропорции восстановлены по архивному образцу.",
-    material: "Латунь",
-    finish: "Полировка до зеркального блеска",
-  },
-  {
-    slug: "project-8",
-    title: "Индивидуальный проект",
-    subtitle: "Изготовление по чертежу",
-    category: "Индивидуальные проекты",
-    image: "/images/project-8.jpg",
-    images: ["/images/project-8.jpg"],
-    description:
-      "Индивидуальный проект, разработанный по чертежу заказчика с предварительным созданием трёхмерной модели.",
-    material: "Латунь",
-    finish: "Патинирование",
-  },
-  {
-    slug: "project-7",
-    title: "Комплект дверной фурнитуры",
-    subtitle: "Латунь · Патинирование",
-    category: "Дверная фурнитура",
-    image: "/images/project-7.jpg",
-    images: ["/images/project-7.jpg"],
-    description:
-      "Комплект дверной фурнитуры, включающий ручку и шпингалеты в едином историческом стиле.",
-    material: "Латунь",
-    finish: "Патинирование",
-  },
-  {
-    slug: "project-3",
-    title: "Латунная дверная петля",
-    subtitle: "Ручное изготовление",
-    category: "Петли",
-    image: "/images/project-3.jpg",
-    images: ["/images/project-3.jpg"],
-    description:
-      "Массивная дверная петля и шпингалет для исторического интерьера. Каждый элемент изготовлен и обработан вручную.",
-    material: "Латунь",
-    finish: "Полировка до зеркального блеска",
-  },
-  {
-    slug: "project-4",
-    title: "Оконная фурнитура",
-    subtitle: "Индивидуальное изготовление",
-    category: "Оконная фурнитура",
-    image: "/images/project-4.jpg",
-    images: ["/images/project-4.jpg"],
-    description:
-      "Комплект оконной фурнитуры, созданный по индивидуальным размерам и чертежам для конкретного объекта.",
-    material: "Латунь",
-    finish: "Полировка",
-  },
-  {
-    slug: "project-6",
-    title: "Мебельная латунная ручка",
-    subtitle: "Ручная обработка",
-    category: "Мебельная фурнитура",
-    image: "/images/project-6.jpg",
-    images: ["/images/project-6.jpg"],
-    description:
-      "Мебельная ручка с выразительной пластикой, выполненная вручную для частного интерьерного проекта.",
-    material: "Латунь",
-    finish: "Ручная полировка",
-  },
-  {
-    slug: "project-5",
-    title: "Ручка для исторической двери",
-    subtitle: "Реконструкция по образцу",
+    slug: "ruchka-balyasina-para",
+    title: "Дверная ручка на розетке «балясина»",
     category: "Дверные ручки",
-    image: "/images/project-5.jpg",
-    images: ["/images/project-5.jpg"],
+    studioImages: ["/images/catalog/door-handles/ruchka-balyasina-para.jpg"],
     description:
-      "Реконструкция дверной ручки по сохранившемуся образцу с точным повторением формы и декоративных элементов.",
-    material: "Латунь",
-    finish: "Старинная патина",
+      "Парная дверная ручка на овальной розетке. Точёный стержень классической балясинной формы, полированная латунь.",
+    featured: true,
+  },
+  {
+    slug: "ruchka-rychazhnaya",
+    title: "Ручка рычажная на розетке",
+    category: "Дверные ручки",
+    studioImages: ["/images/catalog/door-handles/ruchka-rychazhnaya.jpg"],
+    description:
+      "Рычажная ручка на овальной розетке в отделке состаренного никеля.",
+    material: "состаренный никель",
+  },
+  {
+    slug: "ruchka-skoba-na-plastine",
+    title: "Ручка-скоба на пластине",
+    category: "Дверные ручки",
+    studioImages: ["/images/catalog/door-handles/ruchka-skoba-na-plastine.jpg"],
+    description:
+      "Дугообразная скоба-ручка на прямоугольной монтажной пластине, полированная латунь.",
+  },
+  {
+    slug: "ruchka-skoba-dub",
+    title: "Ручка-скоба с дубовой рукоятью",
+    category: "Дверные ручки",
+    studioImages: ["/images/catalog/door-handles/ruchka-skoba-dub.jpg"],
+    description:
+      "Скоба-ручка с рукоятью из светлого дуба и латунными торцевыми муфтами.",
+  },
+  {
+    slug: "ruchka-skoba-dub-latun-arhiv",
+    title: "Ручка-скоба, дуб и латунь",
+    category: "Дверные ручки",
+    studioImages: [
+      "/images/catalog/door-handles/ruchka-skoba-dub-latun-arhiv-1.jpg",
+      "/images/catalog/door-handles/ruchka-skoba-dub-latun-arhiv-2.jpg",
+      "/images/catalog/door-handles/ruchka-skoba-dub-latun-arhiv-3.jpg",
+      "/images/catalog/door-handles/ruchka-skoba-dub-latun-arhiv-4.jpg",
+    ],
+    description:
+      "Ручка на прямоугольной пластине с рукоятью из дуба. Фото из архива выполненных работ мастерской.",
+    featured: true,
+  },
+  {
+    slug: "ruchka-knopka-riflenaya",
+    title: "Дверная ручка-кнопка рифлёная",
+    category: "Дверные ручки",
+    studioImages: ["/images/catalog/door-handles/ruchka-knopka-riflenaya.jpg"],
+    description:
+      "Круглая ручка-кнопка с рифлёной поверхностью на овальной розетке. Фото из архива мастерской.",
+  },
+
+  // Петли
+  {
+    slug: "petlya-sharovidnye-nakonechniki",
+    title: "Петля с шаровидными наконечниками",
+    category: "Петли",
+    studioImages: ["/images/catalog/hinges/petlya-sharovidnye-nakonechniki.jpg"],
+    description:
+      "Накладная петля на двух пластинах с шаровидными наконечниками шарнира, сатинированная латунь.",
+  },
+  {
+    slug: "petlya-konicheskie-nakonechniki",
+    title: "Петля с коническими наконечниками",
+    category: "Петли",
+    studioImages: ["/images/catalog/hinges/petlya-konicheskie-nakonechniki.jpg"],
+    description:
+      "Петля с коническими наконечниками шарнира, раскрывается на широкий угол.",
+  },
+  {
+    slug: "petlya-usilennaya-stal",
+    title: "Петля усиленная",
+    category: "Петли",
+    studioImages: ["/images/catalog/hinges/petlya-usilennaya-stal.jpg"],
+    description:
+      "Массивная усиленная петля с крупными шаровидными наконечниками для тяжёлых дверей.",
+    material: "сталь",
+  },
+  {
+    slug: "petlya-pryamougolnaya",
+    title: "Петля прямоугольная",
+    category: "Петли",
+    studioImages: ["/images/catalog/hinges/petlya-pryamougolnaya.jpg"],
+    description:
+      "Прямоугольная накладная петля без декоративных наконечников, полированная латунь.",
+  },
+  {
+    slug: "petlya-p-obraznaya",
+    title: "Петля П-образная (парламентская)",
+    category: "Петли",
+    studioImages: ["/images/catalog/hinges/petlya-p-obraznaya.jpg"],
+    description:
+      "П-образная петля с длинным вылетом, классическая парламентская конструкция.",
+    featured: true,
+  },
+  {
+    slug: "petlya-s-patinoy",
+    title: "Петля с патиной",
+    category: "Петли",
+    studioImages: ["/images/catalog/hinges/petlya-s-patinoy.jpg"],
+    description:
+      "Петля с естественной патиной металла — образец для реставрационных объектов.",
+    historic: true,
+  },
+  {
+    slug: "petlya-akorn-para-arhiv",
+    title: "Петля парная с наконечниками «жёлудь»",
+    category: "Петли",
+    studioImages: ["/images/catalog/hinges/petlya-akorn-para-arhiv.jpg"],
+    description:
+      "Парная петля с наконечниками в форме желудя. Фото из архива выполненных работ.",
+  },
+
+  // Шпингалеты
+  {
+    slug: "zadvizhka-kovanyj-zavitok",
+    title: "Задвижка с кованым завитком",
+    category: "Шпингалеты",
+    studioImages: ["/images/catalog/bolts/zadvizhka-kovanyj-zavitok.jpg"],
+    description:
+      "Прямая задвижка с фигурным кованым завитком на монтажной пластине.",
+  },
+  {
+    slug: "zadvizhki-parnye",
+    title: "Задвижки парные",
+    category: "Шпингалеты",
+    studioImages: ["/images/catalog/bolts/zadvizhki-parnye.jpg"],
+    description:
+      "Пара задвижек разной длины с Т-образной поворотной кнопкой.",
+    material: "сталь, никелированная отделка",
+  },
+  {
+    slug: "zadvizhka-reznaya-detali",
+    title: "Задвижка резная (детали)",
+    category: "Шпингалеты",
+    studioImages: ["/images/catalog/bolts/zadvizhka-reznaya-detali.jpg"],
+    description:
+      "Детали задвижки с прорезным растительным декором корпуса до сборки.",
+  },
+  {
+    slug: "zadvizhka-sharovidnaya-ruchka",
+    title: "Задвижка с шаровидной ручкой",
+    category: "Шпингалеты",
+    studioImages: ["/images/catalog/bolts/zadvizhka-sharovidnaya-ruchka.jpg"],
+    description:
+      "Задвижка со сферической кнопкой-ручкой и отдельной приёмной планкой.",
+  },
+  {
+    slug: "zadvizhka-gribovidnaya-ruchka",
+    title: "Задвижка с грибовидной ручкой",
+    category: "Шпингалеты",
+    studioImages: ["/images/catalog/bolts/zadvizhka-gribovidnaya-ruchka.jpg"],
+    description:
+      "Задвижка с гладкой грибовидной кнопкой-ручкой и встроенным приёмным механизмом.",
+  },
+  {
+    slug: "zadvizhka-reznaya-v-sbore",
+    title: "Задвижка резная, в сборе",
+    category: "Шпингалеты",
+    studioImages: ["/images/catalog/bolts/zadvizhka-reznaya-v-sbore.jpg"],
+    description:
+      "Задвижка с прорезным растительным декором корпуса в собранном виде, с приёмной пластиной.",
+    featured: true,
+  },
+  {
+    slug: "zadvizhka-malaya-patina",
+    title: "Задвижка малая с патиной",
+    category: "Шпингалеты",
+    studioImages: ["/images/catalog/bolts/zadvizhka-malaya-patina.jpg"],
+    description:
+      "Небольшая коробчатая задвижка с грибовидной кнопкой, лёгкая матовая патина.",
+    historic: true,
+  },
+  {
+    slug: "zadvizhka-rychazhnaya",
+    title: "Задвижка рычажная",
+    category: "Шпингалеты",
+    studioImages: ["/images/catalog/bolts/zadvizhka-rychazhnaya.jpg"],
+    description:
+      "Задвижка с фигурной точёной рычажной ручкой на длинной планке.",
+  },
+  {
+    slug: "zadvizhka-arhiv",
+    title: "Задвижка на планке",
+    category: "Шпингалеты",
+    studioImages: ["/images/catalog/bolts/zadvizhka-arhiv.jpg"],
+    description:
+      "Задвижка с округлой кнопкой-ручкой и приёмной планкой. Фото из архива мастерской.",
+  },
+
+  // Оконная фурнитура
+  {
+    slug: "nabor-okonnyj",
+    title: "Оконный комплект: скоба и шпингалеты",
+    category: "Оконная фурнитура",
+    studioImages: ["/images/catalog/window-fittings/nabor-okonnyj.jpg"],
+    description:
+      "Комплект из скобы-ручки и пары рифлёных шпингалетов с поворотной кнопкой, тонированная латунь.",
+  },
+  {
+    slug: "zadvizhka-vertikalnaya-balyasina",
+    title: "Задвижка вертикальная с рычагом-балясиной",
+    category: "Оконная фурнитура",
+    studioImages: [
+      "/images/catalog/window-fittings/zadvizhka-vertikalnaya-balyasina.jpg",
+    ],
+    description: "Вертикальная оконная задвижка с точёной рычажной ручкой.",
+  },
+  {
+    slug: "sterzhen-solntse",
+    title: "Стержень с резной муфтой «солнце»",
+    category: "Оконная фурнитура",
+    studioImages: ["/images/catalog/window-fittings/sterzhen-solntse.jpg"],
+    description:
+      "Длинный стержень оконной фурнитуры с резной центральной муфтой в виде лучевой розетки.",
+    featured: true,
+  },
+  {
+    slug: "espanoletka-krestoobraznaya",
+    title: "Эспаньолетка с крестообразной ручкой",
+    category: "Оконная фурнитура",
+    studioImages: [
+      "/images/catalog/window-fittings/espanoletka-krestoobraznaya.jpg",
+    ],
+    description:
+      "Длинная штанговая эспаньолетка с поворотной крестообразной ручкой посередине.",
+  },
+  {
+    slug: "espanoletka-kovanaya",
+    title: "Эспаньолетка с кованой ручкой",
+    category: "Оконная фурнитура",
+    studioImages: ["/images/catalog/window-fittings/espanoletka-kovanaya.jpg"],
+    description:
+      "Штанговая эспаньолетка с декоративной кованой ручкой в виде растительного завитка.",
+  },
+  {
+    slug: "nabor-espanoletok",
+    title: "Комплект эспаньолеток",
+    category: "Оконная фурнитура",
+    studioImages: ["/images/catalog/window-fittings/nabor-espanoletok.jpg"],
+    description:
+      "Комплект из четырёх рычажных узлов эспаньолетки с приёмными планками, состаренная бронза.",
+  },
+
+  // Накладки и декоративные элементы
+  {
+    slug: "nakladka-akant",
+    title: "Накладка-розетка с акантовым узором",
+    category: "Накладки и декоративные элементы",
+    studioImages: ["/images/catalog/plates/nakladka-akant.jpg"],
+    description:
+      "Декоративная накладка с рельефным акантовым орнаментом на деревянном стержне-рукояти.",
+    featured: true,
   },
 ];
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);
 }
+
+export function getProjectsByCategory(category: Category) {
+  return projects.filter((project) => project.category === category);
+}
+
+export const historicProjects = projects.filter((project) => project.historic);
+export const featuredProjects = projects.filter((project) => project.featured);

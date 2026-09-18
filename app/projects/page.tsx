@@ -1,18 +1,49 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useMemo, useState } from "react";
 
-import { projects } from "@/data/projects";
+import { categories, projects, type Category } from "@/data/projects";
+
+const categoryCover: Record<Category, string> = {
+  "Дверные ручки": "/images/catalog/door-handles/ruchka-balyasina-para.jpg",
+  "Шпингалеты": "/images/catalog/bolts/zadvizhka-reznaya-v-sbore.jpg",
+  "Петли": "/images/catalog/hinges/petlya-p-obraznaya.jpg",
+  "Оконная фурнитура": "/images/catalog/window-fittings/espanoletka-kovanaya.jpg",
+  "Накладки и декоративные элементы": "/images/catalog/plates/nakladka-akant.jpg",
+  "Другие изделия": "/images/catalog/banner-collection.jpg",
+};
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-[#f7f3eb]">
-      {/* Первый экран */}
+    <Suspense fallback={null}>
+      <ProjectsPageInner />
+    </Suspense>
+  );
+}
 
-      <section className="border-b border-[#d9cfbf] px-6 pb-16 pt-32 lg:px-12 lg:pb-24 lg:pt-40">
+function ProjectsPageInner() {
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get("category") as Category | null;
+  const [active, setActive] = useState<Category | null>(
+    categoryParam && categories.includes(categoryParam) ? categoryParam : null,
+  );
+
+  const visible = useMemo(
+    () => (active ? projects.filter((p) => p.category === active) : projects),
+    [active],
+  );
+
+  return (
+    <main className="min-h-screen bg-[var(--background)]">
+      {/* Первый экран */}
+      <section className="border-b border-[var(--border)] px-6 pb-16 pt-32 lg:px-12 lg:pb-24 lg:pt-40">
         <div className="mx-auto max-w-[1440px]">
           <Link
             href="/"
-            className="inline-flex items-center gap-3 text-sm text-[#7e5e28] transition duration-300 hover:opacity-60"
+            className="inline-flex items-center gap-3 text-sm text-[var(--brass-dark)] transition duration-300 hover:opacity-60"
           >
             <span aria-hidden="true">←</span>
             Вернуться на главную
@@ -20,167 +51,141 @@ export default function ProjectsPage() {
 
           <div className="mt-12 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
-              <p className="text-xs uppercase tracking-[0.32em] text-[#a67c38] sm:text-sm">
-                Портфолио мастерской
-              </p>
+              <p className="eyebrow">Каталог мастерской</p>
 
-              <h1 className="mt-6 max-w-4xl font-heading text-5xl leading-[1.04] text-[#26221d] sm:text-6xl lg:text-7xl">
-                Коллекция
-
-                выполненных работ
+              <h1 className="mt-6 max-w-4xl font-heading text-5xl leading-[1.04] text-[var(--foreground)] sm:text-6xl lg:text-7xl">
+                Историческая латунная фурнитура
               </h1>
             </div>
 
             <div className="max-w-xl lg:justify-self-end">
-              <p className="text-base leading-8 text-[#746c61] sm:text-lg">
-                Исторические дверные ручки, петли, оконная и мебельная
-                фурнитура, созданные вручную из латуни по архивным образцам,
-                чертежам и индивидуальным размерам.
+              <p className="text-base leading-8 text-[var(--muted)] sm:text-lg">
+                Дверные ручки, петли, шпингалеты, оконная фурнитура и
+                декоративные накладки, созданные вручную из латуни.
               </p>
-
-              <div className="mt-8 flex flex-wrap gap-8 border-t border-[#d9cfbf] pt-7">
-                <div>
-                  <p className="font-heading text-3xl text-[#a67c38]">
-                    {projects.length}
-                  </p>
-                  <p className="mt-1 text-sm text-[#746c61]">
-                    избранных работ
-                  </p>
-                </div>
-
-                <div>
-                  <p className="font-heading text-3xl text-[#a67c38]">10+</p>
-                  <p className="mt-1 text-sm text-[#746c61]">лет опыта</p>
-                </div>
-
-                <div>
-                  <p className="font-heading text-3xl text-[#a67c38]">100%</p>
-                  <p className="mt-1 text-sm text-[#746c61]">
-                    ручная работа
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Галерея проектов */}
-
-      <section className="px-6 py-20 lg:px-12 lg:py-28">
+      {/* Крупные тайлы категорий */}
+      <section className="px-6 py-16 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-[1440px]">
-          <div className="grid gap-x-8 gap-y-14 sm:grid-cols-2">
-            {projects.map((project, index) => {
-              const imageShape =
-                index % 4 === 0
-                  ? "aspect-[4/5]"
-                  : index % 4 === 1
-                    ? "aspect-[5/4]"
-                    : index % 4 === 2
-                      ? "aspect-square"
-                      : "aspect-[4/5]";
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <button
+              type="button"
+              onClick={() => setActive(null)}
+              className={`group relative col-span-full flex items-center justify-between overflow-hidden rounded-[24px] border px-8 py-6 text-left transition-all duration-300 ${
+                active === null
+                  ? "border-[var(--brass)] bg-[var(--foreground)] text-white"
+                  : "border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] hover:border-[var(--brass)]"
+              }`}
+            >
+              <span className="font-heading text-2xl">Все изделия</span>
+              <span className="text-sm opacity-70">{projects.length}</span>
+            </button>
+
+            {categories.map((category) => {
+              const count = projects.filter((p) => p.category === category).length;
+              const isActive = active === category;
 
               return (
-                <Link
-                  key={project.slug}
-                  href={`/projects/${project.slug}`}
-                  className="group block"
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setActive(category)}
+                  className={`group relative block overflow-hidden rounded-[24px] border text-left transition-all duration-300 ${
+                    isActive ? "border-[var(--brass)]" : "border-[var(--border)]"
+                  }`}
                 >
-                  <article>
-                    <div
-                      className={`relative overflow-hidden rounded-[30px] bg-[#e9e1d4] shadow-[0_24px_70px_rgba(50,40,25,0.12)] ${imageShape}`}
-                    >
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 639px) 100vw, 50vw"
-                        className="object-cover transition duration-700 ease-out group-hover:scale-105"
-                      />
+                  <div className="relative h-[260px] overflow-hidden sm:h-[300px]">
+                    <Image
+                      src={categoryCover[category]}
+                      alt={category}
+                      fill
+                      sizes="(max-width: 767px) 100vw, 33vw"
+                      className="object-cover media-zoom"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-transparent opacity-80 transition duration-500 group-hover:opacity-100" />
-
-                      <div className="absolute left-5 top-5 rounded-full border border-white/25 bg-black/15 px-4 py-2 text-xs uppercase tracking-[0.22em] text-white backdrop-blur-sm sm:left-7 sm:top-7">
-                        Проект {String(index + 1).padStart(2, "0")}
-                      </div>
-
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white sm:p-8">
-                        <p className="text-sm text-white/70">
-                          {project.subtitle}
-                        </p>
-
-                        <h2 className="mt-3 max-w-xl font-heading text-2xl leading-tight sm:text-3xl lg:text-4xl">
-                          {project.title}
-                        </h2>
-
-                        <div className="mt-5 inline-flex items-center gap-3 text-sm">
-                          <span>Смотреть работу</span>
-
-                          <span
-                            aria-hidden="true"
-                            className="transition duration-300 group-hover:translate-x-2"
-                          >
-                            →
-                          </span>
-                        </div>
-                      </div>
+                    <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6">
+                      <h3 className="font-heading text-2xl leading-tight text-white sm:text-3xl">
+                        {category}
+                      </h3>
+                      <span className="text-xs uppercase tracking-[0.2em] text-white/70">
+                        {count}
+                      </span>
                     </div>
-                  </article>
-                </Link>
+                  </div>
+                </button>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Блок индивидуального заказа */}
-
-      <section className="border-t border-[#d9cfbf] px-6 py-20 lg:px-12 lg:py-28">
+      {/* Сетка изделий */}
+      <section className="px-6 py-8 lg:px-12 lg:py-12">
         <div className="mx-auto max-w-[1440px]">
-          <div className="overflow-hidden rounded-[36px] bg-[#26221d] px-7 py-12 text-white sm:px-10 lg:px-16 lg:py-16">
+          <div className="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            {visible.map((project) => (
+              <Link
+                key={project.slug}
+                href={`/projects/${project.slug}`}
+                className="group block"
+              >
+                <article>
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-[var(--surface)] shadow-[0_20px_60px_rgba(50,40,25,0.1)]">
+                    <Image
+                      src={project.studioImages[0]}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                      className="object-cover media-zoom"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+                  </div>
+
+                  <p className="mt-5 text-xs uppercase tracking-[0.2em] text-[var(--brass)]">
+                    {project.category}
+                  </p>
+                  <h2 className="mt-2 font-heading text-2xl leading-snug text-[var(--foreground)]">
+                    {project.title}
+                  </h2>
+                </article>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Блок индивидуального заказа */}
+      <section className="border-t border-[var(--border)] px-6 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="overflow-hidden rounded-[36px] bg-[var(--foreground)] px-7 py-12 text-white sm:px-10 lg:px-16 lg:py-16">
             <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
               <div>
-                <p className="text-xs uppercase tracking-[0.32em] text-[#c9a96e] sm:text-sm">
+                <p className="text-xs uppercase tracking-[0.32em] text-[var(--brass-soft)] sm:text-sm">
                   Индивидуальное изготовление
                 </p>
 
                 <h2 className="mt-6 max-w-4xl font-heading text-4xl leading-tight sm:text-5xl lg:text-6xl">
-                  Создадим фурнитуру
-
-                  специально для вашего проекта
+                  Создадим фурнитуру специально для вашего проекта
                 </h2>
               </div>
 
               <div className="max-w-xl lg:justify-self-end">
                 <p className="text-base leading-8 text-white/65 sm:text-lg">
                   Работаем по историческим образцам, фотографиям, эскизам и
-                  индивидуальным чертежам. Перед изготовлением создаём
-                  трёхмерную модель будущего изделия.
+                  индивидуальным чертежам.
                 </p>
 
-                <Link
-                  href="/#contacts"
-                  className="mt-8 inline-flex rounded-full bg-[#a67c38] px-8 py-4 text-sm text-white transition duration-300 hover:-translate-y-1 hover:bg-[#c29a54]"
-                >
+                <Link href="/#contacts" className="btn-line btn-line-invert mt-8">
                   Обсудить проект
                 </Link>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Возврат на главную */}
-
-      <section className="px-6 pb-20 lg:px-12 lg:pb-28">
-        <div className="mx-auto flex max-w-[1440px] justify-center">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-3 rounded-full border border-[#a67c38] px-8 py-4 text-sm text-[#7e5e28] transition duration-300 hover:bg-[#a67c38] hover:text-white"
-          >
-            <span aria-hidden="true">←</span>
-            Вернуться на главную
-          </Link>
         </div>
       </section>
     </main>

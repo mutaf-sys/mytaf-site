@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const navigation = [
-  { title: "Коллекция", href: "/#collection" },
-  { title: "Избранные работы", href: "/#projects" },
+  { title: "Каталог", href: "/projects" },
+  { title: "Мастерская", href: "/#workshop" },
   { title: "О мастерской", href: "/#about" },
   { title: "Стоимость", href: "/#estimate" },
 ];
