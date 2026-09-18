@@ -38,6 +38,14 @@ export const projects: Project[] = [
       "Парная дверная ручка на овальной розетке. Точёный стержень классической балясинной формы, полированная латунь.",
   },
   {
+    slug: "ruchka-paradnaya-kub",
+    title: "Ручка парадная куб",
+    category: "Дверные ручки",
+    studioImages: ["/images/catalog/plates/nakladka-akant.jpg"],
+    description:
+      "Парадная ручка с кубической головкой, рельефным растительным орнаментом, деревянной рукоятью и ступенчатой круглой розеткой.",
+  },
+  {
     slug: "ruchka-skoba-na-plastine",
     title: "Ручка-скоба на пластине",
     category: "Дверные ручки",
