@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type LightboxImageProps = {
   src: string;
@@ -48,36 +49,38 @@ export default function LightboxImage({ src, alt }: LightboxImageProps) {
         />
       </button>
 
-      {open && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setOpen(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-6 backdrop-blur-sm"
-        >
-          <button
-            type="button"
-            onClick={() => setOpen(false)}
-            aria-label="Закрыть"
-            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white transition hover:border-white hover:bg-white/10"
-          >
-            ✕
-          </button>
-
+      {open &&
+        createPortal(
           <div
-            className="relative h-[80vh] w-full max-w-3xl"
-            onClick={(event) => event.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-6 backdrop-blur-sm"
           >
-            <Image
-              src={src}
-              alt={alt}
-              fill
-              sizes="90vw"
-              className="object-contain"
-            />
-          </div>
-        </div>
-      )}
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Закрыть"
+              className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white transition hover:border-white hover:bg-white/10"
+            >
+              ✕
+            </button>
+
+            <div
+              className="relative h-[80vh] w-full max-w-3xl"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <Image
+                src={src}
+                alt={alt}
+                fill
+                sizes="90vw"
+                className="object-contain"
+              />
+            </div>
+          </div>,
+          document.body,
+        )}
     </>
   );
 }

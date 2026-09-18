@@ -4,7 +4,6 @@ import Contacts from "@/components/Contacts";
 import Estimate from "@/components/Estimate";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Projects from "@/components/ProjectsComponent";
 import Restoration from "@/components/Restoration";
 import Reveal from "@/components/Reveal";
 import Testimonials from "@/components/Testimonials";
@@ -24,10 +23,6 @@ export default function Home() {
 
         <Reveal delay={150}>
           <Collection />
-        </Reveal>
-
-        <Reveal delay={150}>
-          <Projects />
         </Reveal>
 
         <Workshop />

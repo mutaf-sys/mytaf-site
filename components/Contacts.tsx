@@ -73,7 +73,7 @@ export default function Contacts() {
               </p>
 
               <p className="mt-3 text-base text-white/75">
-                ИП Мутаф Евгений
+                Empirebrass
               </p>
             </div>
 
@@ -102,7 +102,7 @@ export default function Contacts() {
 
       <footer className="bg-[#1d1a17] px-6 py-8 text-white lg:px-12">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-5 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 ИП Мутаф Евгений</p>
+          <p>© 2026 Empirebrass</p>
 
           <Link
             href="/"

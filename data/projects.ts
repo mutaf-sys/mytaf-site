@@ -18,7 +18,6 @@ export type Project = {
   material?: string;
   /** Образец, подходящий для реставрации исторических объектов. */
   historic?: boolean;
-  featured?: boolean;
 };
 
 export const categories: Category[] = [
@@ -38,7 +37,6 @@ export const projects: Project[] = [
     studioImages: ["/images/catalog/door-handles/ruchka-balyasina-para.jpg"],
     description:
       "Парная дверная ручка на овальной розетке. Точёный стержень классической балясинной формы, полированная латунь.",
-    featured: true,
   },
   {
     slug: "ruchka-rychazhnaya",
@@ -77,7 +75,6 @@ export const projects: Project[] = [
     ],
     description:
       "Ручка на прямоугольной пластине с рукоятью из дуба. Фото из архива выполненных работ мастерской.",
-    featured: true,
   },
   {
     slug: "ruchka-knopka-riflenaya",
@@ -123,13 +120,12 @@ export const projects: Project[] = [
       "Прямоугольная накладная петля без декоративных наконечников, полированная латунь.",
   },
   {
-    slug: "petlya-p-obraznaya",
-    title: "Петля П-образная (парламентская)",
-    category: "Петли",
+    slug: "ruchka-skoba-dugoobraznaya",
+    title: "Ручка-скоба дугообразная",
+    category: "Дверные ручки",
     studioImages: ["/images/catalog/hinges/petlya-p-obraznaya.jpg"],
     description:
-      "П-образная петля с длинным вылетом, классическая парламентская конструкция.",
-    featured: true,
+      "Дугообразная ручка-скоба на прямоугольной пластине, полированная латунь.",
   },
   {
     slug: "petlya-s-patinoy",
@@ -198,7 +194,6 @@ export const projects: Project[] = [
     studioImages: ["/images/catalog/bolts/zadvizhka-reznaya-v-sbore.jpg"],
     description:
       "Задвижка с прорезным растительным декором корпуса в собранном виде, с приёмной пластиной.",
-    featured: true,
   },
   {
     slug: "zadvizhka-malaya-patina",
@@ -251,7 +246,6 @@ export const projects: Project[] = [
     studioImages: ["/images/catalog/window-fittings/sterzhen-solntse.jpg"],
     description:
       "Длинный стержень оконной фурнитуры с резной центральной муфтой в виде лучевой розетки.",
-    featured: true,
   },
   {
     slug: "espanoletka-krestoobraznaya",
@@ -288,7 +282,6 @@ export const projects: Project[] = [
     studioImages: ["/images/catalog/plates/nakladka-akant.jpg"],
     description:
       "Декоративная накладка с рельефным акантовым орнаментом на деревянном стержне-рукояти.",
-    featured: true,
   },
 ];
 
@@ -301,4 +294,3 @@ export function getProjectsByCategory(category: Category) {
 }
 
 export const historicProjects = projects.filter((project) => project.historic);
-export const featuredProjects = projects.filter((project) => project.featured);

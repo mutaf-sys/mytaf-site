@@ -10,7 +10,7 @@ import { categories, projects, type Category } from "@/data/projects";
 const categoryCover: Record<Category, string> = {
   "Дверные ручки": "/images/catalog/door-handles/ruchka-balyasina-para.jpg",
   "Шпингалеты": "/images/catalog/bolts/zadvizhka-reznaya-v-sbore.jpg",
-  "Петли": "/images/catalog/hinges/petlya-p-obraznaya.jpg",
+  "Петли": "/images/catalog/hinges/petlya-sharovidnye-nakonechniki.jpg",
   "Оконная фурнитура": "/images/catalog/window-fittings/espanoletka-kovanaya.jpg",
   "Накладки и декоративные элементы": "/images/catalog/plates/nakladka-akant.jpg",
   "Другие изделия": "/images/catalog/banner-collection.jpg",
@@ -78,7 +78,7 @@ function ProjectsPageInner() {
               className={`group relative col-span-full flex items-center justify-between overflow-hidden rounded-[24px] border px-8 py-6 text-left transition-all duration-300 ${
                 active === null
                   ? "border-[var(--brass)] bg-[var(--foreground)] text-white"
-                  : "border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] hover:border-[var(--brass)]"
+                  : "border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] hover:border-[var(--brass)] hover:bg-[var(--brass)]/10"
               }`}
             >
               <span className="font-heading text-2xl">Все изделия</span>
@@ -94,8 +94,8 @@ function ProjectsPageInner() {
                   key={category}
                   type="button"
                   onClick={() => setActive(category)}
-                  className={`group relative block overflow-hidden rounded-[24px] border text-left transition-all duration-300 ${
-                    isActive ? "border-[var(--brass)]" : "border-[var(--border)]"
+                  className={`group relative block overflow-hidden rounded-[24px] border text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(50,40,25,0.18)] ${
+                    isActive ? "border-[var(--brass)]" : "border-[var(--border)] hover:border-[var(--brass)]"
                   }`}
                 >
                   <div className="relative h-[260px] overflow-hidden sm:h-[300px]">

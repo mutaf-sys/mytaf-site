@@ -38,7 +38,7 @@ export default function Header() {
           <div className="flex h-11 w-11 shrink-0 items-center justify-center sm:h-12 sm:w-12">
             <Image
               src="/images/logo.jpg"
-              alt="Логотип мастерской Мутаф"
+              alt="Логотип мастерской Empirebrass"
               width={64}
               height={64}
               className="h-full w-full object-contain"
@@ -48,7 +48,7 @@ export default function Header() {
 
           <div className="min-w-0">
             <p className="truncate font-heading text-base leading-none text-[#26221d] sm:text-xl">
-              ИП Мутаф Евгений
+              Empirebrass
             </p>
 
             <p className="mt-2 hidden text-xs uppercase tracking-[0.16em] text-[#746c61] sm:block">
@@ -63,7 +63,7 @@ export default function Header() {
             <Link
               key={item.title}
               href={item.href}
-              className="whitespace-nowrap text-sm font-medium text-[#3e3932] transition-colors duration-300 hover:text-[#a67c38]"
+              className="whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium text-[#3e3932] transition-all duration-300 hover:bg-[#a67c38]/10 hover:text-[#a67c38]"
             >
               {item.title}
             </Link>

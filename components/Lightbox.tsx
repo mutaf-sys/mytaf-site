@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 export type LightboxImage = {
   src: string;
@@ -67,11 +68,11 @@ export default function Lightbox({
   const current = images[index];
   if (!current) return null;
 
-  return (
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 transition-opacity duration-300 ${
         visible ? "opacity-100" : "opacity-0"
       }`}
       onClick={onClose}
@@ -137,6 +138,7 @@ export default function Lightbox({
           {index + 1} / {images.length}
         </div>
       )}
-    </div>
+    </div>,
+    document.body,
   );
 }

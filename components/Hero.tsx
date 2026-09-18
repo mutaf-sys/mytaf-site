@@ -52,13 +52,13 @@ export default function Hero() {
 
           <a
             href="#contacts"
-            className="flex w-full items-center justify-center border border-transparent px-6 py-4 text-sm uppercase tracking-[0.18em] text-[var(--brass-dark)] transition duration-300 hover:opacity-60 sm:w-auto sm:px-8"
+            className="flex w-full items-center justify-center border border-[var(--border)] px-6 py-4 text-sm uppercase tracking-[0.18em] text-[var(--brass-dark)] transition duration-300 hover:border-[var(--brass)] hover:bg-[var(--brass)]/10 sm:w-auto sm:px-8"
           >
             Обсудить проект
           </a>
         </div>
 
-        <div className="mt-10 grid grid-cols-3 gap-3 border-t border-[var(--border)] pt-6 sm:mt-14 sm:gap-10 sm:pt-8">
+        <div className="mt-10 grid grid-cols-2 gap-3 border-t border-[var(--border)] pt-6 sm:mt-14 sm:max-w-xs sm:gap-10 sm:pt-8">
           <div>
             <p className="font-heading text-2xl text-[var(--brass)] sm:text-3xl">
               10+
@@ -74,15 +74,6 @@ export default function Hero() {
             </p>
             <p className="mt-1 text-[11px] leading-4 text-[var(--muted)] sm:text-sm">
               ручная работа
-            </p>
-          </div>
-
-          <div>
-            <p className="font-heading text-2xl text-[var(--brass)] sm:text-3xl">
-              3D
-            </p>
-            <p className="mt-1 text-[11px] leading-4 text-[var(--muted)] sm:text-sm">
-              моделирование
             </p>
           </div>
         </div>

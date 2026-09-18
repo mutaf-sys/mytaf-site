@@ -14,7 +14,7 @@ const items = [
   },
   {
     title: "Петли",
-    image: "/images/catalog/hinges/petlya-p-obraznaya.jpg",
+    image: "/images/catalog/hinges/petlya-sharovidnye-nakonechniki.jpg",
     href: "/projects?category=Петли",
   },
   {

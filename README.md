@@ -1,4 +1,4 @@
-# Мастерская Мутаф — сайт
+# Empirebrass — сайт мастерской
 
 Next.js (App Router) + Tailwind CSS v4.
 

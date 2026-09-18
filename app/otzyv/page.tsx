@@ -19,7 +19,7 @@ export default function LeaveReviewPage() {
     <main className="flex min-h-screen items-center bg-[#26221d] px-6 py-24 text-white">
       <div className="mx-auto w-full max-w-xl">
         <p className="text-xs uppercase tracking-[0.32em] text-[#c9a96e] sm:text-sm">
-          Мастерская Мутаф
+          Мастерская Empirebrass
         </p>
 
         <h1 className="mt-5 font-heading text-4xl leading-tight sm:text-5xl">
