@@ -231,7 +231,7 @@ export const projects: Project[] = [
   {
     slug: "zadvizhka-vertikalnaya-balyasina",
     title: "Шпингалет раздвижной 1500мм с ответными планками",
-    category: "Оконная фурнитура",
+    category: "Шпингалеты",
     studioImages: [
       "/images/catalog/window-fittings/zadvizhka-vertikalnaya-balyasina.jpg",
     ],
@@ -240,7 +240,7 @@ export const projects: Project[] = [
   {
     slug: "sterzhen-solntse",
     title: "Шпингалет литой раздвижной 1500мм с ответными планками",
-    category: "Оконная фурнитура",
+    category: "Шпингалеты",
     studioImages: ["/images/catalog/window-fittings/sterzhen-solntse.jpg"],
     description:
       "Длинный стержень оконной фурнитуры с резной центральной муфтой в виде лучевой розетки.",
@@ -258,7 +258,7 @@ export const projects: Project[] = [
   {
     slug: "espanoletka-kovanaya",
     title: "Шпингалет прижимной 1500мм с ответными планками",
-    category: "Оконная фурнитура",
+    category: "Шпингалеты",
     studioImages: ["/images/catalog/window-fittings/espanoletka-kovanaya.jpg"],
     description:
       "Штанговая эспаньолетка с декоративной кованой ручкой в виде растительного завитка.",

@@ -11,7 +11,7 @@ const categoryCover: Record<Category, string> = {
   "Дверные ручки": "/images/catalog/door-handles/ruchka-balyasina-para.jpg",
   "Шпингалеты": "/images/catalog/bolts/zadvizhka-reznaya-v-sbore.jpg",
   "Петли": "/images/catalog/hinges/petlya-sharovidnye-nakonechniki.jpg",
-  "Оконная фурнитура": "/images/catalog/window-fittings/espanoletka-kovanaya.jpg",
+  "Оконная фурнитура": "/images/catalog/window-fittings/nabor-espanoletok.jpg",
   "Накладки и декоративные элементы": "/images/workshop/workshop-18.jpg",
   "Другие изделия": "/images/catalog/banner-collection.jpg",
 };

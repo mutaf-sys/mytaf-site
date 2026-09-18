@@ -19,7 +19,7 @@ const items = [
   },
   {
     title: "Оконная фурнитура",
-    image: "/images/catalog/window-fittings/espanoletka-kovanaya.jpg",
+    image: "/images/catalog/window-fittings/nabor-espanoletok.jpg",
     href: "/projects?category=Оконная+фурнитура",
   },
   {
