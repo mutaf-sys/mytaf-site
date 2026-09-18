@@ -93,8 +93,8 @@ export default function Hero() {
             className="absolute inset-0 transition-transform duration-500 ease-out"
           >
             <Image
-              src="/images/hero-handle.jpg"
-              alt="Историческая латунная ручка ручной работы"
+              src="/images/catalog/banner-collection.jpg"
+              alt="Историческая латунная фурнитура ручной работы"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -106,7 +106,7 @@ export default function Hero() {
 
           <div className="absolute bottom-0 left-0 right-0 p-5 text-white sm:p-8">
             <p className="font-heading text-xl leading-tight sm:text-2xl">
-              Историческая оконная ручка
+              Фурнитура ручной работы
             </p>
 
             <p className="mt-2 max-w-[260px] text-xs leading-5 text-white/80 sm:max-w-none sm:text-sm">
