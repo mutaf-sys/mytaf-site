@@ -86,12 +86,12 @@ export default function Hero() {
 
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute rounded-full border border-brass max-[900px]:hidden"
+          className="pointer-events-none absolute rounded-full border border-brass"
           style={{ inset: "-17px 12px 13px -17px", opacity: 0.6 }}
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute rounded-full border border-brass max-[900px]:hidden"
+          className="pointer-events-none absolute rounded-full border border-brass"
           style={{ inset: "12px -17px -17px 12px", opacity: 0.25 }}
         />
 
