@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
-import {
-  DM_Mono,
-  IBM_Plex_Mono,
-  Manrope,
-  Playfair_Display,
-} from "next/font/google";
+import { IBM_Plex_Mono, Manrope, Playfair_Display } from "next/font/google";
 
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
@@ -17,16 +12,8 @@ const headingFont = Playfair_Display({
   display: "swap",
 });
 
-const dmMono = DM_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-dm-mono",
-  display: "swap",
-});
-
-// У DM Mono нет кириллицы: русские буквы подписей берутся из IBM Plex Mono
 const plexMono = IBM_Plex_Mono({
-  subsets: ["cyrillic"],
+  subsets: ["latin", "cyrillic"],
   weight: ["400", "500"],
   variable: "--font-plex-mono",
   display: "swap",
@@ -87,7 +74,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body
-        className={`${headingFont.variable} ${bodyFont.variable} ${dmMono.variable} ${plexMono.variable}`}
+        className={`${headingFont.variable} ${bodyFont.variable} ${plexMono.variable}`}
       >
         <a href="#main" className="skip-link">
           Перейти к содержимому

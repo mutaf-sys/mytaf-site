@@ -40,7 +40,7 @@
   --color-estimate: var(--estimate);
   --color-warn: var(--warn);
   --font-heading: var(--font-playfair), Georgia, serif;
-  --font-mono: var(--font-dm-mono), var(--font-plex-mono), ui-monospace, monospace;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
 @layer base {
@@ -109,7 +109,7 @@ h4 {
 /* ---------- Типографика ---------- */
 
 .kicker {
-  font-family: var(--font-dm-mono), var(--font-plex-mono), ui-monospace, monospace;
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -117,7 +117,7 @@ h4 {
 }
 
 .eyebrow {
-  font-family: var(--font-dm-mono), var(--font-plex-mono), ui-monospace, monospace;
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
