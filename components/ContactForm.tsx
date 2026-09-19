@@ -79,7 +79,7 @@ export default function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="btn-line btn-line-invert mt-6"
+          className="button button-outline on-dark mt-6"
         >
           Отправить ещё одну заявку
         </button>
@@ -91,7 +91,7 @@ export default function ContactForm() {
     <form
       onSubmit={handleSubmit}
       aria-busy={status === "loading"}
-      className="rounded-[28px] border border-white/15 bg-white/5 p-6 sm:p-10"
+      className="grid gap-[22px]"
     >
       {/* Honeypot-поле, скрыто от людей, но видно ботам */}
       <input
@@ -103,7 +103,7 @@ export default function ContactForm() {
         className="hidden"
       />
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-[22px]">
         <div>
           <label htmlFor="name" className={labelClass}>
             Имя
@@ -134,7 +134,7 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div className="mt-5">
+      <div>
         <label htmlFor="category" className={labelClass}>
           Тип изделия
         </label>
@@ -142,7 +142,7 @@ export default function ContactForm() {
           id="category"
           name="category"
           defaultValue={categories[0]}
-          className={`${inputClass} bg-foreground`}
+          className={`${inputClass} bg-dark`}
         >
           {categories.map((category) => (
             <option key={category} value={category}>
@@ -152,7 +152,7 @@ export default function ContactForm() {
         </select>
       </div>
 
-      <div className="mt-5">
+      <div>
         <label htmlFor="message" className={labelClass}>
           Опишите задачу
         </label>
@@ -160,7 +160,7 @@ export default function ContactForm() {
           id="message"
           name="message"
           required
-          rows={4}
+          rows={3}
           placeholder="Размеры, материал, есть ли образец или чертёж"
           className={`${inputClass} resize-none`}
         />

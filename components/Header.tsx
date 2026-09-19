@@ -5,11 +5,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import Arrow from "@/components/ui/Arrow";
+
 const navigation = [
   { title: "Каталог", href: "/projects", match: "/projects" },
   { title: "Мастерская", href: "/masterskaya", match: "/masterskaya" },
-  { title: "О мастерской", href: "/#about", match: null },
+  { title: "Реставрация", href: "/#restoration", match: null },
   { title: "Стоимость", href: "/#estimate", match: null },
+  { title: "Контакты", href: "/#contacts", match: null },
 ];
 
 export default function Header() {
@@ -40,48 +43,48 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
-      <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-4 sm:h-24 sm:px-6 lg:px-12">
-        {/* Логотип и название */}
+    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl">
+      <div className="flex h-[72px] items-center justify-between px-[clamp(22px,5vw,76px)] min-[561px]:h-[84px]">
         <Link
           href="/"
           onClick={closeMenu}
           aria-label="Empirebrass — на главную"
-          className="flex min-w-0 items-center gap-3 sm:gap-4"
+          className="flex items-center gap-3"
         >
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center sm:h-12 sm:w-12">
+          <span className="relative h-[42px] w-[42px] shrink-0 overflow-hidden rounded-full border border-foreground bg-surface">
             <Image
               src="/images/logo.jpg"
               alt=""
-              width={64}
-              height={64}
-              className="h-full w-full object-contain"
+              fill
+              sizes="42px"
+              className="object-contain p-1"
               priority
             />
-          </div>
+          </span>
 
-          <div className="min-w-0">
-            <p className="truncate font-heading text-base leading-none text-foreground sm:text-xl">
+          <span>
+            <strong className="block font-heading text-[19px] font-semibold leading-none">
               Empirebrass
-            </p>
-
-            <p className="mt-2 hidden text-xs uppercase tracking-[0.16em] text-muted sm:block">
-              Мастерская исторической латунной фурнитуры
-            </p>
-          </div>
+            </strong>
+            <small className="mt-1 hidden text-[10px] uppercase tracking-[0.16em] text-muted min-[561px]:block">
+              Мастерская исторической фурнитуры
+            </small>
+          </span>
         </Link>
 
-        {/* Навигация для компьютера */}
-        <nav aria-label="Основная навигация" className="hidden items-center gap-4 xl:flex">
+        <nav
+          aria-label="Основная навигация"
+          className="hidden gap-8 text-xs uppercase tracking-[0.13em] min-[901px]:flex"
+        >
           {navigation.map((item) => (
             <Link
               key={item.title}
               href={item.href}
               aria-current={isCurrent(item.match) ? "page" : undefined}
-              className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 hover:bg-brass/10 hover:text-brass-dark ${
+              className={`transition-colors duration-300 hover:text-brass-dark ${
                 isCurrent(item.match)
-                  ? "bg-brass/10 text-brass-dark"
-                  : "text-foreground/90"
+                  ? "border-b border-brass pb-1 text-brass-dark"
+                  : ""
               }`}
             >
               {item.title}
@@ -89,22 +92,21 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Кнопка для компьютера */}
         <Link
           href="/#contacts"
-          className="hidden shrink-0 rounded-full border border-brass px-6 py-3 text-sm text-brass-dark transition-all duration-300 ease-out hover:bg-brass-dark hover:text-white lg:inline-flex"
+          className="hidden items-center gap-2 text-[11px] font-medium uppercase tracking-[0.13em] transition-colors duration-300 hover:text-brass-dark min-[901px]:flex"
         >
-          Связаться с нами
+          Обсудить проект
+          <Arrow />
         </Link>
 
-        {/* Кнопка мобильного меню */}
         <button
           type="button"
           onClick={() => setIsMenuOpen((current) => !current)}
           aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
-          className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brass/60 text-brass-dark transition hover:bg-brass-dark hover:text-white xl:hidden"
+          className="relative grid h-11 w-11 place-items-center rounded-full border border-foreground transition hover:bg-foreground hover:text-white min-[901px]:hidden"
         >
           <span
             aria-hidden="true"
@@ -112,14 +114,12 @@ export default function Header() {
               isMenuOpen ? "rotate-45" : "-translate-y-1.5"
             }`}
           />
-
           <span
             aria-hidden="true"
             className={`absolute h-px w-5 bg-current transition duration-300 ${
               isMenuOpen ? "opacity-0" : "opacity-100"
             }`}
           />
-
           <span
             aria-hidden="true"
             className={`absolute h-px w-5 bg-current transition duration-300 ${
@@ -129,27 +129,22 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Мобильное меню */}
       <div
         id="mobile-menu"
         hidden={!isMenuOpen}
-        className="absolute inset-x-0 top-full max-h-[calc(100vh-80px)] overflow-y-auto border-b border-border bg-background xl:hidden"
+        className="absolute inset-x-0 top-full max-h-[calc(100vh-72px)] overflow-y-auto border-b border-border bg-background min-[901px]:hidden"
       >
-        <div className="px-4 pb-8 pt-5 sm:px-6">
+        <div className="px-[22px] pb-7 pt-5">
           <nav aria-label="Мобильная навигация" className="flex flex-col">
-            {navigation.map((item, index) => (
+            {navigation.map((item) => (
               <Link
                 key={item.title}
                 href={item.href}
                 onClick={closeMenu}
                 aria-current={isCurrent(item.match) ? "page" : undefined}
-                className="flex items-center justify-between border-b border-border py-5 font-heading text-2xl text-foreground transition duration-300 hover:text-brass-dark"
+                className="border-b border-border py-[18px] font-heading text-[25px] transition duration-300 hover:text-brass-dark"
               >
-                <span>{item.title}</span>
-
-                <span aria-hidden="true" className="text-base text-brass-dark">
-                  0{index + 1}
-                </span>
+                {item.title}
               </Link>
             ))}
           </nav>
@@ -157,9 +152,10 @@ export default function Header() {
           <Link
             href="/#contacts"
             onClick={closeMenu}
-            className="mt-7 flex w-full items-center justify-center rounded-full bg-brass-dark px-6 py-4 text-sm font-medium text-white transition duration-300 hover:bg-foreground"
+            className="button button-dark mt-6 w-full"
           >
             Обсудить проект
+            <Arrow />
           </Link>
 
           <div className="mt-7 border-t border-border pt-6">
@@ -169,17 +165,12 @@ export default function Header() {
             >
               +7 (999) 064-64-17
             </a>
-
             <a
               href="mailto:info@empirebrass.ru"
               className="mt-3 block text-sm text-muted"
             >
               info@empirebrass.ru
             </a>
-
-            <p className="mt-5 text-xs uppercase tracking-[0.2em] text-brass-dark">
-              Санкт-Петербург
-            </p>
           </div>
         </div>
       </div>

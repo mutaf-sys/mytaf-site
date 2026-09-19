@@ -1,38 +1,61 @@
+import Image from "next/image";
 import Link from "next/link";
 
-import Reveal from "./Reveal";
-import WorkshopGallery from "./WorkshopGallery";
+import Reveal from "@/components/Reveal";
+import Arrow from "@/components/ui/Arrow";
 import { workshopPhotos } from "@/data/workshop";
 
-const PREVIEW_COUNT = 12;
-
 export default function Workshop() {
-  const preview = workshopPhotos.slice(0, PREVIEW_COUNT);
-
   return (
-    <section id="workshop" className="bg-surface px-6 py-32 lg:px-12">
-      <div className="mx-auto max-w-[1720px]">
-        <Reveal>
-          <p className="eyebrow">Мастерская</p>
-          <h2 className="mt-5 max-w-3xl font-heading text-5xl leading-[1.05] text-foreground sm:text-6xl">
-            Мастерская и ручная работа
+    <section id="workshop" className="on-dark bg-foreground text-white">
+      <Reveal className="mx-auto grid max-w-[1720px] items-center gap-[9vw] px-[clamp(22px,11vw,170px)] py-[clamp(80px,10vw,150px)] min-[901px]:grid-cols-[0.8fr_1.2fr] max-[900px]:gap-[60px]">
+        <div>
+          <p className="kicker kicker-rule">02 — Мастерская</p>
+          <h2 className="display display-lg mb-8 mt-[22px]">
+            Там, где металл
+            <br />
+            <em>обретает голос.</em>
           </h2>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-            Каждое изделие проходит через руки мастера — от точения деталей
-            до финальной полировки. Так выглядит процесс изнутри.
+          <p className="max-w-[390px] text-[15px] leading-[1.85] text-[#c9c7bd]">
+            Точение, литьё, ручная обработка и патинирование. Работаем
+            внимательно и поэтапно, чтобы новая фурнитура органично вписалась
+            в исторический интерьер.
           </p>
-        </Reveal>
-
-        <Reveal delay={150} className="mt-16">
-          <WorkshopGallery photos={preview} />
-        </Reveal>
-
-        <div className="mt-12 flex justify-center">
-          <Link href="/masterskaya" className="btn-line">
+          <Link href="/masterskaya" className="text-link mt-7">
             Смотреть все {workshopPhotos.length} фото
+            <Arrow />
           </Link>
         </div>
-      </div>
+
+        <div className="relative min-h-[550px] max-[900px]:min-h-[470px] max-[560px]:min-h-[340px]">
+          <div className="relative h-[480px] w-[62%] max-[560px]:h-[310px]">
+            <Image
+              src="/images/workshop/workshop-6.jpg"
+              alt="Деталь фурнитуры в руках мастера"
+              fill
+              sizes="(max-width: 900px) 60vw, 35vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="absolute bottom-0 right-0 h-[270px] w-[37%] border-[10px] border-foreground max-[560px]:h-40 max-[560px]:border-[6px]">
+            <Image
+              src="/images/workshop/workshop-1.jpg"
+              alt="Партия эспаньолеток в мастерской"
+              fill
+              sizes="(max-width: 900px) 40vw, 22vw"
+              className="object-cover"
+            />
+          </div>
+          <span
+            aria-hidden="true"
+            className="absolute right-[30%] top-[12%] grid h-[98px] w-[98px] rotate-[14deg] place-items-center rounded-full border border-brass text-center font-mono text-xs leading-[1.2] text-brass-soft max-[560px]:right-1/4 max-[560px]:top-[10%] max-[560px]:h-[70px] max-[560px]:w-[70px] max-[560px]:text-[10px]"
+          >
+            HAND
+            <br />
+            MADE
+          </span>
+        </div>
+      </Reveal>
     </section>
   );
 }

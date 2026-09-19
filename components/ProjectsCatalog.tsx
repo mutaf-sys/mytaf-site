@@ -5,26 +5,23 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useMemo, useState } from "react";
 
+import Reveal from "@/components/Reveal";
+import SiteFooter from "@/components/SiteFooter";
+import Arrow from "@/components/ui/Arrow";
 import { categories, projects, type Category } from "@/data/projects";
-
-const categoryCover: Record<Category, string> = {
-  "Дверные ручки": "/images/catalog/door-handles/ruchka-balyasina-para.jpg",
-  "Шпингалеты": "/images/catalog/bolts/zadvizhka-reznaya-v-sbore.jpg",
-  "Петли": "/images/catalog/hinges/petlya-sharovidnye-nakonechniki.jpg",
-  "Оконная фурнитура": "/images/catalog/window-fittings/nabor-espanoletok.jpg",
-  "Накладки и декоративные элементы": "/images/workshop/workshop-18.jpg",
-  "Другие изделия": "/images/catalog/banner-collection.jpg",
-};
 
 export default function ProjectsCatalog() {
   return (
     <Suspense fallback={null}>
-      <ProjectsPageInner />
+      <ProjectsCatalogInner />
     </Suspense>
   );
 }
 
-function ProjectsPageInner() {
+const chip =
+  "border px-4 py-2.5 font-mono text-xs uppercase tracking-[0.12em] transition";
+
+function ProjectsCatalogInner() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get("category") as Category | null;
   const [active, setActive] = useState<Category | null>(
@@ -37,58 +34,41 @@ function ProjectsPageInner() {
   );
 
   return (
-    <main id="main" className="min-h-screen bg-background">
-      {/* Первый экран */}
-      <section className="border-b border-border px-6 pb-16 pt-32 lg:px-12 lg:pb-24 lg:pt-40">
-        <div className="mx-auto max-w-[1440px]">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-3 text-sm text-brass-dark transition duration-300 hover:opacity-60"
-          >
-            <span aria-hidden="true">←</span>
-            Вернуться на главную
-          </Link>
-
-          <div className="mt-12 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-            <div>
-              <p className="eyebrow">Каталог мастерской</p>
-
-              <h1 className="mt-6 max-w-4xl font-heading text-5xl leading-[1.04] text-foreground sm:text-6xl lg:text-7xl">
-                Историческая латунная фурнитура
-              </h1>
-            </div>
-
-            <div className="max-w-xl lg:justify-self-end">
-              <p className="text-base leading-8 text-muted sm:text-lg">
-                Дверные ручки, петли, шпингалеты, оконная фурнитура и
-                декоративные накладки, созданные вручную из латуни.
-              </p>
-            </div>
+    <>
+      <main id="main" className="min-h-screen bg-background">
+        <section className="border-b border-border">
+          <div className="section-pad !pb-[clamp(50px,6vw,90px)] !pt-[clamp(50px,6vw,90px)]">
+            <p className="kicker kicker-rule">Каталог мастерской</p>
+            <h1 className="display display-xl mb-9 mt-7 max-w-[11ch]">
+              Историческая латунная <em>фурнитура.</em>
+            </h1>
+            <p className="max-w-[520px] text-[15px] leading-[1.8] text-muted min-[561px]:text-[17px]">
+              Дверные ручки, петли, шпингалеты и оконная фурнитура, созданные
+              вручную из латуни. Каждое изделие изготавливается по
+              индивидуальному проекту.
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Крупные тайлы категорий */}
-      <section className="px-6 py-16 lg:px-12 lg:py-20">
-        <div className="mx-auto max-w-[1440px]">
-          <h2 className="sr-only">Категории каталога</h2>
+        <section className="section-pad !pt-[clamp(40px,5vw,70px)]">
+          <h2 className="sr-only">Изделия каталога</h2>
+
           <div
             role="group"
             aria-label="Фильтр по категориям"
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            className="flex flex-wrap gap-2.5"
           >
             <button
               type="button"
               aria-pressed={active === null}
               onClick={() => setActive(null)}
-              className={`group relative col-span-full flex items-center justify-between overflow-hidden rounded-[24px] border px-8 py-6 text-left transition-all duration-300 ${
+              className={`${chip} ${
                 active === null
-                  ? "border-brass bg-foreground text-white"
-                  : "border-border bg-surface text-foreground hover:border-brass hover:bg-brass/10"
+                  ? "border-foreground bg-foreground text-white"
+                  : "border-border hover:border-brass-dark hover:text-brass-dark"
               }`}
             >
-              <span className="font-heading text-2xl">Все изделия</span>
-              <span className="text-sm opacity-70">{projects.length}</span>
+              Все · {projects.length}
             </button>
 
             {categories.map((category) => {
@@ -101,119 +81,89 @@ function ProjectsPageInner() {
                   type="button"
                   aria-pressed={isActive}
                   onClick={() => setActive(category)}
-                  className={`group relative block overflow-hidden rounded-[24px] border text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(50,40,25,0.18)] ${
-                    isActive ? "border-brass" : "border-border hover:border-brass"
+                  className={`${chip} ${
+                    isActive
+                      ? "border-foreground bg-foreground text-white"
+                      : "border-border hover:border-brass-dark hover:text-brass-dark"
                   }`}
                 >
-                  <div className="relative h-[260px] overflow-hidden sm:h-[300px]">
-                    <Image
-                      src={categoryCover[category]}
-                      alt={category}
-                      fill
-                      sizes="(max-width: 767px) 100vw, 33vw"
-                      className="object-cover media-zoom"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-
-                    <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6">
-                      <h3 className="font-heading text-2xl leading-tight text-white sm:text-3xl">
-                        {category}
-                      </h3>
-                      <span className="text-xs uppercase tracking-[0.2em] text-white/70">
-                        {count}
-                      </span>
-                    </div>
-                  </div>
+                  {category} · {count}
                 </button>
               );
             })}
           </div>
-        </div>
-      </section>
 
-      {/* Сетка изделий */}
-      <section className="px-6 py-8 lg:px-12 lg:py-12">
-        <div className="mx-auto max-w-[1440px]">
           <p className="sr-only" aria-live="polite">
             Показано изделий: {visible.length}
           </p>
 
           {visible.length === 0 && (
-            <div role="status" className="rounded-[24px] border border-border bg-surface px-8 py-16 text-center">
-              <p className="font-heading text-2xl text-foreground">
+            <div role="status" className="mt-12 border border-border px-8 py-16 text-center">
+              <p className="font-heading text-2xl">
                 В этой категории пока нет изделий
               </p>
               <button
                 type="button"
                 onClick={() => setActive(null)}
-                className="btn-line mt-6"
+                className="button button-outline mt-6"
               >
                 Показать все изделия
               </button>
             </div>
           )}
 
-          <div className="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-            {visible.map((project) => (
-              <Link
-                key={project.slug}
-                href={`/projects/${project.slug}`}
-                className="group block"
-              >
-                <article>
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-surface shadow-[0_20px_60px_rgba(50,40,25,0.1)]">
-                    <Image
-                      src={project.studioImages[0]}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                      className="object-cover media-zoom"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
-                  </div>
-
-                  <p className="mt-5 text-xs uppercase tracking-[0.2em] text-brass">
-                    {project.category}
-                  </p>
-                  <h2 className="mt-2 font-heading text-2xl leading-snug text-foreground">
-                    {project.title}
-                  </h2>
-                </article>
-              </Link>
+          <ul className="mt-12 grid grid-cols-3 gap-x-[18px] gap-y-14 max-[900px]:grid-cols-2 max-[560px]:gap-x-3 max-[560px]:gap-y-9">
+            {visible.map((project, i) => (
+              <li key={project.slug}>
+                <Reveal delay={(i % 3) * 70}>
+                  <Link href={`/projects/${project.slug}`} className="group block">
+                    <div className="relative aspect-[4/5] overflow-hidden bg-surface">
+                      <Image
+                        src={project.studioImages[0]}
+                        alt=""
+                        fill
+                        sizes="(max-width: 900px) 50vw, 33vw"
+                        className="media-zoom object-cover"
+                      />
+                    </div>
+                    <div className="border-b border-border pb-4 pt-4">
+                      <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-brass-dark">
+                        {project.category}
+                      </span>
+                      <h3 className="mt-2 text-[22px] leading-snug max-[560px]:text-[17px]">
+                        {project.title}
+                      </h3>
+                    </div>
+                  </Link>
+                </Reveal>
+              </li>
             ))}
-          </div>
-        </div>
-      </section>
+          </ul>
+        </section>
 
-      {/* Блок индивидуального заказа */}
-      <section className="border-t border-border px-6 py-20 lg:px-12 lg:py-28">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="overflow-hidden rounded-[36px] bg-foreground px-7 py-12 text-white sm:px-10 lg:px-16 lg:py-16">
-            <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-              <div>
-                <p className="text-xs uppercase tracking-[0.32em] text-brass-soft sm:text-sm">
-                  Индивидуальное изготовление
-                </p>
-
-                <h2 className="mt-6 max-w-4xl font-heading text-4xl leading-tight sm:text-5xl lg:text-6xl">
-                  Создадим фурнитуру специально для вашего проекта
-                </h2>
-              </div>
-
-              <div className="max-w-xl lg:justify-self-end">
-                <p className="text-base leading-8 text-white/65 sm:text-lg">
-                  Работаем по историческим образцам, фотографиям, эскизам и
-                  индивидуальным чертежам.
-                </p>
-
-                <Link href="/#contacts" className="btn-line btn-line-invert mt-8">
-                  Обсудить проект
-                </Link>
-              </div>
+        <section className="on-dark bg-dark text-white">
+          <div className="mx-auto grid max-w-[1720px] items-end gap-[8vw] px-[clamp(22px,11vw,170px)] py-[clamp(70px,9vw,120px)] min-[901px]:grid-cols-[1.2fr_0.8fr]">
+            <div>
+              <p className="kicker kicker-rule">Индивидуальное изготовление</p>
+              <h2 className="display display-md mt-[22px]">
+                Создадим фурнитуру <em>специально для вашего проекта.</em>
+              </h2>
+            </div>
+            <div>
+              <p className="mb-8 leading-[1.8] text-[#c9c7bd]">
+                Работаем по историческим образцам, фотографиям, эскизам и
+                индивидуальным чертежам.
+              </p>
+              <Link href="/#contacts" className="button button-brass">
+                Обсудить проект
+                <Arrow />
+              </Link>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </>
   );
 }

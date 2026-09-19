@@ -105,7 +105,7 @@ export default function ReviewForm() {
     <form
       onSubmit={handleSubmit}
       aria-busy={status === "loading"}
-      className="rounded-[28px] border border-white/15 bg-white/5 p-6 sm:p-10"
+      className="grid gap-[22px]"
     >
       {/* Honeypot-поле, скрыто от людей, но видно ботам */}
       <input
@@ -135,7 +135,7 @@ export default function ReviewForm() {
         />
       </div>
 
-      <div className="mt-5">
+      <div>
         <label
           htmlFor="role"
           className={labelClass}
@@ -151,7 +151,7 @@ export default function ReviewForm() {
         />
       </div>
 
-      <div className="mt-5">
+      <div>
         <label
           htmlFor="review"
           className={labelClass}
@@ -168,7 +168,7 @@ export default function ReviewForm() {
         />
       </div>
 
-      <div className="mt-5">
+      <div>
         <label
           htmlFor="photo"
           className={labelClass}
@@ -178,7 +178,7 @@ export default function ReviewForm() {
 
         <div className="mt-3 flex items-center gap-4">
           {previewUrl && (
-            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-white/15">
+            <div className="relative h-14 w-14 shrink-0 overflow-hidden border border-[#6b6c63]">
               <Image
                 src={previewUrl}
                 alt="Предпросмотр фото"
@@ -200,7 +200,7 @@ export default function ReviewForm() {
 
           <label
             htmlFor="photo"
-            className="flex-1 cursor-pointer truncate rounded-2xl border border-dashed border-white/25 px-4 py-3 text-sm text-white/70 transition hover:border-brass-soft hover:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brass-soft"
+            className="flex-1 cursor-pointer truncate border border-dashed border-[#6b6c63] px-4 py-3 text-sm text-[#c9c7bd] transition hover:border-brass-soft hover:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brass-soft"
           >
             {fileName ?? "Выбрать файл…"}
           </label>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import Header from "@/components/Header";
+import SiteFooter from "@/components/SiteFooter";
+import Arrow from "@/components/ui/Arrow";
 
 export const metadata: Metadata = {
   title: "Страница не найдена",
@@ -14,26 +16,27 @@ export default function NotFound() {
       <Header />
       <main
         id="main"
-        className="flex min-h-screen items-center bg-background px-6 pb-16 pt-32 lg:px-12"
+        className="section-pad flex min-h-[70vh] flex-col justify-center"
       >
-        <div className="mx-auto w-full max-w-3xl">
-          <p className="eyebrow">Ошибка 404</p>
-          <h1 className="mt-6 font-heading text-5xl leading-[1.05] text-foreground sm:text-6xl">
-            Такой страницы нет
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
-            Возможно, ссылка устарела или изделие убрано из каталога.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/projects" className="btn-line">
-              Открыть каталог
-            </Link>
-            <Link href="/" className="btn-line">
-              На главную
-            </Link>
-          </div>
+        <p className="kicker kicker-rule">Ошибка 404</p>
+        <h1 className="display display-xl mb-9 mt-7 max-w-[10ch]">
+          Такой страницы <em>нет.</em>
+        </h1>
+        <p className="max-w-[440px] text-[17px] leading-[1.8] text-muted">
+          Возможно, ссылка устарела или изделие убрано из каталога.
+        </p>
+        <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-5">
+          <Link href="/projects" className="button button-dark">
+            Открыть каталог
+            <Arrow />
+          </Link>
+          <Link href="/" className="text-link">
+            На главную
+            <Arrow />
+          </Link>
         </div>
       </main>
+      <SiteFooter />
     </>
   );
 }

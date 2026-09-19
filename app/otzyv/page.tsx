@@ -16,17 +16,17 @@ export const metadata: Metadata = {
 
 export default function LeaveReviewPage() {
   return (
-    <main id="main" className="dark-surface flex min-h-screen items-center bg-foreground px-6 py-24 text-white">
+    <main id="main" className="on-dark flex min-h-screen items-center bg-dark px-6 py-24 text-white">
       <div className="mx-auto w-full max-w-xl">
-        <p className="text-xs uppercase tracking-[0.32em] text-brass-soft sm:text-sm">
+        <p className="kicker kicker-rule">
           Мастерская Empirebrass
         </p>
 
-        <h1 className="mt-5 font-heading text-4xl leading-tight sm:text-5xl">
+        <h1 className="display display-md mt-5">
           Спасибо, что делитесь впечатлением
         </h1>
 
-        <p className="mt-6 text-base leading-7 text-white/65">
+        <p className="mt-6 text-base leading-7 text-[#c9c7bd]">
           Пара слов о готовом изделии помогут будущим клиентам сделать
           выбор. Мы можем опубликовать ваш отзыв на сайте — если не
           хотите, просто скажите об этом в тексте.

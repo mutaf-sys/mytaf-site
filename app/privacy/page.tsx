@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import Header from "@/components/Header";
+import SiteFooter from "@/components/SiteFooter";
 
 export const metadata = {
   title: "Политика обработки персональных данных",
@@ -11,23 +12,23 @@ export default function PrivacyPage() {
   return (
     <>
       <Header />
-      <main id="main" className="min-h-screen bg-background px-6 py-32 lg:px-12 lg:py-40">
+      <main id="main" className="min-h-screen bg-background px-[clamp(22px,8vw,120px)] py-[clamp(50px,7vw,100px)]">
       <div className="mx-auto max-w-3xl">
         <Link
           href="/"
-          className="inline-flex items-center gap-3 text-sm text-brass-dark transition duration-300 hover:opacity-60"
+          className="text-link"
         >
           <span aria-hidden="true">←</span>
           Вернуться на главную
         </Link>
 
-        <h1 className="mt-10 font-heading text-4xl leading-tight text-foreground sm:text-5xl">
+        <h1 className="display display-md mt-10">
           Политика обработки персональных данных
         </h1>
 
         <div className="mt-10 space-y-8 text-base leading-7 text-muted">
           <section>
-            <h2 className="font-heading text-2xl text-foreground">
+            <h2 className="font-heading text-[24px] text-foreground">
               1. Общие положения
             </h2>
             <p className="mt-3">
@@ -42,7 +43,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="font-heading text-2xl text-foreground">
+            <h2 className="font-heading text-[24px] text-foreground">
               2. Какие данные обрабатываются
             </h2>
             <p className="mt-3">
@@ -54,7 +55,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="font-heading text-2xl text-foreground">
+            <h2 className="font-heading text-[24px] text-foreground">
               3. Цели обработки
             </h2>
             <p className="mt-3">
@@ -67,7 +68,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="font-heading text-2xl text-foreground">
+            <h2 className="font-heading text-[24px] text-foreground">
               4. Правовые основания обработки
             </h2>
             <p className="mt-3">
@@ -78,7 +79,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="font-heading text-2xl text-foreground">
+            <h2 className="font-heading text-[24px] text-foreground">
               5. Сроки обработки и хранения
             </h2>
             <p className="mt-3">
@@ -89,7 +90,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="font-heading text-2xl text-foreground">
+            <h2 className="font-heading text-[24px] text-foreground">
               6. Права субъекта персональных данных
             </h2>
             <p className="mt-3">
@@ -101,7 +102,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="font-heading text-2xl text-foreground">
+            <h2 className="font-heading text-[24px] text-foreground">
               7. Меры защиты
             </h2>
             <p className="mt-3">
@@ -112,7 +113,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="font-heading text-2xl text-foreground">
+            <h2 className="font-heading text-[24px] text-foreground">
               8. Контакты
             </h2>
             <p className="mt-3">
@@ -123,6 +124,7 @@ export default function PrivacyPage() {
         </div>
       </div>
     </main>
+      <SiteFooter />
     </>
   );
 }

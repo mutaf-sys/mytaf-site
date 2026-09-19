@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 
 import Header from "@/components/Header";
 import ProductGallery from "@/components/ProductGallery";
+import SiteFooter from "@/components/SiteFooter";
+import Arrow from "@/components/ui/Arrow";
 import { getProjectBySlug, projects } from "@/data/projects";
 import { siteConfig } from "@/lib/site";
 
@@ -69,71 +71,68 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <Header />
 
       <main id="main" className="min-h-screen bg-background">
-        <section className="px-6 pb-16 pt-32 lg:px-12 lg:pb-24 lg:pt-40">
-          <div className="mx-auto max-w-[1440px]">
-            <nav aria-label="Навигация по разделам">
-              <ol className="flex flex-wrap items-center gap-2 text-sm text-muted">
-                <li>
-                  <Link href="/projects" className="hover:text-brass-dark">
-                    Каталог
-                  </Link>
-                </li>
-                <li aria-hidden="true">/</li>
-                <li>
-                  <Link
-                    href={`/projects?category=${encodeURIComponent(project.category)}`}
-                    className="hover:text-brass-dark"
-                  >
-                    {project.category}
-                  </Link>
-                </li>
-              </ol>
-            </nav>
-
-            <div className="mt-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-              <ProductGallery
-                title={project.title}
-                studioImages={project.studioImages}
-                interiorImages={project.interiorImages}
-              />
-
-              <div className="max-w-xl lg:sticky lg:top-32">
-                <p className="eyebrow">{project.category}</p>
-
-                <h1 className="mt-6 font-heading text-4xl leading-[1.1] text-foreground sm:text-5xl lg:text-6xl">
-                  {project.title}
-                </h1>
-
-                <p className="mt-8 text-base leading-8 text-muted sm:text-lg">
-                  {project.description}
-                </p>
-
-                <dl className="mt-10 space-y-5 border-t border-border pt-8">
-                  {project.material && (
-                    <div>
-                      <dt className="text-xs uppercase tracking-[0.24em] text-brass-dark">
-                        Материал
-                      </dt>
-                      <dd className="mt-2 text-base text-foreground">
-                        {project.material}
-                      </dd>
-                    </div>
-                  )}
-
-                  <div>
-                    <dt className="text-xs uppercase tracking-[0.24em] text-brass-dark">
-                      Изготовление
-                    </dt>
-                    <dd className="mt-2 text-base text-foreground">
-                      Изготавливается по индивидуальному проекту
-                    </dd>
-                  </div>
-                </dl>
-
-                <Link href="/#contacts" className="btn-line mt-10">
-                  Изготовить под заказ
+        <section className="section-pad !pb-[clamp(50px,6vw,90px)] !pt-[clamp(40px,5vw,70px)]">
+          <nav aria-label="Навигация по разделам">
+            <ol className="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.1em] text-muted">
+              <li>
+                <Link href="/projects" className="hover:text-brass-dark">
+                  Каталог
                 </Link>
-              </div>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link
+                  href={`/projects?category=${encodeURIComponent(project.category)}`}
+                  className="hover:text-brass-dark"
+                >
+                  {project.category}
+                </Link>
+              </li>
+            </ol>
+          </nav>
+
+          <div className="mt-10 grid gap-[6vw] min-[901px]:grid-cols-[1.05fr_0.95fr] min-[901px]:items-start">
+            <ProductGallery
+              title={project.title}
+              studioImages={project.studioImages}
+              interiorImages={project.interiorImages}
+            />
+
+            <div className="max-w-[520px] min-[901px]:sticky min-[901px]:top-[110px]">
+              <p className="kicker kicker-rule">{project.category}</p>
+
+              <h1 className="display display-md my-6 break-words">
+                {project.title}
+              </h1>
+
+              <p className="text-[15px] leading-[1.85] text-muted min-[561px]:text-base">
+                {project.description}
+              </p>
+
+              <dl className="mt-9 space-y-5 border-t border-border pt-7">
+                {project.material && (
+                  <div>
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-brass-dark">
+                      Материал
+                    </dt>
+                    <dd className="mt-2 text-base">{project.material}</dd>
+                  </div>
+                )}
+
+                <div>
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-brass-dark">
+                    Изготовление
+                  </dt>
+                  <dd className="mt-2 text-base">
+                    Изготавливается по индивидуальному проекту
+                  </dd>
+                </div>
+              </dl>
+
+              <Link href="/#contacts" className="button button-dark mt-9">
+                Изготовить под заказ
+                <Arrow />
+              </Link>
             </div>
           </div>
         </section>
@@ -141,30 +140,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {related.length > 0 && (
           <section
             aria-labelledby="related-title"
-            className="border-t border-border px-6 py-16 lg:px-12 lg:py-24"
+            className="border-t border-border"
           >
-            <div className="mx-auto max-w-[1440px]">
+            <div className="section-pad !py-[clamp(60px,7vw,100px)]">
               <h2
                 id="related-title"
-                className="font-heading text-3xl text-foreground sm:text-4xl"
+                className="display display-md mb-10"
               >
-                Другие изделия: {project.category.toLowerCase()}
+                Другие изделия: <em>{project.category.toLowerCase()}</em>
               </h2>
 
-              <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <ul className="grid gap-x-[18px] gap-y-10 min-[561px]:grid-cols-2 min-[901px]:grid-cols-3">
                 {related.map((item) => (
                   <li key={item.slug}>
                     <Link href={`/projects/${item.slug}`} className="group block">
-                      <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-surface">
+                      <div className="relative aspect-[4/5] overflow-hidden bg-surface">
                         <Image
                           src={item.studioImages[0]}
                           alt=""
                           fill
-                          sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                          className="object-cover media-zoom"
+                          sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
+                          className="media-zoom object-cover"
                         />
                       </div>
-                      <p className="mt-4 font-heading text-xl leading-snug text-foreground">
+                      <p className="border-b border-border pb-4 pt-4 font-heading text-xl leading-snug">
                         {item.title}
                       </p>
                     </Link>
@@ -180,6 +179,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </main>
+
+      <SiteFooter />
     </>
   );
 }

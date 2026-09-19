@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import Header from "@/components/Header";
+import SiteFooter from "@/components/SiteFooter";
 import WorkshopGallery from "@/components/WorkshopGallery";
 import { workshopPhotos } from "@/data/workshop";
+import { plural } from "@/lib/plural";
 
 export const metadata: Metadata = {
   title: "Мастерская и ручная работа",
@@ -13,37 +14,33 @@ export const metadata: Metadata = {
 };
 
 export default function MasterskayaPage() {
+  const count = workshopPhotos.length;
+
   return (
     <>
       <Header />
+
       <main id="main" className="min-h-screen bg-background">
-      <section className="border-b border-border px-6 pb-16 pt-32 lg:px-12 lg:pb-20 lg:pt-40">
-        <div className="mx-auto max-w-[1440px]">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-3 text-sm text-brass-dark transition duration-300 hover:opacity-60"
-          >
-            <span aria-hidden="true">←</span>
-            Вернуться на главную
-          </Link>
+        <section className="border-b border-border">
+          <div className="section-pad !pb-[clamp(50px,6vw,90px)] !pt-[clamp(50px,6vw,90px)]">
+            <p className="kicker kicker-rule">Мастерская</p>
+            <h1 className="display display-xl mb-9 mt-7 max-w-[12ch]">
+              Там, где металл <em>обретает голос.</em>
+            </h1>
+            <p className="max-w-[520px] text-[15px] leading-[1.8] text-muted min-[561px]:text-[17px]">
+              {count} {plural(count, ["фотография", "фотографии", "фотографий"])} из
+              мастерской — процесс изготовления, детали и готовые изделия.
+            </p>
+          </div>
+        </section>
 
-          <p className="eyebrow mt-12">Мастерская</p>
-          <h1 className="mt-6 max-w-3xl font-heading text-5xl leading-[1.05] text-foreground sm:text-6xl">
-            Мастерская и ручная работа
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-            {workshopPhotos.length} фотографии из мастерской — процесс
-            изготовления, детали и готовые изделия.
-          </p>
-        </div>
-      </section>
-
-      <section className="px-6 py-16 lg:px-12 lg:py-20">
-        <div className="mx-auto max-w-[1720px]">
+        <section className="mx-auto max-w-[1720px] px-[clamp(22px,5vw,76px)] py-[clamp(50px,6vw,90px)]">
+          <h2 className="sr-only">Фотографии мастерской</h2>
           <WorkshopGallery photos={workshopPhotos} />
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+
+      <SiteFooter />
     </>
   );
 }

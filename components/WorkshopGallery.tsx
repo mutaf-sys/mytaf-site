@@ -22,7 +22,7 @@ export default function WorkshopGallery({ photos }: WorkshopGalleryProps) {
               type="button"
               onClick={() => setOpenIndex(i)}
               aria-label={`Открыть фото: ${photo.alt}`}
-              className="group block w-full overflow-hidden rounded-[20px] bg-surface"
+              className="group block w-full overflow-hidden bg-surface"
             >
               <Image
                 src={photo.src}

@@ -1,77 +1,48 @@
+import Reveal from "@/components/Reveal";
+import Arrow from "@/components/ui/Arrow";
+
 export default function About() {
   return (
     <section
       id="about"
-      className="border-y border-border bg-surface py-24 sm:py-32"
+      className="border-y border-border"
     >
-      <div className="mx-auto grid max-w-[1440px] gap-16 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-12">
-        {/* Левая колонка */}
+      <Reveal className="mx-auto grid max-w-[1440px] gap-[4vw] px-[clamp(22px,8vw,120px)] py-[clamp(70px,9vw,140px)] min-[901px]:grid-cols-[0.25fr_1fr_1fr] max-[900px]:grid-cols-2 max-[560px]:grid-cols-1">
+        <p
+          aria-hidden="true"
+          className="font-mono text-[11px] text-brass-dark max-[900px]:col-span-full"
+        >
+          01 / 04
+        </p>
 
         <div>
-          <p className="text-xs uppercase tracking-[0.32em] text-brass-dark sm:text-sm">
-            О мастерской
-          </p>
-
-          <h2 className="mt-6 font-heading text-4xl leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
-            Историческая точность в каждой детали
+          <p className="kicker">О мастерской</p>
+          <h2 className="display display-lg mt-[22px]">
+            Делаем новое,
+            <br />
+            <em>сохраняя память.</em>
           </h2>
         </div>
 
-        {/* Правая колонка */}
-
-        <div>
-          <p className="max-w-3xl text-lg leading-9 text-[#4f4941]">
-            Более десяти лет мастерская создаёт историческую латунную
-            фурнитуру для частных интерьеров, музеев и объектов культурного
-            наследия.
+        <div className="max-w-[470px] pt-[54px] leading-[1.8] text-muted max-[560px]:pt-0">
+          <p className="font-heading text-[25px] leading-[1.35] text-foreground">
+            Каждая деталь начинается с внимания к оригиналу — его форме,
+            пропорциям и следам времени.
           </p>
-
-          <p className="mt-6 max-w-3xl leading-8 text-muted">
-            Работа начинается с изучения оригинального изделия, архивных
-            материалов или эскиза заказчика. Каждая деталь обрабатывается и
-            доводится мастером вручную.
+          <p className="mt-5 text-[15px]">
+            Работаем по историческим образцам, архивным материалам и
+            индивидуальным эскизам. От первого эскиза до финальной полировки
+            изделие проходит через руки мастера.
           </p>
-
-          <div className="mt-12 grid gap-5 sm:grid-cols-3">
-            <div className="border-t border-brass pt-5">
-              <p className="font-heading text-2xl text-foreground">
-                Латунь
-              </p>
-
-              <p className="mt-2 text-sm leading-6 text-muted">
-                Основной материал для долговечных исторических изделий
-              </p>
-            </div>
-
-            <div className="border-t border-brass pt-5">
-              <p className="font-heading text-2xl text-foreground">
-                Ручная работа
-              </p>
-
-              <p className="mt-2 text-sm leading-6 text-muted">
-                Индивидуальная обработка и внимание к каждой детали
-              </p>
-            </div>
-
-            <div className="border-t border-brass pt-5">
-              <p className="font-heading text-2xl text-foreground">
-                По образцу
-              </p>
-
-              <p className="mt-2 text-sm leading-6 text-muted">
-                Воссоздание формы, пропорций и характера оригинала
-              </p>
-            </div>
-          </div>
-
-          <blockquote className="mt-14 border-l border-brass pl-7">
-            <p className="font-heading text-2xl leading-9 text-foreground sm:text-3xl">
-              «Новое изделие должно выглядеть так, будто оно всегда было
-              частью исторического интерьера».
-            </p>
-          </blockquote>
+          <a
+            href="#workshop"
+            aria-label="Перейти к разделу «Мастерская»"
+            className="mt-8 grid h-[54px] w-[54px] place-items-center rounded-full border border-brass-dark text-brass-dark transition duration-300 hover:-rotate-45 hover:bg-brass-dark hover:text-white"
+          >
+            <Arrow className="rotate-90" />
+          </a>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

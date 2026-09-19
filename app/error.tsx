@@ -9,18 +9,18 @@ export default function GlobalError({
   return (
     <main
       id="main"
-      className="flex min-h-screen items-center bg-background px-6 lg:px-12"
+      className="section-pad flex min-h-screen flex-col justify-center"
     >
-      <div role="alert" className="mx-auto w-full max-w-3xl">
-        <p className="eyebrow">Что-то пошло не так</p>
-        <h1 className="mt-6 font-heading text-5xl leading-[1.05] text-foreground sm:text-6xl">
-          Не удалось загрузить страницу
+      <div role="alert">
+        <p className="kicker kicker-rule">Что-то пошло не так</p>
+        <h1 className="display display-lg my-7 max-w-[14ch]">
+          Не удалось <em>загрузить страницу.</em>
         </h1>
-        <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
+        <p className="max-w-[440px] text-[17px] leading-[1.8] text-muted">
           Попробуйте обновить страницу. Если ошибка повторяется, позвоните нам
           по телефону +7 (999) 064-64-17.
         </p>
-        <button type="button" onClick={reset} className="btn-line mt-10">
+        <button type="button" onClick={reset} className="button button-dark mt-9">
           Попробовать снова
         </button>
       </div>

@@ -1,126 +1,66 @@
-import Link from "next/link";
-
 import ContactForm from "@/components/ContactForm";
+import Reveal from "@/components/Reveal";
+import SiteFooter from "@/components/SiteFooter";
+import Arrow from "@/components/ui/Arrow";
+
+const detailLabel =
+  "mb-2.5 block font-mono text-[11px] uppercase tracking-[0.15em] text-brass-soft";
+const detailValue = "font-heading text-2xl";
 
 export default function Contacts() {
   return (
     <>
-      <section
-        id="contacts"
-        className="dark-surface border-t border-border bg-foreground px-6 py-20 text-white lg:px-12 lg:py-28"
-      >
-        <div className="mx-auto max-w-[1440px]">
-          <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.32em] text-brass-soft sm:text-sm">
-              Связаться с мастерской
-            </p>
-
-            <h2 className="mt-6 max-w-4xl font-heading text-4xl leading-tight sm:text-5xl lg:text-6xl">
-              Обсудим ваш проект и будущую фурнитуру
+      <section id="contacts" className="on-dark bg-dark text-white">
+        <Reveal className="mx-auto max-w-[1720px] px-[clamp(22px,11vw,170px)] py-[clamp(75px,10vw,140px)]">
+          <div className="max-w-[700px]">
+            <p className="kicker kicker-rule">05 — Связаться с мастерской</p>
+            <h2 className="display display-lg mb-[27px] mt-[22px]">
+              Расскажите,
+              <br />
+              <em>что задумали.</em>
             </h2>
-
-            <p className="mt-8 max-w-2xl text-base leading-8 text-white/65 sm:text-lg">
-              Пришлите фотографию исторического образца, чертёж, эскиз или
-              описание задачи. Мы обсудим размеры, материал, обработку и
-              подготовим проект будущего изделия.
+            <p className="max-w-[450px] leading-[1.8] text-[#c9c7bd]">
+              Пришлите фотографию образца, чертёж, эскиз или описание задачи.
+              Обсудим размеры, материал и обработку.
             </p>
           </div>
 
-          <div className="mt-14 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+          <div className="mt-[75px] grid gap-[10vw] border-t border-[#494a42] pt-[45px] min-[901px]:grid-cols-[1.1fr_0.9fr] max-[900px]:gap-[6vw] max-[560px]:mt-[55px] max-[560px]:gap-[55px]">
             <ContactForm />
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
-              <a
-                href="tel:+79990646417"
-                className="group rounded-[28px] border border-white/15 p-7 transition duration-300 hover:border-brass-soft hover:bg-white/5"
-              >
-                <p className="text-xs uppercase tracking-[0.24em] text-brass-soft">
-                  Телефон
-                </p>
-
-                <p className="mt-4 font-heading text-2xl sm:text-3xl">
+            <div className="grid content-start gap-7">
+              <a href="tel:+79990646417" className="group block">
+                <span className={detailLabel}>Телефон</span>
+                <span className={`${detailValue} transition-colors group-hover:text-brass-soft`}>
                   +7 (999) 064-64-17
-                </p>
-
-                <p className="mt-3 text-sm text-white/70">
-                  Позвонить в мастерскую
-                </p>
+                </span>
               </a>
+
+              <a href="mailto:info@empirebrass.ru" className="group block">
+                <span className={detailLabel}>Электронная почта</span>
+                <span className={`${detailValue} transition-colors group-hover:text-brass-soft`}>
+                  info@empirebrass.ru
+                </span>
+              </a>
+
+              <p>
+                <span className={detailLabel}>Мастерская</span>
+                <span className={detailValue}>Санкт-Петербург</span>
+              </p>
 
               <a
-                href="mailto:info@empirebrass.ru"
-                className="group rounded-[28px] border border-white/15 p-7 transition duration-300 hover:border-brass-soft hover:bg-white/5"
+                href="#top"
+                className="mt-5 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.1em] transition-colors hover:text-brass-soft"
               >
-                <p className="text-xs uppercase tracking-[0.24em] text-brass-soft">
-                  Электронная почта
-                </p>
-
-                <p className="mt-4 font-heading text-2xl sm:text-3xl">
-                  info@empirebrass.ru
-                </p>
-
-                <p className="mt-3 text-sm text-white/70">
-                  Для чертежей, технических заданий и сотрудничества
-                </p>
+                Наверх
+                <Arrow className="-rotate-90" />
               </a>
             </div>
           </div>
-
-          <div className="mt-16 grid gap-8 border-t border-white/15 pt-10 sm:grid-cols-3">
-            <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-brass-soft">
-                Мастерская
-              </p>
-
-              <p className="mt-3 text-base text-white/75">
-                Empirebrass
-              </p>
-            </div>
-
-            <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-brass-soft">
-                Город
-              </p>
-
-              <p className="mt-3 text-base text-white/75">
-                Санкт-Петербург
-              </p>
-            </div>
-
-            <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-brass-soft">
-                Направление
-              </p>
-
-              <p className="mt-3 text-base text-white/75">
-                Историческая латунная фурнитура
-              </p>
-              </div>
-          </div>
-        </div>
+        </Reveal>
       </section>
 
-      <footer className="dark-surface bg-[#1d1a17] px-6 py-8 text-white lg:px-12">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-5 text-sm text-white/70 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 Empirebrass</p>
-
-          <div className="flex flex-wrap items-center gap-6">
-            <Link
-              href="/"
-              className="transition duration-300 hover:text-white"
-            >
-              Мастерская исторической латунной фурнитуры
-            </Link>
-
-            <Link
-              href="/privacy"
-              className="transition duration-300 hover:text-white"
-            >
-              Политика обработки персональных данных
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

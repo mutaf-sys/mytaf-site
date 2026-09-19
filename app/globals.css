@@ -1,15 +1,26 @@
 @import "tailwindcss";
 
+/*
+  Редакторский стиль Empirebrass.
+  Палитра взята из макета «editorial»; для читаемости золото разделено:
+  --brass      — крупные акценты и линии (контраст >= 3:1 на бумаге)
+  --brass-dark — мелкий текст на светлом фоне (контраст >= 4.5:1)
+  --brass-soft — акцент на тёмном фоне
+*/
 :root {
-  --background: #f7f3eb;
-  --surface: #fffdf9;
-  --foreground: #26221d;
-  --muted: #746c61;
+  --background: #ede9e1;
+  --surface: #f7f4ee;
+  --foreground: #191a16;
+  --muted: #5f6159;
+  --border: #c8c5bb;
   --brass: #a67c38;
   --brass-dark: #7e5e28;
-  --brass-soft: #c9a96e;
-  --border: #d9cfbf;
+  --brass-soft: #d1ad73;
+  --dark: #262721;
+  --footer: #151611;
+  --estimate: #e5e0d6;
   --warn: #e0a45a;
+  --header-h: 84px;
 }
 
 @theme inline {
@@ -17,69 +28,14 @@
   --color-surface: var(--surface);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
+  --color-border: var(--border);
   --color-brass: var(--brass);
   --color-brass-dark: var(--brass-dark);
   --color-brass-soft: var(--brass-soft);
-  --color-border: var(--border);
+  --color-dark: var(--dark);
+  --color-footer: var(--footer);
+  --color-estimate: var(--estimate);
   --color-warn: var(--warn);
-}
-
-/* Тонкая обводка + uppercase-лейбл вместо "пилюль" — минималистичные кнопки */
-.btn-line {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.9rem 2rem;
-  border: 1px solid var(--brass);
-  font-size: 0.8rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--brass-dark);
-  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
-}
-
-.btn-line:hover {
-  background: var(--brass-dark);
-  border-color: var(--brass-dark);
-  color: #fff;
-}
-
-.btn-line-invert {
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #fff;
-}
-
-.btn-line-invert:hover {
-  background: #fff;
-  color: var(--foreground);
-  border-color: #fff;
-}
-
-.eyebrow {
-  font-size: 0.72rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--brass-dark);
-}
-
-/* Мягкий параллакс/зум по наведению — используется в карточках и галерее */
-.media-zoom {
-  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.group:hover .media-zoom {
-  transform: scale(1.05);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  * {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
 }
 
 * {
@@ -88,7 +44,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
 }
 
 body {
@@ -115,7 +71,8 @@ a {
 
 button,
 input,
-textarea {
+textarea,
+select {
   font: inherit;
 }
 
@@ -130,12 +87,10 @@ img {
 
 ::selection {
   background: var(--brass);
-  color: #ffffff;
-}
-.font-heading {
-  font-family: var(--font-heading), Georgia, serif;
+  color: #fff;
 }
 
+.font-heading,
 h1,
 h2,
 h3,
@@ -144,17 +99,254 @@ h4 {
   font-weight: 500;
 }
 
-html {
-  scroll-behavior: smooth;
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
 }
-/* Видимый фокус для клавиатуры (WCAG 2.4.7); на тёмных блоках — светлее */
+
+/* ---------- Типографика ---------- */
+
+.kicker {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--brass-dark);
+}
+
+.eyebrow {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--brass-dark);
+}
+
+.kicker-rule::before {
+  content: "";
+  display: inline-block;
+  width: 26px;
+  border-top: 1px solid var(--brass);
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.on-dark .kicker,
+.kicker.on-dark,
+.on-dark .eyebrow {
+  color: var(--brass-soft);
+}
+
+.display {
+  font-family: var(--font-heading), Georgia, serif;
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.display em {
+  color: var(--brass);
+  font-style: italic;
+}
+
+.on-dark .display em {
+  color: var(--brass-soft);
+}
+
+.display-xl {
+  font-size: clamp(50px, 6vw, 96px);
+}
+
+.display-lg {
+  font-size: clamp(42px, 5vw, 75px);
+}
+
+.display-md {
+  font-size: clamp(38px, 4.4vw, 62px);
+}
+
+/* ---------- Кнопки и ссылки ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  border: 1px solid transparent;
+  padding: 15px 24px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  transition: transform 0.25s, background 0.25s, border-color 0.25s,
+    color 0.25s;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+.button-dark {
+  background: var(--foreground);
+  color: #fff;
+}
+
+.button-dark:hover {
+  background: var(--brass-dark);
+}
+
+.button-outline,
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  border: 1px solid var(--brass-dark);
+  padding: 15px 24px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--foreground);
+  transition: transform 0.25s, background 0.25s, color 0.25s;
+}
+
+.button-outline:hover,
+.btn-line:hover {
+  background: var(--brass-dark);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.button-brass {
+  background: var(--brass-dark);
+  color: #fff;
+}
+
+.button-brass:hover {
+  background: var(--foreground);
+}
+
+/* на тёмных блоках */
+.on-dark .button-brass,
+.button-brass.on-dark {
+  background: var(--brass-soft);
+  color: var(--foreground);
+}
+
+.on-dark .button-brass:hover,
+.button-brass.on-dark:hover {
+  background: #fff;
+}
+
+.on-dark .button-outline,
+.button-outline.on-dark,
+.btn-line-invert {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
+}
+
+.on-dark .button-outline:hover,
+.button-outline.on-dark:hover,
+.btn-line-invert:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--foreground);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--brass);
+  padding-bottom: 5px;
+  transition: color 0.25s ease;
+}
+
+.text-link:hover {
+  color: var(--brass-dark);
+}
+
+.on-dark .text-link:hover {
+  color: var(--brass-soft);
+}
+
+.arrow {
+  display: inline-block;
+  width: 18px;
+  height: 10px;
+  flex: none;
+  transition: transform 0.25s ease;
+}
+
+a:hover > .arrow,
+.button:hover > .arrow,
+.text-link:hover > .arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Раскладка ---------- */
+
+.section-pad {
+  max-width: 1440px;
+  margin: auto;
+  padding: clamp(80px, 10vw, 150px) clamp(22px, 8vw, 120px);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 65px;
+}
+
+.section-head > p {
+  max-width: 310px;
+  line-height: 1.7;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* ---------- Фото: цвета изделий не меняем ---------- */
+
+.media-zoom {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .media-zoom {
+  transform: scale(1.05);
+}
+
+.shade-bottom::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(20deg, rgba(15, 15, 11, 0.62), transparent 60%);
+  pointer-events: none;
+}
+
+/* ---------- Доступность ---------- */
+
 :focus-visible {
   outline: 2px solid var(--brass-dark);
   outline-offset: 3px;
-  border-radius: 2px;
 }
 
-.dark-surface :focus-visible {
+.dark-surface :focus-visible,
+.on-dark :focus-visible,
+.dark-surface:focus-visible {
   outline-color: var(--brass-soft);
 }
 
@@ -173,4 +365,32 @@ html {
 
 .skip-link:focus {
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .section-head {
+    display: block;
+    margin-bottom: 45px;
+  }
+
+  .section-head > p {
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --header-h: 72px;
+  }
 }

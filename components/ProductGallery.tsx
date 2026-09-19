@@ -26,7 +26,7 @@ export default function ProductGallery({
   return (
     <div>
       {hasInterior && (
-        <div className="mb-5 inline-flex border border-border text-xs uppercase tracking-[0.2em]">
+        <div className="mb-5 inline-flex border border-border font-mono text-xs uppercase tracking-[0.14em]">
           <button
             type="button"
             onClick={() => setTab("studio")}
@@ -56,7 +56,7 @@ export default function ProductGallery({
         type="button"
         onClick={() => setOpenIndex(0)}
         aria-label={`Открыть фото: ${title}`}
-        className="group relative block aspect-[4/5] w-full overflow-hidden rounded-[28px] bg-surface shadow-[0_30px_80px_rgba(50,40,25,0.14)]"
+        className="group relative block aspect-[4/5] w-full overflow-hidden bg-surface"
       >
         <Image
           src={activeImages[0]}
@@ -76,7 +76,7 @@ export default function ProductGallery({
               type="button"
               onClick={() => setOpenIndex(i + 1)}
               aria-label={`Открыть фото ${i + 2}`}
-              className="relative aspect-square overflow-hidden rounded-xl bg-surface"
+              className="relative aspect-square overflow-hidden bg-surface"
             >
               <Image
                 src={src}

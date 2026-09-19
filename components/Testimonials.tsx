@@ -25,15 +25,13 @@ export default function Testimonials() {
   if (testimonials.length === 0) return null;
 
   return (
-    <section className="border-y border-border bg-[#eee8dd] px-6 py-24 sm:py-28 lg:px-12 lg:py-32">
-      <div className="mx-auto max-w-[1440px]">
+    <section className="border-y border-border bg-estimate">
+      <div className="section-pad">
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.32em] text-brass-dark sm:text-sm">
-            Отзывы
-          </p>
+          <p className="kicker kicker-rule">Отзывы</p>
 
-          <h2 className="mt-5 font-heading text-4xl leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
-            Что говорят клиенты
+          <h2 className="display display-lg mt-[22px]">
+            Что говорят <em>клиенты.</em>
           </h2>
         </div>
 
@@ -41,7 +39,7 @@ export default function Testimonials() {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.name + testimonial.role}
-              className="flex flex-col rounded-[28px] border border-border bg-surface p-8"
+              className="flex flex-col border border-border bg-surface p-8"
             >
               <p className="font-heading text-xl leading-8 text-foreground sm:text-2xl">
                 {testimonial.quote}

@@ -1,90 +1,107 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const items = [
+import Reveal from "@/components/Reveal";
+import Arrow from "@/components/ui/Arrow";
+import { projects, type Category } from "@/data/projects";
+import { plural } from "@/lib/plural";
+
+const items: { title: Category; note: string; image: string }[] = [
   {
     title: "Дверные ручки",
-    image: "/images/catalog/door-handles/ruchka-balyasina-para.jpg",
-    href: "/projects?category=Дверные+ручки",
+    note: "Архитектурная деталь",
+    image: "/images/catalog/door-handles/ruchka-skoba-dub.jpg",
   },
   {
     title: "Шпингалеты",
+    note: "Точная механика",
     image: "/images/catalog/bolts/zadvizhka-reznaya-v-sbore.jpg",
-    href: "/projects?category=Шпингалеты",
   },
   {
     title: "Петли",
+    note: "Классика формы",
     image: "/images/catalog/hinges/petlya-sharovidnye-nakonechniki.jpg",
-    href: "/projects?category=Петли",
   },
   {
     title: "Оконная фурнитура",
+    note: "Для старых окон",
     image: "/images/catalog/window-fittings/nabor-espanoletok.jpg",
-    href: "/projects?category=Оконная+фурнитура",
-  },
-  {
-    title: "Изготовление на заказ",
-    image: "/images/catalog/banner-collection.jpg",
-    href: "/#estimate",
   },
 ];
 
 export default function Collection() {
   return (
-    <section
-      id="collection"
-      className="mx-auto max-w-[1720px] px-6 py-24 sm:py-28 lg:px-12 lg:py-32"
-    >
-      <div className="max-w-4xl">
-        <p className="eyebrow">Категории</p>
+    <section id="collection" className="section-pad">
+      <Reveal>
+        <div className="section-head">
+          <div>
+            <p className="kicker kicker-rule">01 — Коллекция</p>
+            <h2 className="display display-lg mt-[22px]">
+              Предметы,
+              <br />
+              <em>которые остаются.</em>
+            </h2>
+          </div>
+          <p>
+            Четыре направления исторической фурнитуры — для дома, реставрации
+            и тех случаев, когда важна каждая деталь.
+          </p>
+        </div>
+      </Reveal>
 
-        <h2 className="mt-4 font-heading text-4xl leading-tight text-foreground sm:text-5xl lg:text-6xl">
-          Категории фурнитуры
-        </h2>
+      <ul className="grid grid-cols-4 gap-[18px] max-[900px]:grid-cols-2 max-[560px]:gap-x-3 max-[560px]:gap-y-[25px]">
+        {items.map((item, i) => {
+          const count = projects.filter((p) => p.category === item.title).length;
 
-        <p className="mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg">
-          Историческая латунная фурнитура, созданная вручную по оригинальным
-          образцам, архивным материалам и индивидуальным эскизам.
-        </p>
-      </div>
+          return (
+            <li
+              key={item.title}
+              className="min-[901px]:even:mt-[60px] max-[900px]:even:mt-[45px] max-[560px]:even:mt-[25px]"
+            >
+              <Reveal delay={i * 80}>
+                <Link
+                  href={`/projects?category=${encodeURIComponent(item.title)}`}
+                  className="group block"
+                >
+                  <div className="shade-bottom relative aspect-[3/4] overflow-hidden bg-[#d5d0c5]">
+                    <Image
+                      src={item.image}
+                      alt=""
+                      fill
+                      sizes="(max-width: 560px) 50vw, (max-width: 900px) 50vw, 25vw"
+                      className="media-zoom object-cover"
+                    />
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-[18px] top-4 z-10 font-mono text-[11px] text-white"
+                    >
+                      0{i + 1}
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className="absolute right-4 top-[14px] z-10 grid h-[34px] w-[34px] place-items-center rounded-full border border-white/70 text-white transition duration-300 group-hover:rotate-[-45deg] group-hover:border-brass-dark group-hover:bg-brass-dark"
+                    >
+                      <Arrow />
+                    </span>
+                  </div>
 
-      <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
-        {items.map((item) => (
-          <Link
-            key={item.title}
-            href={item.href}
-            aria-label={item.title}
-            className="group relative block overflow-hidden rounded-[28px] border border-border bg-[#eee8dd] shadow-sm transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-brass-soft hover:shadow-[0_28px_65px_rgba(38,34,29,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass focus-visible:ring-offset-4"
-          >
-            <div className="relative h-[320px] overflow-hidden sm:h-[380px]">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                sizes="(max-width: 767px) 100vw, 33vw"
-                className="object-cover media-zoom"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent transition-opacity duration-500 group-hover:opacity-90" />
-
-              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                <div className="flex items-end justify-between gap-6">
-                  <h3 className="font-heading text-2xl leading-tight text-white sm:text-3xl">
-                    {item.title}
-                  </h3>
-
-                  <span
-                    aria-hidden="true"
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/50 text-xl text-white transition-all duration-300 group-hover:translate-x-1 group-hover:border-brass-soft group-hover:bg-brass"
-                  >
-                    →
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+                  <div className="border-b border-border py-[17px]">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-brass-dark">
+                      {item.note}
+                    </span>
+                    <h3 className="mt-2 text-[23px] leading-tight max-[560px]:text-[19px]">
+                      {item.title}
+                    </h3>
+                    <small className="mt-3 block font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
+                      {count} {plural(count, ["изделие", "изделия", "изделий"])}
+                    </small>
+                  </div>
+                </Link>
+              </Reveal>
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }

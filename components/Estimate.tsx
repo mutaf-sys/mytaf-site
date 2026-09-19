@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
+import Arrow from "@/components/ui/Arrow";
+
 // Ориентировочные базовые цены за одно изделие, в рублях.
 // Это плейсхолдеры для примерного расчёта на сайте — отредактируйте
 // под свои реальные цены, когда они будут готовы.
@@ -28,6 +30,12 @@ function formatRub(value: number) {
   return new Intl.NumberFormat("ru-RU").format(Math.round(value / 100) * 100);
 }
 
+const estimateLabel =
+  "font-mono text-[11px] uppercase tracking-[0.16em] text-brass-dark";
+
+const estimateField =
+  "mt-3 w-full rounded-2xl border border-[#d9d0c3] bg-white px-4 py-[15px] text-[15px] text-foreground transition focus:border-brass-dark";
+
 export default function Estimate() {
   const [category, setCategory] = useState(categories[0]);
   const [finish, setFinish] = useState(finishes[0]);
@@ -45,41 +53,33 @@ export default function Estimate() {
   }, [category, finish, quantity]);
 
   return (
-    <section
-      id="estimate"
-      className="mx-auto max-w-[1440px] px-6 py-24 sm:py-28 lg:px-12 lg:py-32"
-    >
-      <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-        <div>
-          <p className="text-xs uppercase tracking-[0.32em] text-brass-dark sm:text-sm">
-            Расчёт стоимости
-          </p>
-
-          <h2 className="mt-5 font-heading text-4xl leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
-            Узнайте ориентировочную стоимость
+    <section id="estimate" className="bg-estimate">
+      <div className="section-pad grid items-center gap-[8vw] min-[901px]:grid-cols-[0.8fr_1.2fr] max-[900px]:gap-[45px]">
+        <div className="max-w-[470px]">
+          <p className="kicker kicker-rule">04 — Расчёт стоимости</p>
+          <h2 className="display display-lg mb-6 mt-[22px]">
+            Узнайте
+            <br />
+            <em>ориентир.</em>
           </h2>
-
-          <p className="mt-6 max-w-md text-base leading-7 text-muted">
+          <p className="max-w-[440px] text-[15px] leading-[1.85] text-muted">
             Итоговая цена зависит от сложности формы, размеров и состояния
             образца. Ниже — примерный диапазон, точную стоимость мы
             подтвердим после обсуждения проекта.
           </p>
         </div>
 
-        <div className="rounded-[32px] border border-border bg-surface p-6 shadow-sm sm:p-10">
-          <div className="grid gap-6 sm:grid-cols-2">
+        <div className="rounded-[28px] border border-[#d1c9bc] bg-surface p-[clamp(24px,4vw,42px)] shadow-[0_18px_45px_rgba(35,31,23,0.08)]">
+          <div className="grid gap-x-6 gap-y-7 min-[561px]:grid-cols-[1.1fr_0.9fr] max-[560px]:gap-y-5">
             <div>
-              <label
-                htmlFor="estimate-category"
-                className="text-xs uppercase tracking-[0.2em] text-brass-dark"
-              >
+              <label htmlFor="estimate-category" className={estimateLabel}>
                 Тип изделия
               </label>
               <select
                 id="estimate-category"
                 value={category}
                 onChange={(event) => setCategory(event.target.value)}
-                className="mt-3 w-full rounded-2xl border border-border bg-white px-4 py-3 text-foreground outline-none transition focus:border-brass"
+                className={estimateField}
               >
                 {categories.map((item) => (
                   <option key={item} value={item}>
@@ -90,17 +90,14 @@ export default function Estimate() {
             </div>
 
             <div>
-              <label
-                htmlFor="estimate-finish"
-                className="text-xs uppercase tracking-[0.2em] text-brass-dark"
-              >
+              <label htmlFor="estimate-finish" className={estimateLabel}>
                 Отделка
               </label>
               <select
                 id="estimate-finish"
                 value={finish}
                 onChange={(event) => setFinish(event.target.value)}
-                className="mt-3 w-full rounded-2xl border border-border bg-white px-4 py-3 text-foreground outline-none transition focus:border-brass"
+                className={estimateField}
               >
                 {finishes.map((item) => (
                   <option key={item} value={item}>
@@ -111,10 +108,7 @@ export default function Estimate() {
             </div>
 
             <div>
-              <label
-                htmlFor="estimate-quantity"
-                className="text-xs uppercase tracking-[0.2em] text-brass-dark"
-              >
+              <label htmlFor="estimate-quantity" className={estimateLabel}>
                 Количество, шт.
               </label>
               <input
@@ -122,34 +116,31 @@ export default function Estimate() {
                 type="number"
                 min={1}
                 value={quantity}
-                onChange={(event) =>
-                  setQuantity(Number(event.target.value))
-                }
-                className="mt-3 w-full rounded-2xl border border-border bg-white px-4 py-3 text-foreground outline-none transition focus:border-brass"
+                onChange={(event) => setQuantity(Number(event.target.value))}
+                className={estimateField}
               />
             </div>
 
-            <div className="flex flex-col justify-end">
-              <p className="text-xs uppercase tracking-[0.2em] text-brass-dark">
-                Ориентировочно
-              </p>
-              <p className="mt-3 font-heading text-2xl text-foreground sm:text-3xl">
+            <div className="flex flex-col justify-end pb-3.5 max-[560px]:pb-0" aria-live="polite">
+              <p className={estimateLabel}>Ориентировочно</p>
+              <p className="mt-2.5 whitespace-nowrap font-heading text-[clamp(25px,3vw,39px)] tracking-[-0.04em]">
                 {formatRub(estimate.from)} – {formatRub(estimate.to)} ₽
               </p>
             </div>
           </div>
 
-          <div className="mt-8 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-muted">
+          <div className="mt-[30px] flex items-center justify-between gap-6 border-t border-[#d9d0c3] pt-[26px] max-[560px]:block">
+            <p className="max-w-[380px] text-[13px] leading-relaxed text-muted">
               Это предварительная оценка. Финальная цена — после изучения
               образца, чертежа или фотографии.
             </p>
 
             <Link
               href="#contacts"
-              className="inline-flex shrink-0 items-center justify-center rounded-full bg-brass-dark px-7 py-3.5 text-sm text-white transition duration-300 hover:-translate-y-0.5 hover:bg-foreground"
+              className="button button-brass whitespace-nowrap max-[560px]:mt-[22px] max-[560px]:w-full"
             >
               Обсудить точную стоимость
+              <Arrow />
             </Link>
           </div>
         </div>
