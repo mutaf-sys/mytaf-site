@@ -48,5 +48,4 @@ export const workshopPhotos: WorkshopPhoto[] = [
   { src: "/images/workshop/workshop-40.jpg", alt: "Собранная задвижка на верстаке", width: 1400, height: 1867 },
   { src: "/images/workshop/workshop-41.jpg", alt: "Задвижка, крупный план", width: 1400, height: 1867 },
   { src: "/images/workshop/workshop-42.jpg", alt: "Ручка на фоне картонных коробок", width: 1400, height: 1050 },
-  { src: "/images/workshop/workshop-43.jpg", alt: "Ручка с розеткой на верстаке", width: 1400, height: 1867 },
 ];
