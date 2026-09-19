@@ -18,7 +18,7 @@ export default function NotFound() {
         id="main"
         className="section-pad flex min-h-[70vh] flex-col justify-center"
       >
-        <p className="kicker kicker-rule">Ошибка 404</p>
+        <p className="kicker">Ошибка 404</p>
         <h1 className="display display-xl mb-9 mt-7 max-w-[10ch]">
           Такой страницы <em>нет.</em>
         </h1>

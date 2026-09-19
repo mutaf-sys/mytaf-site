@@ -18,7 +18,7 @@ export default function LeaveReviewPage() {
   return (
     <main id="main" className="on-dark flex min-h-screen items-center bg-dark px-6 py-24 text-white">
       <div className="mx-auto w-full max-w-xl">
-        <p className="kicker kicker-rule">
+        <p className="kicker">
           Мастерская Empirebrass
         </p>
 

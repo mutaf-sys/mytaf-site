@@ -35,7 +35,7 @@ export default function Collection() {
       <Reveal>
         <div className="section-head">
           <div>
-            <p className="kicker kicker-rule">01 — Коллекция</p>
+            <p className="kicker">01 — Коллекция</p>
             <h2 className="display display-lg mt-[22px]">
               Предметы,
               <br />

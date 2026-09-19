@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import Reveal from "@/components/Reveal";
 import Arrow from "@/components/ui/Arrow";
@@ -21,17 +20,16 @@ export default function Hero() {
           <em>с характером.</em>
         </h1>
 
-        <p className="max-w-[480px] text-[15px] leading-[1.8] text-muted min-[561px]:text-[17px]">
+        <p className="max-w-[480px] text-sm leading-[1.8] text-muted min-[561px]:text-base">
           Историческая латунная фурнитура ручной работы для интерьеров, музеев
-          и объектов культурного наследия. Дверные ручки, петли, шпингалеты и
-          оконная фурнитура — по образцам, чертежам и эскизам.
+          и объектов культурного наследия.
         </p>
 
         <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-5">
-          <Link href="/projects" className="button button-dark">
-            Смотреть каталог
-            <Arrow />
-          </Link>
+          <a href="#collection" className="button button-dark">
+            Смотреть коллекцию
+            <Arrow className="rotate-90" />
+          </a>
           <a href="#about" className="text-link">
             О мастерской
             <Arrow />

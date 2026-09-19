@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -51,15 +50,13 @@ export default function Header() {
           aria-label="Empirebrass — на главную"
           className="flex items-center gap-3"
         >
-          <span className="relative h-[42px] w-[42px] shrink-0 overflow-hidden rounded-full border border-foreground bg-surface">
-            <Image
-              src="/images/logo.jpg"
-              alt=""
-              fill
-              sizes="42px"
-              className="object-contain p-1"
-              priority
-            />
+          <span
+            aria-hidden="true"
+            className="grid h-[42px] w-[42px] shrink-0 place-items-center rounded-full border border-foreground"
+          >
+            <span className="pr-1 font-heading text-[21px] leading-none tracking-[-4px]">
+              E<span className="text-brass">B</span>
+            </span>
           </span>
 
           <span>
@@ -74,17 +71,15 @@ export default function Header() {
 
         <nav
           aria-label="Основная навигация"
-          className="hidden gap-8 text-xs uppercase tracking-[0.13em] min-[901px]:flex"
+          className="hidden gap-1 text-xs uppercase tracking-[0.13em] min-[901px]:flex"
         >
           {navigation.map((item) => (
             <Link
               key={item.title}
               href={item.href}
               aria-current={isCurrent(item.match) ? "page" : undefined}
-              className={`transition-colors duration-300 hover:text-brass-dark ${
-                isCurrent(item.match)
-                  ? "border-b border-brass pb-1 text-brass-dark"
-                  : ""
+              className={`px-4 py-2.5 transition-colors duration-300 hover:bg-foreground hover:text-white ${
+                isCurrent(item.match) ? "bg-foreground text-white" : ""
               }`}
             >
               {item.title}
@@ -94,7 +89,7 @@ export default function Header() {
 
         <Link
           href="/#contacts"
-          className="hidden items-center gap-2 text-[11px] font-medium uppercase tracking-[0.13em] transition-colors duration-300 hover:text-brass-dark min-[901px]:flex"
+          className="hidden items-center gap-2 px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.13em] transition-colors duration-300 hover:bg-brass-dark hover:text-white min-[901px]:flex"
         >
           Обсудить проект
           <Arrow />

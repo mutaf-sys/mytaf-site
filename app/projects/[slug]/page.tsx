@@ -99,7 +99,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             />
 
             <div className="max-w-[520px] min-[901px]:sticky min-[901px]:top-[110px]">
-              <p className="kicker kicker-rule">{project.category}</p>
+              <p className="kicker">{project.category}</p>
 
               <h1 className="display display-md my-6 break-words">
                 {project.title}

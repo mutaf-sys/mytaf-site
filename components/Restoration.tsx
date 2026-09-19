@@ -9,29 +9,29 @@ export default function Restoration() {
     <section id="restoration" className="section-pad">
       <Reveal className="grid items-center gap-[11vw] min-[901px]:grid-cols-2 max-[900px]:gap-[6vw] max-[560px]:gap-[45px]">
         <div className="grid h-[620px] grid-cols-2 gap-3.5 max-[700px]:h-[520px] max-[560px]:h-[430px]">
-          <div className="relative overflow-hidden bg-surface">
+          <div className="relative">
             <Image
-              src="/images/historic/restoration-window.jpg"
-              alt="Оконная фурнитура, установленная на деревянное окно при реставрации"
+              src="/images/historic/cutout-25.webp"
+              alt="Оконный шпингалет с фигурной ручкой"
               fill
               sizes="(max-width: 900px) 45vw, 22vw"
-              className="object-cover"
+              className="object-contain"
             />
           </div>
-          <div className="relative mt-12 overflow-hidden bg-surface">
+          <div className="relative mt-12">
             <Image
-              src="/images/historic/restoration-escutcheon.jpg"
-              alt="Накладка на замочную скважину, установленная на деревянную дверь"
+              src="/images/historic/cutout-26.webp"
+              alt="Оконная фурнитура с резной розеткой"
               fill
               sizes="(max-width: 900px) 45vw, 22vw"
-              className="object-cover"
+              className="object-contain"
             />
           </div>
         </div>
 
         <div>
-          <p className="kicker kicker-rule">03 — Реставрация</p>
-          <h2 className="display display-lg mt-[22px] mb-7">
+          <p className="kicker">03 — Реставрация</p>
+          <h2 className="display display-lg mb-7 mt-[22px]">
             История
             <br />
             <em>в точности.</em>

@@ -13,7 +13,7 @@ export default function Contacts() {
       <section id="contacts" className="on-dark bg-dark text-white">
         <Reveal className="mx-auto max-w-[1720px] px-[clamp(22px,11vw,170px)] py-[clamp(75px,10vw,140px)]">
           <div className="max-w-[700px]">
-            <p className="kicker kicker-rule">05 — Связаться с мастерской</p>
+            <p className="kicker">05 — Связаться с мастерской</p>
             <h2 className="display display-lg mb-[27px] mt-[22px]">
               Расскажите,
               <br />

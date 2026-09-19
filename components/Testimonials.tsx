@@ -28,7 +28,7 @@ export default function Testimonials() {
     <section className="border-y border-border bg-estimate">
       <div className="section-pad">
         <div className="max-w-2xl">
-          <p className="kicker kicker-rule">Отзывы</p>
+          <p className="kicker">Отзывы</p>
 
           <h2 className="display display-lg mt-[22px]">
             Что говорят <em>клиенты.</em>

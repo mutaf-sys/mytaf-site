@@ -30,14 +30,6 @@ export const categories: Category[] = [
 export const projects: Project[] = [
   // Дверные ручки
   {
-    slug: "ruchka-balyasina-para",
-    title: "Оконная ручка",
-    category: "Дверные ручки",
-    studioImages: ["/images/catalog/door-handles/ruchka-balyasina-para.jpg"],
-    description:
-      "Парная дверная ручка на овальной розетке. Точёный стержень классической балясинной формы, полированная латунь.",
-  },
-  {
     slug: "ruchka-paradnaya-kub",
     title: "Ручка парадная куб",
     category: "Дверные ручки",
@@ -60,14 +52,6 @@ export const projects: Project[] = [
     studioImages: ["/images/catalog/door-handles/ruchka-skoba-dub.jpg"],
     description:
       "Скоба-ручка с рукоятью из светлого дуба и латунными торцевыми муфтами.",
-  },
-  {
-    slug: "ruchka-knopka-riflenaya",
-    title: "Оконная лодочка",
-    category: "Дверные ручки",
-    studioImages: ["/images/catalog/door-handles/ruchka-knopka-riflenaya.jpg"],
-    description:
-      "Круглая ручка-кнопка с рифлёной поверхностью на овальной розетке. Фото из архива мастерской.",
   },
 
   // Петли
@@ -215,6 +199,22 @@ export const projects: Project[] = [
   },
 
   // Оконная фурнитура
+  {
+    slug: "ruchka-balyasina-para",
+    title: "Оконная ручка",
+    category: "Оконная фурнитура",
+    studioImages: ["/images/catalog/door-handles/ruchka-balyasina-para.jpg"],
+    description:
+      "Парная оконная ручка на овальной розетке. Точёный стержень классической балясинной формы, полированная латунь.",
+  },
+  {
+    slug: "ruchka-knopka-riflenaya",
+    title: "Оконная лодочка",
+    category: "Оконная фурнитура",
+    studioImages: ["/images/catalog/door-handles/ruchka-knopka-riflenaya.jpg"],
+    description:
+      "Круглая ручка-кнопка с рифлёной поверхностью на овальной розетке. Фото из архива мастерской.",
+  },
   {
     slug: "nabor-okonnyj",
     title: "Оконный комплект: скоба и шпингалеты",

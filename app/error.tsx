@@ -12,7 +12,7 @@ export default function GlobalError({
       className="section-pad flex min-h-screen flex-col justify-center"
     >
       <div role="alert">
-        <p className="kicker kicker-rule">Что-то пошло не так</p>
+        <p className="kicker">Что-то пошло не так</p>
         <h1 className="display display-lg my-7 max-w-[14ch]">
           Не удалось <em>загрузить страницу.</em>
         </h1>

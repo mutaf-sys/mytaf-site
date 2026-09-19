@@ -38,7 +38,7 @@ function ProjectsCatalogInner() {
       <main id="main" className="min-h-screen bg-background">
         <section className="border-b border-border">
           <div className="section-pad !pb-[clamp(50px,6vw,90px)] !pt-[clamp(50px,6vw,90px)]">
-            <p className="kicker kicker-rule">Каталог мастерской</p>
+            <p className="kicker">Каталог мастерской</p>
             <h1 className="display display-xl mb-9 mt-7 max-w-[11ch]">
               Историческая латунная <em>фурнитура.</em>
             </h1>
@@ -144,7 +144,7 @@ function ProjectsCatalogInner() {
         <section className="on-dark bg-dark text-white">
           <div className="mx-auto grid max-w-[1720px] items-end gap-[8vw] px-[clamp(22px,11vw,170px)] py-[clamp(70px,9vw,120px)] min-[901px]:grid-cols-[1.2fr_0.8fr]">
             <div>
-              <p className="kicker kicker-rule">Индивидуальное изготовление</p>
+              <p className="kicker">Индивидуальное изготовление</p>
               <h2 className="display display-md mt-[22px]">
                 Создадим фурнитуру <em>специально для вашего проекта.</em>
               </h2>

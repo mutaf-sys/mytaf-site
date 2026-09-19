@@ -7,13 +7,16 @@
   --brass-dark — мелкий текст на светлом фоне (контраст >= 4.5:1)
   --brass-soft — акцент на тёмном фоне
 */
+/* Палитра по спецификации: фон #EDE9E1, текст #191A16, приглушённый #6F7169,
+   линии #C8C5BB, латунь #BA8D4E, светлая латунь #D1AD73.
+   --brass-dark — только для мелкого текста латунного цвета (читаемость). */
 :root {
   --background: #ede9e1;
   --surface: #f7f4ee;
   --foreground: #191a16;
-  --muted: #5f6159;
+  --muted: #6f7169;
   --border: #c8c5bb;
-  --brass: #a67c38;
+  --brass: #ba8d4e;
   --brass-dark: #7e5e28;
   --brass-soft: #d1ad73;
   --dark: #262721;
@@ -36,8 +39,11 @@
   --color-footer: var(--footer);
   --color-estimate: var(--estimate);
   --color-warn: var(--warn);
+  --font-heading: var(--font-playfair), Georgia, serif;
+  --font-mono: var(--font-dm-mono), var(--font-plex-mono), ui-monospace, monospace;
 }
 
+@layer base {
 * {
   box-sizing: border-box;
 }
@@ -51,7 +57,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body), Arial, sans-serif;
+  font-family: var(--font-manrope), Arial, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -90,23 +96,20 @@ img {
   color: #fff;
 }
 
-.font-heading,
 h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-heading), Georgia, serif;
+  font-family: var(--font-playfair), Georgia, serif;
   font-weight: 500;
 }
-
-.font-mono {
-  font-family: var(--font-mono), ui-monospace, monospace;
 }
 
+@layer components {
 /* ---------- Типографика ---------- */
 
 .kicker {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-dm-mono), var(--font-plex-mono), ui-monospace, monospace;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -114,7 +117,7 @@ h4 {
 }
 
 .eyebrow {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-dm-mono), var(--font-plex-mono), ui-monospace, monospace;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -137,7 +140,7 @@ h4 {
 }
 
 .display {
-  font-family: var(--font-heading), Georgia, serif;
+  font-family: var(--font-playfair), Georgia, serif;
   font-weight: 500;
   line-height: 0.96;
   letter-spacing: -0.05em;
@@ -335,6 +338,7 @@ a:hover > .arrow,
   inset: 0;
   background: linear-gradient(20deg, rgba(15, 15, 11, 0.62), transparent 60%);
   pointer-events: none;
+}
 }
 
 /* ---------- Доступность ---------- */

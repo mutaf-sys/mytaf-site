@@ -53,10 +53,10 @@ export default function Estimate() {
   }, [category, finish, quantity]);
 
   return (
-    <section id="estimate" className="bg-estimate">
-      <div className="section-pad grid items-center gap-[8vw] min-[901px]:grid-cols-[0.8fr_1.2fr] max-[900px]:gap-[45px]">
+    <section id="estimate" className="px-0">
+      <div className="mx-auto grid max-w-[1440px] items-center gap-[8vw] bg-estimate px-[clamp(22px,8vw,120px)] py-[clamp(80px,10vw,150px)] min-[901px]:grid-cols-[0.8fr_1.2fr] max-[900px]:gap-[45px]">
         <div className="max-w-[470px]">
-          <p className="kicker kicker-rule">04 — Расчёт стоимости</p>
+          <p className="kicker">04 — Расчёт стоимости</p>
           <h2 className="display display-lg mb-6 mt-[22px]">
             Узнайте
             <br />

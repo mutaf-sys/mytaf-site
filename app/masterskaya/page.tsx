@@ -23,7 +23,7 @@ export default function MasterskayaPage() {
       <main id="main" className="min-h-screen bg-background">
         <section className="border-b border-border">
           <div className="section-pad !pb-[clamp(50px,6vw,90px)] !pt-[clamp(50px,6vw,90px)]">
-            <p className="kicker kicker-rule">Мастерская</p>
+            <p className="kicker">Мастерская</p>
             <h1 className="display display-xl mb-9 mt-7 max-w-[12ch]">
               Там, где металл <em>обретает голос.</em>
             </h1>

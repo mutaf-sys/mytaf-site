@@ -8,10 +8,10 @@ import { workshopPhotos } from "@/data/workshop";
 export default function Workshop() {
   return (
     <section id="workshop" className="on-dark bg-foreground text-white">
-      <Reveal className="mx-auto grid max-w-[1720px] items-center gap-[9vw] px-[clamp(22px,11vw,170px)] py-[clamp(80px,10vw,150px)] min-[901px]:grid-cols-[0.8fr_1.2fr] max-[900px]:gap-[60px]">
+      <Reveal className="mx-auto grid max-w-[1720px] items-center gap-[9vw] px-[clamp(22px,11vw,170px)] py-[clamp(80px,10vw,150px)] min-[901px]:grid-cols-[0.9fr_1.1fr] max-[900px]:gap-[60px]">
         <div>
-          <p className="kicker kicker-rule">02 — Мастерская</p>
-          <h2 className="display display-lg mb-8 mt-[22px]">
+          <p className="kicker">02 — Мастерская</p>
+          <h2 className="display display-md mb-8 mt-[22px]">
             Там, где металл
             <br />
             <em>обретает голос.</em>
