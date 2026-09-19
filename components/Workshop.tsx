@@ -8,7 +8,7 @@ import { workshopPhotos } from "@/data/workshop";
 export default function Workshop() {
   return (
     <section id="workshop" className="on-dark bg-foreground text-white">
-      <Reveal className="mx-auto grid max-w-[1720px] items-center gap-[9vw] px-[clamp(22px,11vw,170px)] py-[clamp(80px,10vw,150px)] min-[901px]:grid-cols-[0.9fr_1.1fr] max-[900px]:gap-[60px]">
+      <Reveal className="mx-auto grid max-w-[1720px] items-center gap-[7vw] px-[clamp(22px,11vw,170px)] py-[clamp(80px,10vw,150px)] min-[901px]:grid-cols-[1.15fr_1fr] max-[900px]:gap-[60px]">
         <div>
           <p className="kicker">02 — Мастерская</p>
           <h2 className="display display-md mb-8 mt-[22px]">
@@ -16,7 +16,7 @@ export default function Workshop() {
             <br />
             <em>обретает голос.</em>
           </h2>
-          <p className="max-w-[390px] text-[15px] leading-[1.85] text-[#c9c7bd]">
+          <p className="max-w-[560px] text-[15px] leading-[1.85] text-[#c9c7bd]">
             Точение, литьё, ручная обработка и патинирование. Работаем
             внимательно и поэтапно, чтобы новая фурнитура органично вписалась
             в исторический интерьер.

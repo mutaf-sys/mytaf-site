@@ -50,7 +50,7 @@ export default function Testimonials() {
                   <p className="text-sm font-medium text-foreground">
                     {testimonial.name}
                   </p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-brass-dark">
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-brass">
                     {testimonial.role}
                   </p>
                 </div>

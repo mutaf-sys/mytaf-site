@@ -10,7 +10,7 @@ export default function About() {
       <Reveal className="mx-auto grid max-w-[1440px] gap-[4vw] px-[clamp(22px,8vw,120px)] py-[clamp(70px,9vw,140px)] min-[901px]:grid-cols-[0.25fr_1fr_1fr] max-[900px]:grid-cols-2 max-[560px]:grid-cols-1">
         <p
           aria-hidden="true"
-          className="font-mono text-[11px] text-brass-dark max-[900px]:col-span-full"
+          className="font-mono text-[10px] text-brass max-[900px]:col-span-full"
         >
           01 / 04
         </p>

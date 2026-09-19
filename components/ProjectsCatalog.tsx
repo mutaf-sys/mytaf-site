@@ -65,7 +65,7 @@ function ProjectsCatalogInner() {
               className={`${chip} ${
                 active === null
                   ? "border-foreground bg-foreground text-white"
-                  : "border-border hover:border-brass-dark hover:text-brass-dark"
+                  : "border-border hover:border-brass hover:text-brass"
               }`}
             >
               Все · {projects.length}
@@ -84,7 +84,7 @@ function ProjectsCatalogInner() {
                   className={`${chip} ${
                     isActive
                       ? "border-foreground bg-foreground text-white"
-                      : "border-border hover:border-brass-dark hover:text-brass-dark"
+                      : "border-border hover:border-brass hover:text-brass"
                   }`}
                 >
                   {category} · {count}
@@ -127,7 +127,7 @@ function ProjectsCatalogInner() {
                       />
                     </div>
                     <div className="border-b border-border pb-4 pt-4">
-                      <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-brass-dark">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-brass">
                         {project.category}
                       </span>
                       <h3 className="mt-2 text-[22px] leading-snug max-[560px]:text-[17px]">

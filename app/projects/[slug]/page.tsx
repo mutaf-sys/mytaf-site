@@ -75,7 +75,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <nav aria-label="Навигация по разделам">
             <ol className="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.1em] text-muted">
               <li>
-                <Link href="/projects" className="hover:text-brass-dark">
+                <Link href="/projects" className="hover:text-brass">
                   Каталог
                 </Link>
               </li>
@@ -83,7 +83,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <li>
                 <Link
                   href={`/projects?category=${encodeURIComponent(project.category)}`}
-                  className="hover:text-brass-dark"
+                  className="hover:text-brass"
                 >
                   {project.category}
                 </Link>
@@ -112,7 +112,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <dl className="mt-9 space-y-5 border-t border-border pt-7">
                 {project.material && (
                   <div>
-                    <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-brass-dark">
+                    <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-brass">
                       Материал
                     </dt>
                     <dd className="mt-2 text-base">{project.material}</dd>
@@ -120,7 +120,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 )}
 
                 <div>
-                  <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-brass-dark">
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-brass">
                     Изготовление
                   </dt>
                   <dd className="mt-2 text-base">

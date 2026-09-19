@@ -78,8 +78,8 @@ export default function Header() {
               key={item.title}
               href={item.href}
               aria-current={isCurrent(item.match) ? "page" : undefined}
-              className={`px-4 py-2.5 transition-colors duration-300 hover:bg-foreground hover:text-white ${
-                isCurrent(item.match) ? "bg-foreground text-white" : ""
+              className={`px-4 py-2.5 transition-colors duration-300 hover:text-brass ${
+                isCurrent(item.match) ? "text-brass" : ""
               }`}
             >
               {item.title}
@@ -89,7 +89,7 @@ export default function Header() {
 
         <Link
           href="/#contacts"
-          className="hidden items-center gap-2 px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.13em] transition-colors duration-300 hover:bg-brass-dark hover:text-white min-[901px]:flex"
+          className="hidden items-center gap-2 px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.13em] transition-colors duration-300 hover:text-brass min-[901px]:flex"
         >
           Обсудить проект
           <Arrow />
@@ -137,7 +137,7 @@ export default function Header() {
                 href={item.href}
                 onClick={closeMenu}
                 aria-current={isCurrent(item.match) ? "page" : undefined}
-                className="border-b border-border py-[18px] font-heading text-[25px] transition duration-300 hover:text-brass-dark"
+                className="border-b border-border py-[18px] font-heading text-[25px] transition duration-300 hover:text-brass"
               >
                 {item.title}
               </Link>

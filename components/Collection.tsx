@@ -86,13 +86,13 @@ export default function Collection() {
                   </div>
 
                   <div className="border-b border-border py-[17px]">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-brass-dark">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-brass">
                       {item.note}
                     </span>
                     <h3 className="mt-2 text-[23px] leading-tight max-[560px]:text-[19px]">
                       {item.title}
                     </h3>
-                    <small className="mt-3 block font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
+                    <small className="mt-3 block font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
                       {count} {plural(count, ["изделие", "изделия", "изделий"])}
                     </small>
                   </div>

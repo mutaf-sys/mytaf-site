@@ -31,7 +31,7 @@ function formatRub(value: number) {
 }
 
 const estimateLabel =
-  "font-mono text-[11px] uppercase tracking-[0.16em] text-brass-dark";
+  "font-mono text-[10px] uppercase tracking-[0.16em] text-brass";
 
 const estimateField =
   "mt-3 w-full rounded-2xl border border-[#d9d0c3] bg-white px-4 py-[15px] text-[15px] text-foreground transition focus:border-brass-dark";

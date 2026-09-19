@@ -110,18 +110,18 @@ h4 {
 
 .kicker {
   font-family: var(--font-dm-mono), var(--font-plex-mono), ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: var(--brass-dark);
+  color: var(--brass);
 }
 
 .eyebrow {
   font-family: var(--font-dm-mono), var(--font-plex-mono), ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: var(--brass-dark);
+  color: var(--brass);
 }
 
 .kicker-rule::before {
@@ -278,7 +278,7 @@ h4 {
 }
 
 .text-link:hover {
-  color: var(--brass-dark);
+  color: var(--brass);
 }
 
 .on-dark .text-link:hover {

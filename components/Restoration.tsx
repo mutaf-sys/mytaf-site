@@ -15,7 +15,7 @@ export default function Restoration() {
               alt="Оконный шпингалет с фигурной ручкой"
               fill
               sizes="(max-width: 900px) 45vw, 22vw"
-              className="object-contain"
+              className="object-cover"
             />
           </div>
           <div className="relative mt-12">
@@ -24,7 +24,7 @@ export default function Restoration() {
               alt="Оконная фурнитура с резной розеткой"
               fill
               sizes="(max-width: 900px) 45vw, 22vw"
-              className="object-contain"
+              className="object-cover"
             />
           </div>
         </div>

@@ -4,7 +4,7 @@ import SiteFooter from "@/components/SiteFooter";
 import Arrow from "@/components/ui/Arrow";
 
 const detailLabel =
-  "mb-2.5 block font-mono text-[11px] uppercase tracking-[0.15em] text-brass-soft";
+  "mb-2.5 block font-mono text-[10px] uppercase tracking-[0.15em] text-brass-soft";
 const detailValue = "font-heading text-2xl";
 
 export default function Contacts() {
