@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Empirebrass",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://empirebrass.ru").replace(
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://empire-brass.ru").replace(
     /\/$/,
     "",
   ),
