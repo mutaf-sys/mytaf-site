@@ -31,13 +31,21 @@ export function ConsentCheckbox() {
         className="mt-0.5 h-[18px] w-[18px] shrink-0 accent-brass-soft"
       />
       <span>
-        Я согласен(а) с{" "}
+        Даю{" "}
+        <Link
+          href="/consent"
+          target="_blank"
+          className="text-brass-soft underline underline-offset-[3px] hover:text-white"
+        >
+          согласие на обработку персональных данных
+        </Link>{" "}
+        и ознакомлен(а) с{" "}
         <Link
           href="/privacy"
           target="_blank"
           className="text-brass-soft underline underline-offset-[3px] hover:text-white"
         >
-          политикой обработки персональных данных
+          политикой конфиденциальности
         </Link>
       </span>
     </label>

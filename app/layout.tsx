@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono, Manrope, Playfair_Display } from "next/font/google";
 
 import "./globals.css";
+import CookieConsent from "@/components/CookieConsent";
 import { siteConfig } from "@/lib/site";
 
 const headingFont = Playfair_Display({
@@ -80,6 +81,7 @@ export default function RootLayout({
           Перейти к содержимому
         </a>
         {children}
+        <CookieConsent />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

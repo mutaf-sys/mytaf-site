@@ -54,7 +54,7 @@ export default function Estimate() {
 
   return (
     <section id="estimate" className="px-0">
-      <div className="mx-auto grid max-w-[1440px] items-center gap-[8vw] bg-estimate px-[clamp(22px,8vw,120px)] py-[clamp(80px,10vw,150px)] min-[901px]:grid-cols-[0.8fr_1.2fr] max-[900px]:gap-[45px]">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-[minmax(0,1fr)] items-center gap-[8vw] bg-estimate px-[clamp(22px,8vw,120px)] py-[clamp(80px,10vw,150px)] min-[901px]:grid-cols-[0.8fr_1.2fr] max-[900px]:gap-[45px]">
         <div className="max-w-[470px]">
           <p className="kicker">04 — Расчёт стоимости</p>
           <h2 className="display display-lg mb-6 mt-[22px]">
@@ -70,7 +70,7 @@ export default function Estimate() {
         </div>
 
         <div className="rounded-[28px] border border-[#d1c9bc] bg-surface p-[clamp(24px,4vw,42px)] shadow-[0_18px_45px_rgba(35,31,23,0.08)]">
-          <div className="grid gap-x-6 gap-y-7 min-[561px]:grid-cols-[1.1fr_0.9fr] max-[560px]:gap-y-5">
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-x-6 gap-y-7 min-[561px]:grid-cols-[1.1fr_0.9fr] max-[560px]:gap-y-5">
             <div>
               <label htmlFor="estimate-category" className={estimateLabel}>
                 Тип изделия
@@ -123,7 +123,7 @@ export default function Estimate() {
 
             <div className="flex flex-col justify-end pb-3.5 max-[560px]:pb-0" aria-live="polite">
               <p className={estimateLabel}>Ориентировочно</p>
-              <p className="mt-2.5 whitespace-nowrap font-heading text-[clamp(25px,3vw,39px)] tracking-[-0.04em]">
+              <p className="mt-2.5 whitespace-nowrap font-heading text-[clamp(25px,3vw,39px)] tracking-[-0.04em] max-[560px]:whitespace-normal">
                 {formatRub(estimate.from)} – {formatRub(estimate.to)} ₽
               </p>
             </div>
@@ -137,7 +137,7 @@ export default function Estimate() {
 
             <Link
               href="#contacts"
-              className="button button-brass whitespace-nowrap max-[560px]:mt-[22px] max-[560px]:w-full"
+              className="button button-brass whitespace-nowrap max-[560px]:mt-[22px] max-[560px]:w-full max-[560px]:whitespace-normal max-[560px]:text-center"
             >
               Обсудить точную стоимость
               <Arrow />

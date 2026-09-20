@@ -9,4 +9,5 @@ export const siteConfig = {
   phone: "+79990646417",
   email: "info@empirebrass.ru",
   city: "Санкт-Петербург",
+  metrikaId: "112836875",
 };
