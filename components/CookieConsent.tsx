@@ -64,6 +64,8 @@ function loadMetrika(id: string) {
 }
 
 export function CookieSettingsButton({ className }: { className?: string }) {
+  if (!siteConfig.metrikaEnabled) return null;
+
   return (
     <button
       type="button"
@@ -81,6 +83,8 @@ export default function CookieConsent() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    if (!siteConfig.metrikaEnabled) return;
+
     const saved = readChoice();
     setChoice(saved);
     setOpen(saved === null);
@@ -113,7 +117,7 @@ export default function CookieConsent() {
     setOpen(false);
   }
 
-  if (!open) return null;
+  if (!siteConfig.metrikaEnabled || !open) return null;
 
   return (
     <div
