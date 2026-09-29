@@ -38,6 +38,11 @@ export default function ContactForm() {
       category: String(formData.get("category") ?? ""),
       message: String(formData.get("message") ?? ""),
       company: String(formData.get("company") ?? ""), // honeypot
+      // Доказательство согласия: отметка, дата/время, версия документов, адрес формы.
+      consent: formData.get("consent") === "on",
+      consentVersion: "28.09.2026",
+      pageUrl: window.location.href,
+      submittedAt: new Date().toISOString(),
     };
 
     setStatus("loading");

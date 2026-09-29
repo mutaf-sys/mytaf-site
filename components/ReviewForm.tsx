@@ -62,6 +62,11 @@ export default function ReviewForm() {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
+    // Доказательство согласия: отметка, дата/время, версия документов, адрес формы.
+    formData.set("consentVersion", "28.09.2026");
+    formData.set("pageUrl", window.location.href);
+    formData.set("submittedAt", new Date().toISOString());
+
     setStatus("loading");
     setErrorMessage("");
 

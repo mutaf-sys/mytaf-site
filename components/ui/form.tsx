@@ -31,7 +31,7 @@ export function ConsentCheckbox() {
         className="mt-0.5 h-[18px] w-[18px] shrink-0 accent-brass-soft"
       />
       <span>
-        Даю{" "}
+        Я даю{" "}
         <Link
           href="/consent"
           target="_blank"

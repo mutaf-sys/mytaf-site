@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { CookieSettingsButton } from "@/components/CookieConsent";
+import { siteConfig } from "@/lib/site";
 
 const linkClass =
   "text-white underline-offset-4 transition-colors hover:text-brass-soft hover:underline";
@@ -18,14 +19,28 @@ export default function SiteFooter() {
           <Link href="/privacy" className={linkClass}>
             Политика конфиденциальности
           </Link>
+          <Link href="/cookies" className={linkClass}>
+            Политика cookie
+          </Link>
           <Link href="/consent" className={linkClass}>
             Согласие на обработку данных
+          </Link>
+          <Link href="/oferta" className={linkClass}>
+            Публичная оферта
           </Link>
           <CookieSettingsButton className={linkClass} />
         </nav>
         <a href="mailto:info@empirebrass.ru" className={linkClass}>
           Связаться
         </a>
+      </div>
+
+      <div className="border-t border-[#3a3b34] px-[clamp(22px,5vw,76px)] py-4 font-mono text-[11px] leading-relaxed text-[#7d7e75]">
+        <p className="mx-auto max-w-[1720px]">
+          {siteConfig.legal.fullName} · ИНН {siteConfig.legal.inn} · ОГРНИП{" "}
+          {siteConfig.legal.ogrnip} от {siteConfig.legal.ogrnipDate} · адрес:{" "}
+          {siteConfig.legal.address} · {siteConfig.email} · +7 (999) 064-64-17
+        </p>
       </div>
     </footer>
   );

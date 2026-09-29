@@ -29,6 +29,10 @@ export async function POST(request: Request) {
   const review = String(formData.get("review") ?? "");
   const company = String(formData.get("company") ?? ""); // honeypot
   const photo = formData.get("photo");
+  const consent = formData.get("consent");
+  const consentVersion = String(formData.get("consentVersion") ?? "");
+  const pageUrl = String(formData.get("pageUrl") ?? "");
+  const submittedAt = String(formData.get("submittedAt") ?? "");
 
   // Honeypot: если скрытое поле заполнено — это бот, отвечаем "успехом",
   // но письмо не отправляем.
@@ -39,6 +43,16 @@ export async function POST(request: Request) {
   if (!name.trim() || !review.trim()) {
     return NextResponse.json(
       { error: "Заполните имя и текст отзыва." },
+      { status: 400 },
+    );
+  }
+
+  if (!consent) {
+    return NextResponse.json(
+      {
+        error:
+          "Отметьте согласие на обработку персональных данных, чтобы отправить отзыв.",
+      },
       { status: 400 },
     );
   }
@@ -107,6 +121,19 @@ export async function POST(request: Request) {
     const safeRole = escapeHtml(role.trim());
     const safeReview = escapeHtml(review.trim()).replace(/\n/g, "<br />");
 
+    const receivedAt = new Date().toLocaleString("ru-RU", {
+      timeZone: "Europe/Moscow",
+    });
+    const clientIp =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      request.headers.get("x-real-ip") ||
+      "не определён";
+    const safePageUrl = escapeHtml(pageUrl.trim() || "не передан");
+    const safeSubmittedAt = escapeHtml(submittedAt.trim() || "не передано");
+    const safeConsentVersion = escapeHtml(
+      consentVersion.trim() || "не передана",
+    );
+
     await transporter.sendMail({
       from: `"Сайт мастерской" <${SMTP_USER}>`,
       to: CONTACT_TO_EMAIL,
@@ -119,6 +146,13 @@ export async function POST(request: Request) {
           ${attachment ? "<p><strong>Фото:</strong> во вложении письма.</p>" : ""}
           <hr />
           <p style="color:#888;font-size:12px;">Это письмо пришло со страницы /otzyv — она не проиндексирована и никому не показывается на сайте. Если отзыв стоит опубликовать, добавьте его вручную в components/Testimonials.tsx (фото сохраните в public/images/reviews/).</p>
+          <p style="color:#888;font-size:12px;">
+            Доказательство согласия на обработку персональных данных:
+            отметка в чекбоксе поставлена; получено на сервере ${receivedAt}
+            (Москва); отправлено с браузера в ${safeSubmittedAt}; версия
+            документов от ${safeConsentVersion}; страница формы:
+            ${safePageUrl}; IP отправителя: ${escapeHtml(clientIp)}.
+          </p>
         </div>
       `,
       attachments: attachment ? [attachment] : undefined,

@@ -40,6 +40,17 @@ function saveChoice(choice: Choice) {
   }
 }
 
+// Удаляет аналитические cookie Яндекс Метрики (при отказе или отзыве согласия).
+function deleteMetrikaCookies() {
+  const names = ["_ym_uid", "_ym_d", "_ym_isad", "_ym_visorc"];
+  const domain = window.location.hostname.replace(/^www\./, "");
+
+  for (const name of names) {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.${domain}`;
+  }
+}
+
 // Счётчик подключается только после согласия посетителя.
 function loadMetrika(id: string) {
   if (window.ym) return;
@@ -113,6 +124,7 @@ export default function CookieConsent() {
 
   function decide(next: Choice) {
     saveChoice(next);
+    if (next === "declined") deleteMetrikaCookies();
     setChoice(next);
     setOpen(false);
   }
@@ -130,7 +142,7 @@ export default function CookieConsent() {
         как посетители пользуются сайтом. Вы можете отказаться, сайт будет
         работать так же.{" "}
         <Link
-          href="/privacy#cookies"
+          href="/cookies"
           className="text-brass-soft underline underline-offset-[3px] hover:text-white"
         >
           Подробнее
